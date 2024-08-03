@@ -3,7 +3,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("MIMIEN"),
         .species = SPECIES_MR_MIME,
-        .ivs = {20, 15, 17, 24, 23, 22},
+        .ivs = {20, 15, 17, 24, 23},
         .abilityNum = 0,
         .otId = 1985,
         .conditions = {5, 5, 5, 30, 5},
@@ -19,7 +19,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("ZYNX"),
         .species = SPECIES_JYNX,
-        .ivs = {18, 17, 18, 22, 25, 21},
+        .ivs = {18, 17, 18, 22, 25},
         .abilityNum = 0,
         .otId = 36728,
         .conditions = {5, 30, 5, 5, 5},
@@ -36,7 +36,7 @@ static const struct InGameTrade sInGameTrades[] = {
 #if defined(FIRERED)
         .nickname = _("MS. NIDO"),
         .species = SPECIES_NIDORAN_F,
-        .ivs = {22, 18, 25, 19, 15, 22},
+        .ivs = {22, 18, 25, 19, 15},
         .abilityNum = 0,
         .otId = 63184,
         .conditions = {5, 5, 5, 5, 30},
@@ -50,7 +50,7 @@ static const struct InGameTrade sInGameTrades[] = {
 #elif defined(LEAFGREEN)
         .nickname = _("MR. NIDO"),
         .species = SPECIES_NIDORAN_M,
-        .ivs = {19, 25, 18, 22, 22, 15},
+        .ivs = {19, 25, 18, 22, 22},
         .abilityNum = 0,
         .otId = 63184,
         .conditions = {30, 5, 5, 5, 5},
@@ -67,7 +67,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("CH'DING"),
         .species = SPECIES_FARFETCHD,
-        .ivs = {20, 25, 21, 24, 15, 20},
+        .ivs = {20, 25, 21, 24, 15},
         .abilityNum = 0,
         .otId = 8810,
         .conditions = {30, 5, 5, 5, 5},
@@ -84,7 +84,7 @@ static const struct InGameTrade sInGameTrades[] = {
 #if defined(FIRERED)
         .nickname = _("NINA"),
         .species = SPECIES_NIDORINA,
-        .ivs = {22, 25, 18, 19, 22, 15},
+        .ivs = {22, 25, 18, 19, 22},
         .abilityNum = 0,
         .otId = 13637,
         .conditions = {5, 5, 30, 5, 5},
@@ -98,7 +98,7 @@ static const struct InGameTrade sInGameTrades[] = {
 #elif defined(LEAFGREEN)
         .nickname = _("NINO"),
         .species = SPECIES_NIDORINO,
-        .ivs = {19, 18, 25, 22, 15, 22},
+        .ivs = {19, 18, 25, 22, 15},
         .abilityNum = 0,
         .otId = 13637,
         .conditions = {5, 5, 5, 5, 30},
@@ -115,7 +115,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("MARC"),
         .species = SPECIES_LICKITUNG,
-        .ivs = {24, 19, 21, 15, 23, 21},
+        .ivs = {24, 19, 21, 15, 23},
         .abilityNum = 0,
         .otId = 1239,
         .conditions = {5, 5, 5, 5, 30},
@@ -135,7 +135,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("ESPHERE"),
         .species = SPECIES_ELECTRODE,
-        .ivs = {19, 16, 18, 25, 25, 19},
+        .ivs = {19, 16, 18, 25, 25},
         .abilityNum = 1,
         .otId = 50298,
         .conditions = {30, 5, 5, 5, 5},
@@ -151,7 +151,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("TANGENY"),
         .species = SPECIES_TANGELA,
-        .ivs = {22, 17, 25, 16, 23, 20},
+        .ivs = {22, 17, 25, 16, 23},
         .abilityNum = 0,
         .otId = 60042,
         .conditions = {5, 5, 30, 5, 5},
@@ -167,7 +167,7 @@ static const struct InGameTrade sInGameTrades[] = {
     {
         .nickname = _("SEELOR"),
         .species = SPECIES_SEEL,
-        .ivs = {24, 15, 22, 16, 23, 22},
+        .ivs = {24, 15, 22, 16, 23},
         .abilityNum = 0,
         .otId = 9853,
         .conditions = {5, 5, 5, 5, 30},

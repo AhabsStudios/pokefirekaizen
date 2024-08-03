@@ -33,8 +33,8 @@ struct PokemonItemEffect
     u8 cantLowerStats : 1; // x80
 
     /*field 4
-    u8 hpEv : 1; // x1
-    u8 attackEv : 1; // x2
+    u8 hpEXP : 1; // x1
+    u8 attackEXP : 1; // x2
     u8 healHp : 1; // x4
     u8 field_4_x8 : 1; // x8
     u8 field_4_x10 : 1; // x10
@@ -44,7 +44,7 @@ struct PokemonItemEffect
 
     /*field 5
     u8 defEv:  1; // x1
-    u8 speedEv : 1; // x2
+    u8 speedEXP : 1; // x2
     u8 spDefEv : 1; // x4
     u8 spAtkEv : 1; // x8
     u8 ppMax : 1; // x10

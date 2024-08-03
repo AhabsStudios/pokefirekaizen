@@ -1357,7 +1357,7 @@ static const struct SpindaSpot sSpindaSpotGraphics[] =
 
 #include "data/pokemon/item_effects.h"
 
-static const s8 sNatureStatTable[NUM_NATURES][NUM_NATURE_STATS] =
+static const s8 sNatureStatTable[NUM_NATURES][5] =
 {                      // Attack  Defense  Speed  Sp.Atk  Sp.Def
     [NATURE_HARDY]   = {    0,      0,      0,      0,      0   },
     [NATURE_LONELY]  = {   +1,     -1,      0,      0,      0   },
@@ -1998,12 +1998,12 @@ void CreateBattleTowerMon(struct Pokemon *mon, struct BattleTowerPokemon *src)
 
     SetMonData(mon, MON_DATA_NICKNAME, &src->nickname);
     SetMonData(mon, MON_DATA_FRIENDSHIP, &src->friendship);
-    SetMonData(mon, MON_DATA_HP_EV, &src->hpEV);
-    SetMonData(mon, MON_DATA_ATK_EV, &src->attackEV);
-    SetMonData(mon, MON_DATA_DEF_EV, &src->defenseEV);
-    SetMonData(mon, MON_DATA_SPEED_EV, &src->speedEV);
-    SetMonData(mon, MON_DATA_SPATK_EV, &src->spAttackEV);
-    SetMonData(mon, MON_DATA_SPDEF_EV, &src->spDefenseEV);
+    SetMonData(mon, MON_DATA_HP_EV, &src->hpEXP);
+    SetMonData(mon, MON_DATA_ATK_EV, &src->attackEXP);
+    SetMonData(mon, MON_DATA_DEF_EV, &src->defenseEXP);
+    SetMonData(mon, MON_DATA_SPEED_EV, &src->speedEXP);
+    SetMonData(mon, MON_DATA_SPATK_EV, &src->specialEXP);
+    SetMonData(mon, MON_DATA_SPDEF_EV, &src->whocaresEV);
     value = src->abilityNum;
     SetMonData(mon, MON_DATA_ABILITY_NUM, &value);
     value = src->hpIV;
@@ -2048,12 +2048,12 @@ void ConvertPokemonToBattleTowerPokemon(struct Pokemon *mon, struct BattleTowerP
     dest->level = GetMonData(mon, MON_DATA_LEVEL, NULL);
     dest->ppBonuses = GetMonData(mon, MON_DATA_PP_BONUSES, NULL);
     dest->otId = GetMonData(mon, MON_DATA_OT_ID, NULL);
-    dest->hpEV = GetMonData(mon, MON_DATA_HP_EV, NULL);
-    dest->attackEV = GetMonData(mon, MON_DATA_ATK_EV, NULL);
-    dest->defenseEV = GetMonData(mon, MON_DATA_DEF_EV, NULL);
-    dest->speedEV = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
-    dest->spAttackEV = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
-    dest->spDefenseEV = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
+    dest->hpEXP = GetMonData(mon, MON_DATA_HP_EV, NULL);
+    dest->attackEXP = GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    dest->defenseEXP = GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    dest->speedEXP = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
+    dest->specialEXP = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
+    dest->whocaresEV = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
     dest->friendship = GetMonData(mon, MON_DATA_FRIENDSHIP, NULL);
     dest->hpIV = GetMonData(mon, MON_DATA_HP_IV, NULL);
     dest->attackIV = GetMonData(mon, MON_DATA_ATK_IV, NULL);
@@ -2104,17 +2104,17 @@ void CalculateMonStats(struct Pokemon *mon)
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
     s32 currentHP = GetMonData(mon, MON_DATA_HP, NULL);
     s32 hpIV = GetMonData(mon, MON_DATA_HP_IV, NULL);
-    s32 hpEV = GetMonData(mon, MON_DATA_HP_EV, NULL);
+    s32 hpEXP = GetMonData(mon, MON_DATA_HP_EV, NULL);
     s32 attackIV = GetMonData(mon, MON_DATA_ATK_IV, NULL);
-    s32 attackEV = GetMonData(mon, MON_DATA_ATK_EV, NULL);
+    s32 attackEXP = GetMonData(mon, MON_DATA_ATK_EV, NULL);
     s32 defenseIV = GetMonData(mon, MON_DATA_DEF_IV, NULL);
-    s32 defenseEV = GetMonData(mon, MON_DATA_DEF_EV, NULL);
+    s32 defenseEXP = GetMonData(mon, MON_DATA_DEF_EV, NULL);
     s32 speedIV = GetMonData(mon, MON_DATA_SPEED_IV, NULL);
-    s32 speedEV = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
+    s32 speedEXP = GetMonData(mon, MON_DATA_SPEED_EV, NULL);
     s32 spAttackIV = GetMonData(mon, MON_DATA_SPATK_IV, NULL);
-    s32 spAttackEV = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
+    s32 specialEXP = GetMonData(mon, MON_DATA_SPATK_EV, NULL);
     s32 spDefenseIV = GetMonData(mon, MON_DATA_SPDEF_IV, NULL);
-    s32 spDefenseEV = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
+    s32 whocaresEV = GetMonData(mon, MON_DATA_SPDEF_EV, NULL);
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
     s32 level = GetLevelFromMonExp(mon);
     s32 newMaxHP;
@@ -2128,7 +2128,7 @@ void CalculateMonStats(struct Pokemon *mon)
     else
     {
         s32 n = 2 * gSpeciesInfo[species].baseHP + hpIV;
-        newMaxHP = (((n + hpEV / 4) * level) / 100) + level + 10;
+        newMaxHP = (((n + hpEXP / 4) * level) / 100) + level + 10;
     }
 
     gBattleScripting.levelUpHP = newMaxHP - oldMaxHP;
@@ -2137,11 +2137,11 @@ void CalculateMonStats(struct Pokemon *mon)
 
     SetMonData(mon, MON_DATA_MAX_HP, &newMaxHP);
 
-    CALC_STAT(baseAttack, attackIV, attackEV, STAT_ATK, MON_DATA_ATK)
-    CALC_STAT(baseDefense, defenseIV, defenseEV, STAT_DEF, MON_DATA_DEF)
-    CALC_STAT(baseSpeed, speedIV, speedEV, STAT_SPEED, MON_DATA_SPEED)
-    CALC_STAT(baseSpAttack, spAttackIV, spAttackEV, STAT_SPATK, MON_DATA_SPATK)
-    CALC_STAT(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
+    CALC_STAT(baseAttack, attackIV, attackEXP, STAT_ATK, MON_DATA_ATK)
+    CALC_STAT(baseDefense, defenseIV, defenseEXP, STAT_DEF, MON_DATA_DEF)
+    CALC_STAT(baseSpeed, speedIV, speedEXP, STAT_SPEED, MON_DATA_SPEED)
+    CALC_STAT(baseSpAttack, spAttackIV, specialEXP, STAT_SPATK, MON_DATA_SPATK)
+    CALC_STAT(baseSpAttack, spAttackIV, specialEXP, STAT_SPDEF, MON_DATA_SPDEF)
 
     if (species == SPECIES_SHEDINJA)
     {
@@ -3098,40 +3098,40 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = substruct1->pp[field - MON_DATA_PP1];
         break;
     case MON_DATA_HP_EV:
-        retVal = substruct2->hpEV;
+        retVal = substruct2->hpEXP;
         break;
     case MON_DATA_ATK_EV:
-        retVal = substruct2->attackEV;
+        retVal = substruct2->attackEXP;
         break;
     case MON_DATA_DEF_EV:
-        retVal = substruct2->defenseEV;
+        retVal = substruct2->defenseEXP;
         break;
     case MON_DATA_SPEED_EV:
-        retVal = substruct2->speedEV;
+        retVal = substruct2->speedEXP;
         break;
     case MON_DATA_SPATK_EV:
-        retVal = substruct2->spAttackEV;
+        retVal = substruct2->specialEXP;
         break;
     case MON_DATA_SPDEF_EV:
-        retVal = substruct2->spDefenseEV;
+        retVal = substruct2->whocaresEV;
         break;
     case MON_DATA_COOL:
-        retVal = substruct2->cool;
+        retVal = 0;
         break;
     case MON_DATA_BEAUTY:
-        retVal = substruct2->beauty;
+        retVal = 0;
         break;
     case MON_DATA_CUTE:
-        retVal = substruct2->cute;
+        retVal = 0;
         break;
     case MON_DATA_SMART:
-        retVal = substruct2->smart;
+        retVal = 0;
         break;
     case MON_DATA_TOUGH:
-        retVal = substruct2->tough;
+        retVal = 0;
         break;
     case MON_DATA_SHEEN:
-        retVal = substruct2->sheen;
+        retVal = 0;
         break;
     case MON_DATA_POKERUS:
         retVal = substruct3->pokerus;
@@ -3167,7 +3167,7 @@ u32 GetBoxMonData(struct BoxPokemon *boxMon, s32 field, u8 *data)
         retVal = substruct3->spAttackIV;
         break;
     case MON_DATA_SPDEF_IV:
-        retVal = substruct3->spDefenseIV;
+        retVal = substruct3->spAttackIV;
         break;
     case MON_DATA_IS_EGG:
         retVal = substruct3->isEgg;
@@ -3496,40 +3496,34 @@ void SetBoxMonData(struct BoxPokemon *boxMon, s32 field, const void *dataArg)
         SET8(substruct1->pp[field - MON_DATA_PP1]);
         break;
     case MON_DATA_HP_EV:
-        SET8(substruct2->hpEV);
+        SET8(substruct2->hpEXP);
         break;
     case MON_DATA_ATK_EV:
-        SET8(substruct2->attackEV);
+        SET8(substruct2->attackEXP);
         break;
     case MON_DATA_DEF_EV:
-        SET8(substruct2->defenseEV);
+        SET8(substruct2->defenseEXP);
         break;
     case MON_DATA_SPEED_EV:
-        SET8(substruct2->speedEV);
+        SET8(substruct2->speedEXP);
         break;
     case MON_DATA_SPATK_EV:
-        SET8(substruct2->spAttackEV);
+        SET8(substruct2->specialEXP);
         break;
     case MON_DATA_SPDEF_EV:
-        SET8(substruct2->spDefenseEV);
+        SET8(substruct2->whocaresEV);
         break;
     case MON_DATA_COOL:
-        SET8(substruct2->cool);
         break;
     case MON_DATA_BEAUTY:
-        SET8(substruct2->beauty);
         break;
     case MON_DATA_CUTE:
-        SET8(substruct2->cute);
         break;
     case MON_DATA_SMART:
-        SET8(substruct2->smart);
         break;
     case MON_DATA_TOUGH:
-        SET8(substruct2->tough);
         break;
     case MON_DATA_SHEEN:
-        SET8(substruct2->sheen);
         break;
     case MON_DATA_POKERUS:
         SET8(substruct3->pokerus);
@@ -5530,22 +5524,19 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         switch (i)
         {
         case STAT_HP:
-            evIncrease = gSpeciesInfo[defeatedSpecies].evYield_HP * multiplier;
+            evIncrease = gSpeciesInfo[defeatedSpecies].baseHP * multiplier;
             break;
         case STAT_ATK:
-            evIncrease = gSpeciesInfo[defeatedSpecies].evYield_Attack * multiplier;
+            evIncrease = gSpeciesInfo[defeatedSpecies].baseAttack * multiplier;
             break;
         case STAT_DEF:
-            evIncrease = gSpeciesInfo[defeatedSpecies].evYield_Defense * multiplier;
+            evIncrease = gSpeciesInfo[defeatedSpecies].baseDefense * multiplier;
             break;
         case STAT_SPEED:
-            evIncrease = gSpeciesInfo[defeatedSpecies].evYield_Speed * multiplier;
+            evIncrease = gSpeciesInfo[defeatedSpecies].baseSpeed * multiplier;
             break;
         case STAT_SPATK:
-            evIncrease = gSpeciesInfo[defeatedSpecies].evYield_SpAttack * multiplier;
-            break;
-        case STAT_SPDEF:
-            evIncrease = gSpeciesInfo[defeatedSpecies].evYield_SpDefense * multiplier;
+            evIncrease = gSpeciesInfo[defeatedSpecies].baseSpAttack * multiplier;
             break;
         }
 

@@ -4402,7 +4402,7 @@ static void GetMedicineItemEffectMessage(u16 item)
     }
 }
 
-static bool8 NotUsingHPEVItemOnShedinja(struct Pokemon *mon, u16 item)
+static bool8 NotUsinghpEXPItemOnShedinja(struct Pokemon *mon, u16 item)
 {
     if (GetItemEffectType(item) == ITEM_EFFECT_HP_EV && GetMonData(mon, MON_DATA_SPECIES) == SPECIES_SHEDINJA)
         return FALSE;
@@ -4431,7 +4431,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc func)
     u16 item = gSpecialVar_ItemId;
     bool8 canHeal;
 
-    if (!NotUsingHPEVItemOnShedinja(mon, item))
+    if (!NotUsinghpEXPItemOnShedinja(mon, item))
     {
         canHeal = TRUE;
     }
@@ -4469,7 +4469,7 @@ void ItemUseCB_MedicineStep(u8 taskId, TaskFunc func)
     bool8 canHeal;
     bool8 cannotHeal;
 
-    if (NotUsingHPEVItemOnShedinja(mon, item) == FALSE)
+    if (NotUsinghpEXPItemOnShedinja(mon, item) == FALSE)
         cannotHeal = TRUE;
     else
     {

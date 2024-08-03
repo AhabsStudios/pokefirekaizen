@@ -23,18 +23,18 @@ struct PokemonSubstruct1
 
 struct PokemonSubstruct2
 {
-    u8 hpEV;
-    u8 attackEV;
-    u8 defenseEV;
-    u8 speedEV;
-    u8 spAttackEV;
-    u8 spDefenseEV;
+    u16 hpEXP;
+    u16 attackEXP;
+    u16 defenseEXP;     
+    u16 speedEXP;
+    u16 specialEXP;
+    u8 whocaresEV;/* 
     u8 cool;
     u8 beauty;
     u8 cute;
     u8 smart;
     u8 tough;
-    u8 sheen;
+    u8 sheen; */
 };
 
 struct PokemonSubstruct3
@@ -147,12 +147,12 @@ struct BattleTowerPokemon
     /*0x04*/ u16 moves[MAX_MON_MOVES];
     /*0x0C*/ u8 level;
     /*0x0D*/ u8 ppBonuses;
-    /*0x0E*/ u8 hpEV;
-    /*0x0F*/ u8 attackEV;
-    /*0x10*/ u8 defenseEV;
-    /*0x11*/ u8 speedEV;
-    /*0x12*/ u8 spAttackEV;
-    /*0x13*/ u8 spDefenseEV;
+    /*0x0E*/ u8 hpEXP;
+    /*0x0F*/ u8 attackEXP;
+    /*0x10*/ u8 defenseEXP;
+    /*0x11*/ u8 speedEXP;
+    /*0x12*/ u8 specialEXP;
+    /*0x13*/ u8 whocaresEV;
     /*0x14*/ u32 otId;
     /*0x18*/ u32 hpIV:5;
              u32 attackIV:5;
