@@ -1,4 +1,9 @@
-static const u8 sNoneDescription[] = _("No special ability.");
+//nothing here is used except ABILITY_NONE
+//but i couldn't figure out how to edit the abilities
+//without drastically modifying the trainer AI 
+//sowwy - star
+
+static const u8 sNoneDescription[] = _("");
 static const u8 sStenchDescription[] = _("Helps repel wild POKéMON.");
 static const u8 sDrizzleDescription[] = _("Summons rain in battle.");
 static const u8 sSpeedBoostDescription[] = _("Gradually boosts SPEED.");
@@ -161,7 +166,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
 
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
 {
-    [ABILITY_NONE] = _("-------"),
+    [ABILITY_NONE] = _(""),
     [ABILITY_STENCH] = _("STENCH"),
     [ABILITY_DRIZZLE] = _("DRIZZLE"),
     [ABILITY_SPEED_BOOST] = _("SPEED BOOST"),
