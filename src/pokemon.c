@@ -2093,7 +2093,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)               \
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * baseStat + iv + ev / 4) * level) / 100) + 5; \
+    s32 n = (((2 * baseStat + iv + Sqrt(ev) / 4) * level) / 100) + 5; \
     u8 nature = GetNature(mon);                                 \
     n = ModifyStatByNature(nature, n, statIndex);               \
     SetMonData(mon, field, &n);                                 \
@@ -4213,19 +4213,14 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     case 1: // ITEM4_EV_ATK
                         evCount = GetMonEVCount(mon);
 
-                        // Has EV increase limit already been reached?
-                        if (evCount >= MAX_TOTAL_EVS)
-                            return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
                         if (data < EV_ITEM_RAISE_LIMIT)
                         {
                             // Limit the increase
                             if (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT)
-                                evDelta = EV_ITEM_RAISE_LIMIT - (data + itemEffect[idx]) + itemEffect[idx];
+                                evDelta = EV_ITEM_RAISE_LIMIT - (data + (256 * itemEffect[idx])) + (256 * itemEffect[idx]);
                             else
-                                evDelta = itemEffect[idx];
-                            if (evCount + evDelta > MAX_TOTAL_EVS)
-                                evDelta += MAX_TOTAL_EVS - (evCount + evDelta);
+                                evDelta = 256 * itemEffect[idx];
 
                             // Update EVs and stats
                             data += evDelta;
@@ -4420,19 +4415,14 @@ bool8 PokemonUseItemEffects(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mov
                     case 3: // ITEM5_EV_SPATK
                         evCount = GetMonEVCount(mon);
                         
-                        // Has EV increase limit already been reached?
-                        if (evCount >= MAX_TOTAL_EVS)
-                            return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
                         if (data < EV_ITEM_RAISE_LIMIT)
                         {
                             // Limit the increase
                             if (data + itemEffect[idx] > EV_ITEM_RAISE_LIMIT)
-                                evDelta = EV_ITEM_RAISE_LIMIT - (data + itemEffect[idx]) + itemEffect[idx];
+                                evDelta = EV_ITEM_RAISE_LIMIT - (data + (256 * itemEffect[idx])) + (256 * itemEffect[idx]);
                             else
-                                evDelta = itemEffect[idx];
-                            if (evCount + evDelta > MAX_TOTAL_EVS)
-                                evDelta += MAX_TOTAL_EVS - (evCount + evDelta);
+                                evDelta = 256 * itemEffect[idx];
                             
                             // Update EVs and stats
                             data += evDelta;
@@ -4679,9 +4669,6 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
                     case 0: // ITEM4_EV_HP
                     case 1: // ITEM4_EV_ATK
 
-                        // Has EV increase limit already been reached?
-                        if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
-                            return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i], NULL);
                         if (data < EV_ITEM_RAISE_LIMIT)
                         {
@@ -4764,8 +4751,6 @@ bool8 PokemonItemUseNoEffect(struct Pokemon *mon, u16 item, u8 partyIndex, u8 mo
                     case 1: // ITEM5_EV_SPEED
                     case 2: // ITEM5_EV_SPDEF
                     case 3: // ITEM5_EV_SPATK
-                        if (GetMonEVCount(mon) >= MAX_TOTAL_EVS)
-                            return TRUE;
                         data = GetMonData(mon, sGetMonDataEVConstants[i + 2], NULL);
                         if (data < EV_ITEM_RAISE_LIMIT)
                         {
@@ -5511,9 +5496,6 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
         u8 hasHadPokerus;
         int multiplier;
 
-        if (totalEVs >= MAX_TOTAL_EVS)
-            break;
-
         hasHadPokerus = CheckPartyHasHadPokerus(mon, 0);
 
         if (hasHadPokerus)
@@ -5556,9 +5538,6 @@ void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 
         if (holdEffect == HOLD_EFFECT_MACHO_BRACE)
             evIncrease *= 2;
-
-        if (totalEVs + (s16)evIncrease > MAX_TOTAL_EVS)
-            evIncrease = ((s16)evIncrease + MAX_TOTAL_EVS) - (totalEVs + evIncrease);
 
         if (evs[i] + (s16)evIncrease > MAX_PER_STAT_EVS)
         {
