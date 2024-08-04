@@ -1181,7 +1181,7 @@ static void Cmd_critcalc(void)
 
     gPotentialItemEffectBattler = gBattlerAttacker;
 
-    critChance  = 2 * ((gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY) != 0)
+    /* critChance  = 2 * ((gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY) != 0)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_HIGH_CRITICAL)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_SKY_ATTACK)
                 + (gBattleMoves[gCurrentMove].effect == EFFECT_BLAZE_KICK)
@@ -1191,12 +1191,30 @@ static void Cmd_critcalc(void)
                 + 2 * (holdEffect == HOLD_EFFECT_STICK && gBattleMons[gBattlerAttacker].species == SPECIES_FARFETCHD);
 
     if (critChance >= ARRAY_COUNT(sCriticalHitChance))
-        critChance = ARRAY_COUNT(sCriticalHitChance) - 1;
+        critChance = ARRAY_COUNT(sCriticalHitChance) - 1; */
+
+    if ((gBattleMoves[gCurrentMove].effect == EFFECT_HIGH_CRITICAL)
+                || (gBattleMoves[gCurrentMove].effect == EFFECT_SKY_ATTACK)
+                || (gBattleMoves[gCurrentMove].effect == EFFECT_BLAZE_KICK)
+                || (gBattleMoves[gCurrentMove].effect == EFFECT_POISON_TAIL))
+    {
+        critChance = (gSpeciesInfo[gBattleMons[gBattlerAttacker].species].baseSpeed / 2) * 8;
+    }
+    else
+    {
+        critChance = gSpeciesInfo[gBattleMons[gBattlerAttacker].species].baseSpeed / 2;
+    }
+
+    if ((gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY) != 0)
+        critChance *= 2;
+
+    if (critChance >= 256)
+        critChance = 255;
 
     if ((gBattleMons[gBattlerTarget].ability != ABILITY_BATTLE_ARMOR && gBattleMons[gBattlerTarget].ability != ABILITY_SHELL_ARMOR)
      && !(gStatuses3[gBattlerAttacker] & STATUS3_CANT_SCORE_A_CRIT)
      && !(gBattleTypeFlags & BATTLE_TYPE_OLD_MAN_TUTORIAL)
-     && !(Random() % sCriticalHitChance[critChance])
+     && (Random() % 256) < critChance
      && (!(gBattleTypeFlags & BATTLE_TYPE_FIRST_BATTLE) || BtlCtrl_OakOldMan_TestState2Flag(1))
      && !(gBattleTypeFlags & BATTLE_TYPE_POKEDUDE))
         gCritMultiplier = 2;
