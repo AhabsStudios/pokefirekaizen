@@ -151,7 +151,7 @@ const u16 *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_DRAGONAIR] = sDragonairLevelUpLearnset,
     [SPECIES_DRAGONITE] = sDragoniteLevelUpLearnset,
     [SPECIES_MEWTWO] = sMewtwoLevelUpLearnset,
-    [SPECIES_MEW] = sMewLevelUpLearnset,
+    [SPECIES_MEW] = sMewLevelUpLearnset,/* 
     [SPECIES_CHIKORITA] = sChikoritaLevelUpLearnset,
     [SPECIES_BAYLEEF] = sBayleefLevelUpLearnset,
     [SPECIES_MEGANIUM] = sMeganiumLevelUpLearnset,
@@ -411,5 +411,5 @@ const u16 *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_LATIOS] = sLatiosLevelUpLearnset,
     [SPECIES_JIRACHI] = sJirachiLevelUpLearnset,
     [SPECIES_DEOXYS] = sDeoxysLevelUpLearnset,
-    [SPECIES_CHIMECHO] = sChimechoLevelUpLearnset,
+    [SPECIES_CHIMECHO] = sChimechoLevelUpLearnset, */
 };

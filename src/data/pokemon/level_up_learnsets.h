@@ -2146,7 +2146,7 @@ static const u16 sMewLevelUpLearnset[] = {
     LEVEL_UP_END
 };
 
-static const u16 sChikoritaLevelUpLearnset[] = {
+/* static const u16 sChikoritaLevelUpLearnset[] = {
     LEVEL_UP_MOVE(1, MOVE_TACKLE),
     LEVEL_UP_MOVE(1, MOVE_GROWL),
     LEVEL_UP_MOVE(8, MOVE_RAZOR_LEAF),
@@ -5704,4 +5704,4 @@ static const u16 sChimechoLevelUpLearnset[] = {
     LEVEL_UP_MOVE(41, MOVE_SAFEGUARD),
     LEVEL_UP_MOVE(46, MOVE_PSYCHIC),
     LEVEL_UP_END
-};
+}; */

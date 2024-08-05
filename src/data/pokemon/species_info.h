@@ -4414,7 +4414,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
     },
-    [SPECIES_CHIKORITA] =
+    /* [SPECIES_CHIKORITA] =
     {
         .baseHP = 45,
         .baseAttack = 49,
@@ -11253,5 +11253,5 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .safariZoneFleeRate = 0,
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
-    },
+    }, */
 };
