@@ -1420,7 +1420,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_CamperLiam),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_CamperLiam),
     },
     [TRAINER_CAMPER_SHANE] = {
         .trainerClass = TRAINER_CLASS_CAMPER,
@@ -1710,7 +1710,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_SuperNerdAidan),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_SuperNerdAidan),
     },
     [TRAINER_SUPER_NERD_GLENN] = {
         .trainerClass = TRAINER_CLASS_SUPER_NERD,
@@ -1730,7 +1730,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_SuperNerdLeslie),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_SuperNerdLeslie),
     },
     [TRAINER_SUPER_NERD_1] = {
         .trainerClass = TRAINER_CLASS_SUPER_NERD,
@@ -1850,7 +1850,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_HikerAlan),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_HikerAlan),
     },
     [TRAINER_HIKER_BRICE] = {
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -1870,7 +1870,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_HikerClark),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_HikerClark),
     },
     [TRAINER_HIKER_TRENT] = {
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -1890,7 +1890,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_HikerDudley),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_HikerDudley),
     },
     [TRAINER_HIKER_ALLEN] = {
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -1900,7 +1900,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_HikerAllen),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_HikerAllen),
     },
     [TRAINER_HIKER_ERIC] = {
         .trainerClass = TRAINER_CLASS_HIKER,
@@ -1940,7 +1940,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_HikerLucas),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_HikerLucas),
     },
     [TRAINER_BIKER_JARED] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -1950,7 +1950,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerJared),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerJared),
     },
     [TRAINER_BIKER_MALIK] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -1960,7 +1960,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerMalik),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerMalik),
     },
     [TRAINER_BIKER_ERNEST] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -1970,7 +1970,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerErnest),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerErnest),
     },
     [TRAINER_BIKER_ALEX] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -1980,7 +1980,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerAlex),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerAlex),
     },
     [TRAINER_BIKER_LAO] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -1990,7 +1990,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerLao),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerLao),
     },
     [TRAINER_BIKER_1] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2020,7 +2020,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerRuben),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerRuben),
     },
     [TRAINER_BIKER_BILLY] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2040,7 +2040,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerNikolas),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerNikolas),
     },
     [TRAINER_BIKER_JAXON] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2050,7 +2050,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerJaxon),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerJaxon),
     },
     [TRAINER_BIKER_WILLIAM] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2060,7 +2060,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerWilliam),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerWilliam),
     },
     [TRAINER_BIKER_LUKAS] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2070,7 +2070,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerLukas),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerLukas),
     },
     [TRAINER_BIKER_ISAAC] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2080,7 +2080,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerIsaac),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerIsaac),
     },
     [TRAINER_BIKER_GERALD] = {
         .trainerClass = TRAINER_CLASS_BIKER,
@@ -2090,7 +2090,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_BikerGerald),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_BikerGerald),
     },
     [TRAINER_BURGLAR_1] = {
         .trainerClass = TRAINER_CLASS_BURGLAR,
@@ -2900,7 +2900,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_JugglerGregory),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_JugglerGregory),
     },
     [TRAINER_JUGGLER_EDWARD] = {
         .trainerClass = TRAINER_CLASS_JUGGLER,
@@ -2910,7 +2910,7 @@ const struct Trainer gTrainers[] = {
         .items = {},
         .doubleBattle = FALSE,
         .aiFlags = AI_SCRIPT_CHECK_BAD_MOVE,
-        .party = NO_ITEM_CUSTOM_MOVES(sParty_JugglerEdward),
+        .party = NO_ITEM_DEFAULT_MOVES(sParty_JugglerEdward),
     },
     [TRAINER_JUGGLER_KAYDEN] = {
         .trainerClass = TRAINER_CLASS_JUGGLER,
