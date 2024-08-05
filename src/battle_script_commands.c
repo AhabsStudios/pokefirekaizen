@@ -4278,7 +4278,15 @@ static void Cmd_moveend(void)
                 }
 
                 if (!(gHitMarker & HITMARKER_FAINTED(gBattlerTarget)))
+                {
                     gLastHitBy[gBattlerTarget] = gBattlerAttacker;
+                }
+                else if (gBattleMoves[gCurrentMove].effect == EFFECT_RECHARGE)
+                {
+                    gBattleMons[gEffectBattler].status2 &= ~(STATUS2_RECHARGE);
+                    gDisableStructs[gEffectBattler].rechargeTimer = 0;
+                    gLockedMoves[gEffectBattler] = 0;
+                }
 
                 if (gHitMarker & HITMARKER_OBEYS && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT))
                 {
