@@ -60,8 +60,7 @@ ViridianCity_Text_ShowYouHowToCatchMons::
 
 ViridianCity_Text_ThatWasEducationalTakeThis::
     .string "There! Now tell me, that was\n"
-    .string "educational, was it not?\p"
-    .string "And here, take this, too.$"
+    .string "educational, was it not?$"
 
 ViridianCity_Text_WatchThatToLearnBasics::
     .string "If there's something you don't\n"

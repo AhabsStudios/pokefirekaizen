@@ -101,22 +101,9 @@ ViridianCity_EventScript_OldManGymLeaderReturned::
 ViridianCity_EventScript_TutorialOldMan::
 	lock
 	faceplayer
-	goto_if_set FLAG_BADGE01_GET, ViridianCity_EventScript_AskIfTeachyTVHelpful
 	goto_if_ge VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2, ViridianCity_EventScript_TutorialCompleted
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 1, ViridianCity_EventScript_TutorialStart
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_TutorialNotReady
-	end
-
-ViridianCity_EventScript_AskIfTeachyTVHelpful::
-	msgbox ViridianCity_Text_HowsTeachyTVHelping, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, ViridianCity_EventScript_TeachyTVNotHelpful
-	msgbox ViridianCity_Text_MyGrandsonOnTheShow
-	release
-	end
-
-ViridianCity_EventScript_TeachyTVNotHelpful::
-	msgbox ViridianCity_Text_TooBusyForTeachyTV
-	release
 	end
 
 ViridianCity_EventScript_TutorialCompleted::
@@ -129,11 +116,6 @@ ViridianCity_EventScript_TutorialStart::
 	release
 	end
 
-@ Unused
-ViridianCity_EventScript_WatchToLearnBasics::
-	msgbox ViridianCity_Text_WatchThatToLearnBasics
-	release
-	end
 
 @ Unused. Starts battle after the post battle text, which is odd.
 ViridianCity_EventScript_TutorialUnused::
@@ -236,6 +218,4 @@ ViridianCity_EventScript_DoTutorialBattle::
 	faceplayer
 	msgbox ViridianCity_Text_ThatWasEducationalTakeThis
 	setvar VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 2
-	giveitem ITEM_TEACHY_TV
-	msgbox ViridianCity_Text_WatchThatToLearnBasics
 	return
