@@ -28,6 +28,7 @@ PokemonLeague_HallOfFame_EventScript_EnterRoom::
 	delay 18
 	msgbox PokemonLeague_HallOfFame_Text_OakCongratulations
 	closemessage
+	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	applymovement LOCALID_PROF_OAK, Common_Movement_WalkInPlaceFasterUp
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkInPlaceFasterUp
 	waitmovement 0
