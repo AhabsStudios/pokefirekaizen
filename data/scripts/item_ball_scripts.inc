@@ -22,8 +22,8 @@ MtMoon_1F_EventScript_ItemParalyzeHeal::
 	finditem ITEM_PARALYZE_HEAL
 	end
 
-MtMoon_1F_EventScript_ItemTM09::
-	finditem ITEM_TM09
+MtMoon_1F_EventScript_ItemTM12::
+	finditem ITEM_TM12
 	end
 
 MtMoon_1F_EventScript_ItemPotion::
@@ -46,12 +46,12 @@ MtMoon_B2F_EventScript_ItemStarPiece::
 	finditem ITEM_STAR_PIECE
 	end
 
-MtMoon_B2F_EventScript_ItemTM46::
-	finditem ITEM_TM46
+MtMoon_B2F_EventScript_ItemTM01::
+	finditem ITEM_TM01
 	end
 
-Route4_EventScript_ItemTM05::
-	finditem ITEM_TM05
+Route4_EventScript_ItemTM04::
+	finditem ITEM_TM04
 	end
 
 Route24_EventScript_ItemTM45::
@@ -62,8 +62,8 @@ Route25_EventScript_ItemTM43::
 	finditem ITEM_TM43
 	end
 
-SSAnne_1F_Room2_EventScript_ItemTM31::
-	finditem ITEM_TM31
+SSAnne_1F_Room2_EventScript_ItemTM08::
+	finditem ITEM_TM08
 	end
 
 SSAnne_2F_Room2_EventScript_ItemStardust::
@@ -110,8 +110,8 @@ RocketHideout_B2F_EventScript_ItemMoonStone::
 	finditem ITEM_MOON_STONE
 	end
 
-RocketHideout_B2F_EventScript_ItemTM12::
-	finditem ITEM_TM12
+RocketHideout_B2F_EventScript_ItemTM07::
+	finditem ITEM_TM07
 	end
 
 RocketHideout_B2F_EventScript_ItemSuperPotion::
@@ -122,12 +122,12 @@ RocketHideout_B3F_EventScript_ItemRareCandy::
 	finditem ITEM_RARE_CANDY
 	end
 
-RocketHideout_B3F_EventScript_ItemTM21::
-	finditem ITEM_TM21
+RocketHideout_B3F_EventScript_ItemTM10::
+	finditem ITEM_TM10
 	end
 
-RocketHideout_B4F_EventScript_ItemTM49::
-	finditem ITEM_TM49
+RocketHideout_B4F_EventScript_ItemTM02::
+	finditem ITEM_TM02
 	end
 
 RocketHideout_B4F_EventScript_ItemMaxEther::
@@ -166,8 +166,8 @@ PokemonTower_6F_EventScript_ItemXAccuracy::
 	finditem ITEM_X_ACCURACY
 	end
 
-Route12_EventScript_ItemTM48::
-	finditem ITEM_TM48
+Route12_EventScript_ItemTM16::
+	finditem ITEM_TM16
 	end
 
 Route12_EventScript_ItemIron::
@@ -242,8 +242,8 @@ SilphCo_5F_EventScript_ItemProtein::
 	finditem ITEM_PROTEIN
 	end
 
-SilphCo_5F_EventScript_ItemTM01::
-	finditem ITEM_TM01
+SilphCo_5F_EventScript_ItemTM09::
+	finditem ITEM_TM09
 	end
 
 SilphCo_5F_EventScript_ItemCardKey::
@@ -262,16 +262,16 @@ SilphCo_7F_EventScript_ItemCalcium::
 	finditem ITEM_CALCIUM
 	end
 
-SilphCo_7F_EventScript_ItemTM08::
-	finditem ITEM_TM08
+SilphCo_7F_EventScript_ItemTM03::
+	finditem ITEM_TM03
 	end
 
 SilphCo_10F_EventScript_ItemCarbos::
 	finditem ITEM_CARBOS
 	end
 
-SilphCo_10F_EventScript_ItemUltraBall::
-	finditem ITEM_ULTRA_BALL
+SilphCo_10F_EventScript_ItemTM26::
+	finditem ITEM_TM26
 	end
 
 SilphCo_10F_EventScript_ItemRareCandy::
@@ -338,32 +338,32 @@ VictoryRoad_1F_EventScript_ItemRareCandy::
 	finditem ITEM_RARE_CANDY
 	end
 
-VictoryRoad_1F_EventScript_ItemTM02::
-	finditem ITEM_TM02
+VictoryRoad_1F_EventScript_ItemTM43::
+	finditem ITEM_TM43
 	end
 
 VictoryRoad_2F_EventScript_ItemGuardSpec::
 	finditem ITEM_GUARD_SPEC
 	end
 
-VictoryRoad_2F_EventScript_ItemTM07::
-	finditem ITEM_TM07
+VictoryRoad_2F_EventScript_ItemTM17::
+	finditem ITEM_TM17
 	end
 
 VictoryRoad_2F_EventScript_ItemFullHeal::
 	finditem ITEM_FULL_HEAL
 	end
 
-VictoryRoad_2F_EventScript_ItemTM37::
-	finditem ITEM_TM37
+VictoryRoad_2F_EventScript_ItemTM05::
+	finditem ITEM_TM05
 	end
 
 VictoryRoad_3F_EventScript_ItemMaxRevive::
 	finditem ITEM_MAX_REVIVE
 	end
 
-VictoryRoad_3F_EventScript_ItemTM50::
-	finditem ITEM_TM50
+VictoryRoad_3F_EventScript_ItemTM47::
+	finditem ITEM_TM47
 	end
 
 CeruleanCave_1F_EventScript_ItemMaxElixir::
