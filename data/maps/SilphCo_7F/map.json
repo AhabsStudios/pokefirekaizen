@@ -13,7 +13,7 @@
   "show_map_name": true,
   "floor_number": 7,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -166,8 +166,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SilphCo_7F_EventScript_ItemTM08",
-      "flag": "FLAG_HIDE_SILPH_CO_7F_TM08"
+      "script": "SilphCo_7F_EventScript_ItemTM03",
+      "flag": "FLAG_HIDE_SILPH_CO_7F_TM03"
     }
   ],
   "warp_events": [

@@ -13,7 +13,7 @@
   "show_map_name": true,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -68,8 +68,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "SSAnne_1F_Room2_EventScript_ItemTM31",
-      "flag": "FLAG_HIDE_SSANNE_1F_ROOM2_TM31"
+      "script": "SSAnne_1F_Room2_EventScript_ItemTM08",
+      "flag": "FLAG_HIDE_SSANNE_1F_ROOM2_TM08"
     }
   ],
   "warp_events": [
@@ -81,6 +81,10 @@
       "dest_warp_id": "7"
     }
   ],
-  "coord_events": [],
-  "bg_events": []
+  "coord_events": [
+
+  ],
+  "bg_events": [
+
+  ]
 }
