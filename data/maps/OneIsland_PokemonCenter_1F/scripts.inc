@@ -277,7 +277,6 @@ OneIsland_PokemonCenter_1F_EventScript_GiveCelioSapphire::
 	msgbox OneIsland_PokemonCenter_1F_Text_ManagedToLinkWithHoennThankYou
 	special SetPostgameFlags
 	setflag FLAG_SYS_CAN_LINK_WITH_RS
-	setflag FLAG_HIDE_CERULEAN_CAVE_GUARD
 	setflag FLAG_HIDE_LORELEI_IN_HER_HOUSE
 	setvar VAR_MAP_SCENE_ONE_ISLAND_POKEMON_CENTER_1F, 6
 	special InitRoamer
