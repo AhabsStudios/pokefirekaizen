@@ -7,10 +7,6 @@ SilphCo_2F_OnLoad::
 	call_if_unset FLAG_SILPH_2F_DOOR_2, EventScript_Close2FDoor2
 	end
 
-SilphCo_2F_EventScript_ThunderWaveTutor::
-	goto EventScript_ThunderWaveTutor
-	end
-
 SilphCo_2F_EventScript_FloorSign::
 	msgbox SilphCo_2F_Text_FloorSign, MSGBOX_SIGN
 	end
@@ -33,4 +29,22 @@ SilphCo_2F_EventScript_Grunt1::
 SilphCo_2F_EventScript_Grunt2::
 	trainerbattle_single TRAINER_TEAM_ROCKET_GRUNT_24, SilphCo_2F_Text_Grunt2Intro, SilphCo_2F_Text_Grunt2Defeat
 	msgbox SilphCo_2F_Text_Grunt2PostBattle, MSGBOX_AUTOCLOSE
+	end
+
+SilphCo_2F_EventScript_SelfDestructGirl::
+	lock
+	faceplayer
+	goto_if_set FLAG_TUTOR_THUNDER_WAVE, SilphCo_2F_EventScript_AlreadyGotSelfDestruct
+	msgbox SilphCo_2F_Text_SelfDestructGirl
+	checkitemspace ITEM_TM36
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg SilphCo_2F_Text_ReceivedTM36SelfDestruct, ITEM_TM36
+	msgbox SilphCo_2F_Text_Contains_SelfDestruct
+	setflag FLAG_TUTOR_THUNDER_WAVE
+	release
+	end
+
+SilphCo_2F_EventScript_AlreadyGotSelfDestruct::
+	msgbox SilphCo_2F_Text_Contains_SelfDestruct
+	release
 	end

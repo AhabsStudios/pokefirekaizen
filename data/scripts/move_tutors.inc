@@ -24,32 +24,6 @@ EventScript_DoubleEdgeTaught::
 	release
 	end
 
-EventScript_ThunderWaveTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_TUTOR_THUNDER_WAVE, EventScript_ThunderWaveTaught
-	msgbox Text_ThunderWaveTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_ThunderWaveDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, EventScript_ThunderWaveDeclined
-	msgbox Text_ThunderWaveWhichMon
-	setvar VAR_0x8005, MOVETUTOR_THUNDER_WAVE
-	call EventScript_ChooseMoveTutorMon
-	goto_if_eq VAR_RESULT, FALSE, EventScript_ThunderWaveDeclined
-	setflag FLAG_TUTOR_THUNDER_WAVE
-	goto EventScript_ThunderWaveTaught
-	end
-
-EventScript_ThunderWaveDeclined::
-	msgbox Text_ThunderWaveDeclined
-	release
-	end
-
-EventScript_ThunderWaveTaught::
-	msgbox Text_ThunderWaveTaught
-	release
-	end
-
 RockTunnel_B1F_EventScript_RockSlideTutor::
 	lock
 	faceplayer
@@ -154,24 +128,6 @@ EventScript_MegaKickTaught::
 	release
 	end
 
-EventScript_DreamEaterTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_TUTOR_DREAM_EATER, EventScript_DreamEaterTaught
-	msgbox Text_DreamEaterTeach
-	checkitemspace ITEM_TM42
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
-	giveitem_msg Text_DreamEaterDeclined, ITEM_TM42
-	msgbox Text_DreamEaterTaught
-	setflag FLAG_TUTOR_DREAM_EATER
-	release
-	end
-
-EventScript_DreamEaterTaught::
-	msgbox Text_DreamEaterTaught
-	release
-	end
-
 EventScript_SoftboiledTutor::
 	lock
 	faceplayer
@@ -265,24 +221,6 @@ EventScript_SeismicTossDeclined::
 
 EventScript_SeismicTossTaught::
 	msgbox Text_SeismicTossTaught
-	release
-	end
-
-EventScript_CounterTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_TUTOR_COUNTER, EventScript_CounterTaught
-	msgbox Text_CounterTeach
-	checkitemspace ITEM_TM18
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
-	giveitem_msg Text_CounterDeclined, ITEM_TM18
-	msgbox Text_CounterTaught
-	setflag FLAG_TUTOR_COUNTER
-	release
-	end
-
-EventScript_CounterTaught::
-	msgbox Text_CounterTaught
 	release
 	end
 

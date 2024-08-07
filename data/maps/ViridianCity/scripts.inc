@@ -167,8 +167,22 @@ ViridianCity_EventScript_WomanRoadBlocked::
 	release
 	end
 
-ViridianCity_EventScript_DreamEaterTutor::
-	goto EventScript_DreamEaterTutor
+ViridianCity_EventScript_DreamEaterGuy::
+	lock
+	faceplayer
+	goto_if_set FLAG_TUTOR_DREAM_EATER, ViridianCity_EventScript_AlreadyGotDreamEater
+	msgbox ViridianCity_Text_DreamEaterGuy
+	checkitemspace ITEM_TM42
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg ViridianCity_Text_ReceivedTM42DreamEater, ITEM_TM42
+	msgbox ViridianCity_Text_Contains_DreamEater
+	setflag FLAG_TUTOR_DREAM_EATER
+	release
+	end
+
+ViridianCity_EventScript_AlreadyGotDreamEater::
+	msgbox ViridianCity_Text_Contains_DreamEater
+	release
 	end
 
 ViridianCity_EventScript_RoadBlocked::
