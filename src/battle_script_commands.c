@@ -5066,6 +5066,13 @@ static void Cmd_switchineffects(void)
             gBattlescriptCurrInstr += 2;
         }
     }
+
+    // Remove screens
+    i = GetBattlerSide(gActiveBattler);
+    gSideStatuses[i] &= ~SIDE_STATUS_REFLECT;
+    gSideStatuses[i] &= ~SIDE_STATUS_LIGHTSCREEN;
+    gSideTimers[i].reflectTimer = 0;
+    gSideTimers[i].lightscreenTimer = 0;
 }
 
 static void Cmd_trainerslidein(void)
@@ -6859,7 +6866,9 @@ static void Cmd_normalisebuffs(void)
             gBattleMons[i].statStages[j] = DEFAULT_STAT_STAGE;
     }
 
-    gBattlescriptCurrInstr++;
+    // Remove screens
+    // gBattlescriptCurrInstr++;
+    Cmd_removelightscreenreflect();
 }
 
 static void Cmd_setbide(void)

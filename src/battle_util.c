@@ -509,13 +509,14 @@ u8 DoFieldEndTurnEffects(void)
                 gActiveBattler = gBattlerAttacker = gSideTimers[side].reflectBattlerId;
                 if (gSideStatuses[side] & SIDE_STATUS_REFLECT)
                 {
-                    if (--gSideTimers[side].reflectTimer == 0)
-                    {
-                        gSideStatuses[side] &= ~SIDE_STATUS_REFLECT;
-                        BattleScriptExecute(BattleScript_SideStatusWoreOff);
-                        PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_REFLECT);
-                        effect++;
-                    }
+                    // Make Reflect permanent
+                    // if (--gSideTimers[side].reflectTimer == 0)
+                    // {
+                    //     gSideStatuses[side] &= ~SIDE_STATUS_REFLECT;
+                    //     BattleScriptExecute(BattleScript_SideStatusWoreOff);
+                    //     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_REFLECT);
+                    //     effect++;
+                    // }
                 }
                 gBattleStruct->turnSideTracker++;
                 if (effect != 0)
@@ -534,14 +535,15 @@ u8 DoFieldEndTurnEffects(void)
                 gActiveBattler = gBattlerAttacker = gSideTimers[side].lightscreenBattlerId;
                 if (gSideStatuses[side] & SIDE_STATUS_LIGHTSCREEN)
                 {
-                    if (--gSideTimers[side].lightscreenTimer == 0)
-                    {
-                        gSideStatuses[side] &= ~SIDE_STATUS_LIGHTSCREEN;
-                        BattleScriptExecute(BattleScript_SideStatusWoreOff);
-                        gBattleCommunication[MULTISTRING_CHOOSER] = side;
-                        PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_LIGHT_SCREEN);
-                        effect++;
-                    }
+                    // Make Light Screen permanent
+                    // if (--gSideTimers[side].lightscreenTimer == 0)
+                    // {
+                    //     gSideStatuses[side] &= ~SIDE_STATUS_LIGHTSCREEN;
+                    //     BattleScriptExecute(BattleScript_SideStatusWoreOff);
+                    //     gBattleCommunication[MULTISTRING_CHOOSER] = side;
+                    //     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_LIGHT_SCREEN);
+                    //     effect++;
+                    // }
                 }
                 gBattleStruct->turnSideTracker++;
                 if (effect != 0)
