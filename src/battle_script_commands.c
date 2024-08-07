@@ -7595,10 +7595,12 @@ static void Cmd_counterdamagecalculator(void)
 {
     u8 sideAttacker = GetBattlerSide(gBattlerAttacker);
     u8 sideTarget = GetBattlerSide(gProtectStructs[gBattlerAttacker].physicalBattlerId);
+    u8 physicalBattler = gProtectStructs[gBattlerAttacker].physicalBattlerId;
 
     if (gProtectStructs[gBattlerAttacker].physicalDmg
         && sideAttacker != sideTarget
-        && gBattleMons[gProtectStructs[gBattlerAttacker].physicalBattlerId].hp)
+        && gBattleMons[gProtectStructs[gBattlerAttacker].physicalBattlerId].hp
+        && (gBattleMoves[gLastMoves[physicalBattler]].type == TYPE_NORMAL || gBattleMoves[gLastMoves[physicalBattler]].type == TYPE_FIGHTING))
     {
         gBattleMoveDamage = gProtectStructs[gBattlerAttacker].physicalDmg * 2;
 
