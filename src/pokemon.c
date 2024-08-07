@@ -2410,7 +2410,7 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
     attack = attacker->attack;
     defense = defender->defense;
     spAttack = attacker->spAttack;
-    spDefense = defender->spDefense;
+    spDefense = defender->spAttack;
 
     // Get attacker hold item info
     if (attacker->item == ITEM_ENIGMA_BERRY)
@@ -2583,12 +2583,12 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
         {
             // Critical hit, if defender has gained sp. defense stat stages then ignore stat increase
             if (defender->statStages[STAT_SPDEF] < DEFAULT_STAT_STAGE)
-                APPLY_STAT_MOD(damageHelper, defender, spDefense, STAT_SPDEF)
+                APPLY_STAT_MOD(damageHelper, defender, spDefense, STAT_SPATK)
             else
                 damageHelper = spDefense;
         }
         else
-            APPLY_STAT_MOD(damageHelper, defender, spDefense, STAT_SPDEF)
+            APPLY_STAT_MOD(damageHelper, defender, spDefense, STAT_SPATK)
 
         damage = (damage / damageHelper);
         damage /= 50;

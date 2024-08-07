@@ -1224,7 +1224,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_PSYCHIC] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
+        .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
         .power = 90,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
@@ -1731,7 +1731,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_AMNESIA] =
     {
-        .effect = EFFECT_SPECIAL_DEFENSE_UP_2,
+        .effect = EFFECT_SPECIAL_ATTACK_UP_2,
         .power = 0,
         .type = TYPE_PSYCHIC,
         .accuracy = 0,
