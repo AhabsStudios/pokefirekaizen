@@ -112,3 +112,17 @@ CeladonCity_Text_SomeoneStoleSilphScope::
     .string "But I lost sight of him!\n"
     .string "Where'd he go?$"
 
+CeladonCity_Text_SoftboiledGuy::
+    .string "Hello, there!\p"
+    .string "I've seen you, but I never had a\n"
+    .string "chance to talk!\p"
+    .string "Here's a gift for dropping by!$"
+
+CeladonCity_Text_ReceivedTM41Softboiled::
+    .string "{PLAYER} received TM41.$"
+
+CeladonCity_Text_Contains_Softboiled::
+    .string "TM41 teaches SOFTBOILED!\p"
+    .string "Only one POKéMON can use it!\p"
+    .string "That POKéMON is CHANSEY!$"
+

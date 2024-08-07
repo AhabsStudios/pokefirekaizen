@@ -23,7 +23,7 @@ SaffronCity_CopycatsHouse_2F_EventScript_Copycat::
 	lock
 	faceplayer
 	checkitem ITEM_POKE_DOLL
-	goto_if_eq VAR_RESULT, TRUE, EventScript_MimicTutor
+	goto_if_eq VAR_RESULT, TRUE, SaffronCity_CopycatsHouse_2F_EventScript_MimicTeach
 	checkplayergender
 	call_if_eq VAR_RESULT, MALE, SaffronCity_CopycatsHouse_2F_EventScript_MimicPlayerMale
 	call_if_eq VAR_RESULT, FEMALE, SaffronCity_CopycatsHouse_2F_EventScript_MimicPlayerFemale
@@ -44,4 +44,22 @@ SaffronCity_CopycatsHouse_2F_EventScript_Computer::
 
 SaffronCity_CopycatsHouse_2F_EventScript_Game::
 	msgbox SaffronCity_CopycatsHouse_2F_Text_MarioWearingABucket, MSGBOX_SIGN
+	end
+
+SaffronCity_CopycatsHouse_2F_EventScript_MimicTeach::
+	lock
+	faceplayer
+	goto_if_set FLAG_TUTOR_MIMIC, SaffronCity_CopycatsHouse_2F_EventScript_AlreadyGotMimic
+	msgbox SaffronCity_CopycatsHouse_2F_Text_MimicGirl
+	checkitemspace ITEM_TM31
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg SaffronCity_CopycatsHouse_2F_Text_ReceivedTM31Mimic, ITEM_TM31
+	msgbox SaffronCity_CopycatsHouse_2F_Text_Contains_Mimic
+	setflag FLAG_TUTOR_MIMIC
+	release
+	end
+
+SaffronCity_CopycatsHouse_2F_EventScript_AlreadyGotMimic::
+	msgbox SaffronCity_CopycatsHouse_2F_Text_Contains_Mimic
+	release
 	end

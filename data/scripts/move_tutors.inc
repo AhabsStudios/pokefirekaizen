@@ -128,24 +128,6 @@ EventScript_MegaKickTaught::
 	release
 	end
 
-EventScript_SoftboiledTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_TUTOR_SOFT_BOILED, EventScript_SoftboiledTaught
-	msgbox Text_SoftboiledTeach
-	checkitemspace ITEM_TM41
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
-	giveitem_msg Text_SoftboiledDeclined, ITEM_TM41
-	msgbox Text_SoftboiledTaught
-	setflag FLAG_TUTOR_SOFT_BOILED
-	release
-	end
-
-EventScript_SoftboiledTaught::
-	msgbox Text_SoftboiledTaught
-	release
-	end
-
 FuchsiaCity_EventScript_SubstituteTutor::
 	lock
 	faceplayer
@@ -223,59 +205,6 @@ EventScript_SeismicTossTaught::
 	msgbox Text_SeismicTossTaught
 	release
 	end
-
-EventScript_MetronomeTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_TUTOR_METRONOME, EventScript_MetronomeTaught
-	msgbox Text_MetronomeTeach
-	checkitemspace ITEM_TM35
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
-	giveitem_msg Text_MetronomeDeclined, ITEM_TM35
-	msgbox Text_MetronomeTaught
-	setflag FLAG_TUTOR_METRONOME
-	release
-	end
-
-EventScript_MetronomeDeclined::
-	msgbox Text_MetronomeDeclined
-	release
-	end
-
-EventScript_MetronomeTaught::
-	msgbox Text_MetronomeTaught
-	release
-	end
-
-EventScript_MimicTutor::
-	lock
-	faceplayer
-	goto_if_set FLAG_TUTOR_MIMIC, EventScript_MimicTaught
-	msgbox Text_MimicTeach
-	checkitemspace ITEM_TM31
-	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
-	giveitem_msg Text_MimicDeclined, ITEM_TM31
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, EventScript_MimicTaughtMale
-	call_if_eq VAR_RESULT, FEMALE, EventScript_MimicTaughtFemale
-	setflag FLAG_TUTOR_MIMIC
-	release
-	end
-
-EventScript_MimicTaught::
-	checkplayergender
-	call_if_eq VAR_RESULT, MALE, EventScript_MimicTaughtMale
-	call_if_eq VAR_RESULT, FEMALE, EventScript_MimicTaughtFemale
-	release
-	end
-
-EventScript_MimicTaughtMale::
-	msgbox Text_MimicTaughtMale
-	return
-
-EventScript_MimicTaughtFemale::
-	msgbox Text_MimicTaughtFemale
-	return
 
 FourIsland_House1_EventScript_BodySlamTutor::
 	lock

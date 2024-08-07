@@ -37,9 +37,7 @@ CeladonCity_DepartmentStore_Roof_Text_YayLemonadeHaveThis::
     .string "You can have this from me!$"
 
 CeladonCity_DepartmentStore_Roof_Text_ExplainTM49::
-    .string "TM49 contains TRI ATTACK!.\p"
-    .string "It can paralyze, burn or freeze\n"
-    .string "the target!.$"
+    .string "TM49 contains TRI ATTACK!$"
 
 CeladonCity_DepartmentStore_Roof_Text_DontHaveSpaceForThis::
     .string "You don't have space for this!$"
