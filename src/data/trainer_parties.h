@@ -5491,7 +5491,7 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderLtSurge[] = {
         .iv = 0,
         .lvl = 24,
         .species = SPECIES_RAICHU,
-        .moves = {{MOVE_THUNDER_SHOCK, MOVE_GROWL, MOVE_THUNDERBOLT, MOVE_NONE},
+        .moves = {MOVE_THUNDER_SHOCK, MOVE_GROWL, MOVE_THUNDERBOLT, MOVE_NONE},
     },
 };
 
