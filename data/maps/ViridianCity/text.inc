@@ -122,3 +122,20 @@ ViridianCity_Text_GymSign::
 ViridianCity_Text_GymDoorsAreLocked::
     .string "VIRIDIAN GYM's doors are locked…$"
 
+ViridianCity_Text_DreamEaterGuy::
+    .string "Yawn!\n"
+    .string "I must have dozed off in the sun.\p"
+    .string "I had this dream about a DROWZEE eating\n"
+    .string "my dream.\p"
+    .string "What's this?\n"
+    .string "Where did this TM come from?\p"
+    .string "This is spooky!\n"
+    .string "Here, you can have this TM.$"
+
+ViridianCity_Text_ReceivedTM42DreamEater::
+    .string "{PLAYER} received TM42.$"
+
+ViridianCity_Text_Contains_DreamEater::
+    .string "TM42 contains DREAM EATER…\n"
+    .string "…Snore…$"
+

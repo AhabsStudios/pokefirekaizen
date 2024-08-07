@@ -1206,7 +1206,7 @@ static void Cmd_critcalc(void)
     }
 
     if ((gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY) != 0)
-        critChance *= 2;
+        critChance *= 4;
 
     if (critChance >= 256)
         critChance = 255;

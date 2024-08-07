@@ -662,8 +662,8 @@ const struct MonCoords gMonBackPicCoords[] =
     },
     [SPECIES_DITTO] =
     {
-        .size = MON_COORDS_SIZE(40, 32),
-        .y_offset = 17,
+        .size = MON_COORDS_SIZE(49, 34),
+        .y_offset = 15,
     },
     [SPECIES_EEVEE] =
     {
