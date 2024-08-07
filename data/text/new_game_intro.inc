@@ -183,8 +183,8 @@ gPikachuIntro_Text_Page3::
     .string "Farore, GoliathGastropod,\n"
     .string "StarGazaar, Max Elixir\n"
     .string "\n"
-    .string "Press the A Button, and let your\n"
-    .string "adventure begin!$"
+    .string "This is KAIZEN ORIGINAL GAME\n"
+    .string "Beta Version 1.0.0 $"
 
 gOakSpeech_Text_WelcomeToTheWorld::
     .string "Hello, there!\n"
