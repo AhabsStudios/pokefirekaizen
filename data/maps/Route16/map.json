@@ -204,7 +204,9 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -221,16 +223,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route16_EventScript_CyclingRoadSign"
-    },
-    {
-      "type": "hidden_item",
-      "x": 31,
-      "y": 13,
-      "elevation": 3,
-      "item": "ITEM_LEFTOVERS",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE16_LEFTOVERS",
-      "quantity": 1,
-      "underfoot": true
     }
   ]
 }

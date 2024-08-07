@@ -13,7 +13,7 @@
   "show_map_name": false,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_GYM",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -179,7 +179,9 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -196,16 +198,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "ViridianCity_Gym_EventScript_GymStatue"
-    },
-    {
-      "type": "hidden_item",
-      "x": 2,
-      "y": 2,
-      "elevation": 3,
-      "item": "ITEM_MACHO_BRACE",
-      "flag": "FLAG_HIDDEN_ITEM_VIRIDIAN_CITY_GYM_MACHO_BRACE",
-      "quantity": 1,
-      "underfoot": true
     }
   ]
 }

@@ -253,7 +253,9 @@
       "dest_warp_id": "2"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -262,36 +264,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route8_EventScript_UndergroundPathSign"
-    },
-    {
-      "type": "hidden_item",
-      "x": 42,
-      "y": 10,
-      "elevation": 3,
-      "item": "ITEM_RAWST_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE8_RAWST_BERRY",
-      "quantity": 1,
-      "underfoot": false
-    },
-    {
-      "type": "hidden_item",
-      "x": 38,
-      "y": 11,
-      "elevation": 3,
-      "item": "ITEM_LUM_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE8_LUM_BERRY",
-      "quantity": 1,
-      "underfoot": false
-    },
-    {
-      "type": "hidden_item",
-      "x": 42,
-      "y": 15,
-      "elevation": 3,
-      "item": "ITEM_LEPPA_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE8_LEPPA_BERRY",
-      "quantity": 1,
-      "underfoot": false
     }
   ]
 }
