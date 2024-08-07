@@ -4162,13 +4162,8 @@ static const struct TrainerMonNoItemDefaultMoves sParty_TeamRocketGrunt3[] = {
 static const struct TrainerMonNoItemDefaultMoves sParty_TeamRocketGrunt4[] = {
     {
         .iv = 0,
-        .lvl = 13,
-        .species = SPECIES_RATTATA,
-    },
-    {
-        .iv = 0,
-        .lvl = 13,
-        .species = SPECIES_SANDSHREW,
+        .lvl = 16,
+        .species = SPECIES_RATICATE,
     },
 };
 
