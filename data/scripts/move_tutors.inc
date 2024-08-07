@@ -158,20 +158,12 @@ EventScript_DreamEaterTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_TUTOR_DREAM_EATER, EventScript_DreamEaterTaught
-	msgbox Text_DreamEaterTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_DreamEaterDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, EventScript_DreamEaterDeclined
-	msgbox Text_DreamEaterWhichMon
-	setvar VAR_0x8005, MOVETUTOR_DREAM_EATER
-	call EventScript_ChooseMoveTutorMon
-	goto_if_eq VAR_RESULT, FALSE, EventScript_DreamEaterDeclined
+	msgbox Text_DreamEaterTeach
+	checkitemspace ITEM_TM42
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg Text_DreamEaterDeclined, ITEM_TM42
+	msgbox Text_DreamEaterTaught
 	setflag FLAG_TUTOR_DREAM_EATER
-	goto EventScript_DreamEaterTaught
-	end
-
-EventScript_DreamEaterDeclined::
-	msgbox Text_DreamEaterDeclined
 	release
 	end
 
@@ -184,20 +176,12 @@ EventScript_SoftboiledTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_TUTOR_SOFT_BOILED, EventScript_SoftboiledTaught
-	msgbox Text_SoftboiledTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_SoftboiledDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, EventScript_SoftboiledDeclined
-	msgbox Text_SoftboiledWhichMon
-	setvar VAR_0x8005, MOVETUTOR_SOFT_BOILED
-	call EventScript_ChooseMoveTutorMon
-	goto_if_eq VAR_RESULT, FALSE, EventScript_SoftboiledDeclined
+	msgbox Text_SoftboiledTeach
+	checkitemspace ITEM_TM41
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg Text_SoftboiledDeclined, ITEM_TM41
+	msgbox Text_SoftboiledTaught
 	setflag FLAG_TUTOR_SOFT_BOILED
-	goto EventScript_SoftboiledTaught
-	end
-
-EventScript_SoftboiledDeclined::
-	msgbox Text_SoftboiledDeclined
 	release
 	end
 
@@ -288,20 +272,12 @@ EventScript_CounterTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_TUTOR_COUNTER, EventScript_CounterTaught
-	msgbox Text_CounterTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_CounterDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, EventScript_CounterDeclined
-	msgbox Text_CounterWhichMon
-	setvar VAR_0x8005, MOVETUTOR_COUNTER
-	call EventScript_ChooseMoveTutorMon
-	goto_if_eq VAR_RESULT, FALSE, EventScript_CounterDeclined
+	msgbox Text_CounterTeach
+	checkitemspace ITEM_TM18
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg Text_CounterDeclined, ITEM_TM18
+	msgbox Text_CounterTaught
 	setflag FLAG_TUTOR_COUNTER
-	goto EventScript_CounterTaught
-	end
-
-EventScript_CounterDeclined::
-	msgbox Text_CounterDeclined
 	release
 	end
 
@@ -314,16 +290,13 @@ EventScript_MetronomeTutor::
 	lock
 	faceplayer
 	goto_if_set FLAG_TUTOR_METRONOME, EventScript_MetronomeTaught
-	msgbox Text_MetronomeTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_MetronomeDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, EventScript_MetronomeDeclined
-	msgbox Text_MetronomeWhichMon
-	setvar VAR_0x8005, MOVETUTOR_METRONOME
-	call EventScript_ChooseMoveTutorMon
-	goto_if_eq VAR_RESULT, FALSE, EventScript_MetronomeDeclined
+	msgbox Text_MetronomeTeach
+	checkitemspace ITEM_TM35
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg Text_MetronomeDeclined, ITEM_TM35
+	msgbox Text_MetronomeTaught
 	setflag FLAG_TUTOR_METRONOME
-	goto EventScript_MetronomeTaught
+	release
 	end
 
 EventScript_MetronomeDeclined::
@@ -337,24 +310,17 @@ EventScript_MetronomeTaught::
 	end
 
 EventScript_MimicTutor::
-	goto_if_set FLAG_TUTOR_MIMIC, EventScript_MimicTaught
-	msgbox Text_MimicTeach, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, NO, EventScript_MimicDeclined
-	call EventScript_CanOnlyBeLearnedOnce
-	goto_if_eq VAR_RESULT, NO, EventScript_MimicDeclined
-	msgbox Text_MimicWhichMon
-	setvar VAR_0x8005, MOVETUTOR_MIMIC
-	call EventScript_ChooseMoveTutorMon
 	lock
 	faceplayer
-	goto_if_eq VAR_RESULT, 0, EventScript_MimicDeclined
-	removeitem ITEM_POKE_DOLL
+	goto_if_set FLAG_TUTOR_MIMIC, EventScript_MimicTaught
+	msgbox Text_MimicTeach
+	checkitemspace ITEM_TM31
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg Text_MimicDeclined, ITEM_TM31
+	checkplayergender
+	call_if_eq VAR_RESULT, MALE, EventScript_MimicTaughtMale
+	call_if_eq VAR_RESULT, FEMALE, EventScript_MimicTaughtFemale
 	setflag FLAG_TUTOR_MIMIC
-	goto EventScript_MimicTaught
-	end
-
-EventScript_MimicDeclined::
-	msgbox Text_MimicDeclined
 	release
 	end
 
