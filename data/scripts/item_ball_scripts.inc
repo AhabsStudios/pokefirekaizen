@@ -58,8 +58,8 @@ Route24_EventScript_ItemTM45::
 	finditem ITEM_TM45
 	end
 
-Route25_EventScript_ItemTM43::
-	finditem ITEM_TM43
+Route25_EventScript_ItemTM19::
+	finditem ITEM_TM19
 	end
 
 SSAnne_1F_Room2_EventScript_ItemTM08::
@@ -90,8 +90,8 @@ SSAnne_Kitchen_EventScript_ItemGreatBall::
 	finditem ITEM_GREAT_BALL
 	end
 
-Route9_EventScript_ItemTM40::
-	finditem ITEM_TM40
+Route9_EventScript_ItemTM30::
+	finditem ITEM_TM30
 	end
 
 RocketHideout_B1F_EventScript_ItemEscapeRope::
@@ -174,8 +174,8 @@ Route12_EventScript_ItemIron::
 	finditem ITEM_IRON
 	end
 
-Route15_EventScript_ItemTM18::
-	finditem ITEM_TM18
+Route15_EventScript_ItemTM20::
+	finditem ITEM_TM20
 	end
 
 SafariZone_Center_EventScript_ItemNugget::
@@ -190,8 +190,8 @@ SafariZone_East_EventScript_ItemFullRestore::
 	finditem ITEM_FULL_RESTORE
 	end
 
-SafariZone_East_EventScript_ItemTM11::
-	finditem ITEM_TM11
+SafariZone_East_EventScript_ItemTM37::
+	finditem ITEM_TM37
 	end
 
 SafariZone_East_EventScript_ItemLeafStone::
@@ -202,8 +202,8 @@ SafariZone_North_EventScript_ItemProtein::
 	finditem ITEM_PROTEIN
 	end
 
-SafariZone_North_EventScript_ItemTM47::
-	finditem ITEM_TM47
+SafariZone_North_EventScript_ItemTM40::
+	finditem ITEM_TM40
 	end
 
 SafariZone_West_EventScript_ItemTM32::
@@ -282,8 +282,8 @@ PowerPlant_EventScript_ItemMaxPotion::
 	finditem ITEM_MAX_POTION
 	end
 
-PowerPlant_EventScript_ItemTM17::
-	finditem ITEM_TM17
+PowerPlant_EventScript_ItemTM33::
+	finditem ITEM_TM33
 	end
 
 PowerPlant_EventScript_ItemTM25::

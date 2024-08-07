@@ -38,14 +38,14 @@ ViridianCity_Gym_Text_ExplainEarthBadgeTakeThis::
     .string "Consider it a gift for your POKéMON\n"
     .string "LEAGUE challenge.$"
 
-ViridianCity_Gym_Text_ReceivedTM26FromGiovanni::
-    .string "{PLAYER} received TM26\n"
+ViridianCity_Gym_Text_ReceivedTM27FromGiovanni::
+    .string "{PLAYER} received TM27\n"
     .string "from GIOVANNI.$"
 
-ViridianCity_Gym_Text_ExplainTM26::
-    .string "TM26 contains EARTHQUAKE.\p"
-    .string "It is a powerful attack that causes\n"
-    .string "a massive tremor.\p"
+ViridianCity_Gym_Text_ExplainTM27::
+    .string "TM27 contains FISSURE.\p"
+    .string "It will take out a POKéMON with\n"
+    .string "just one hit!\p"
     .string "I made it when I ran the GYM here,\n"
     .string "far too long ago… $"
 
