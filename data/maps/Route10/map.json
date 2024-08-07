@@ -204,7 +204,9 @@
       "dest_warp_id": "3"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -247,26 +249,6 @@
       "elevation": 3,
       "item": "ITEM_MAX_ETHER",
       "flag": "FLAG_HIDDEN_ITEM_ROUTE10_MAX_ETHER",
-      "quantity": 1,
-      "underfoot": false
-    },
-    {
-      "type": "hidden_item",
-      "x": 6,
-      "y": 26,
-      "elevation": 3,
-      "item": "ITEM_CHERI_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE10_CHERI_BERRY",
-      "quantity": 1,
-      "underfoot": false
-    },
-    {
-      "type": "hidden_item",
-      "x": 17,
-      "y": 29,
-      "elevation": 3,
-      "item": "ITEM_PERSIM_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE10_PERSIM_BERRY",
       "quantity": 1,
       "underfoot": false
     },

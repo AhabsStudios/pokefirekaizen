@@ -139,7 +139,9 @@
       "flag": "FLAG_HIDE_ROUTE24_TM45"
     }
   ],
-  "warp_events": [],
+  "warp_events": [
+
+  ],
   "coord_events": [
     {
       "type": "trigger",
@@ -161,15 +163,6 @@
     }
   ],
   "bg_events": [
-    {
-      "type": "hidden_item",
-      "x": 19,
-      "y": 4,
-      "elevation": 3,
-      "item": "ITEM_PECHA_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE24_PECHA_BERRY",
-      "quantity": 1,
-      "underfoot": false
-    }
+
   ]
 }
