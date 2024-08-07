@@ -133,6 +133,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM44_REST)
                                         | TMHM(TM50_SUBSTITUTE)
                                         | TMHM(HM01_CUT)
+                                        | TMHM(HM02_FLY)
                                         | TMHM(HM04_STRENGTH)),
 
     [SPECIES_SQUIRTLE]    = TMHM_LEARNSET(TMHM(TM01_MEGA_PUNCH)
@@ -233,7 +234,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM39_SWIFT)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM46_PSYWAVE)
-                                        | TMHM(TM50_SUBSTITUTE)),
+                                        | TMHM(TM50_SUBSTITUTE)
+                                        | TMHM(HM05_FLASH)),
 
     [SPECIES_WEEDLE]      = TMHM_LEARNSET(0),
 
@@ -938,7 +940,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM34_BIDE)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM46_PSYWAVE)
-                                        | TMHM(TM50_SUBSTITUTE)),
+                                        | TMHM(TM50_SUBSTITUTE)
+                                        | TMHM(HM05_FLASH)),
 
     [SPECIES_VENOMOTH]    = TMHM_LEARNSET(TMHM(TM02_RAZOR_WIND)
                                         | TMHM(TM04_WHIRLWIND)
@@ -958,7 +961,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM39_SWIFT)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM46_PSYWAVE)
-                                        | TMHM(TM50_SUBSTITUTE)),
+                                        | TMHM(TM50_SUBSTITUTE)
+                                        | TMHM(HM05_FLASH)),
 
     [SPECIES_DIGLETT]     = TMHM_LEARNSET(TMHM(TM06_TOXIC)
                                         | TMHM(TM08_BODY_SLAM)
@@ -973,7 +977,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM34_BIDE)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM48_ROCK_SLIDE)
-                                        | TMHM(TM50_SUBSTITUTE)),
+                                        | TMHM(TM50_SUBSTITUTE)
+                                        | TMHM(HM01_CUT)),
 
     [SPECIES_DUGTRIO]     = TMHM_LEARNSET(TMHM(TM06_TOXIC)
                                         | TMHM(TM08_BODY_SLAM)
@@ -989,7 +994,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM34_BIDE)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM48_ROCK_SLIDE)
-                                        | TMHM(TM50_SUBSTITUTE)),
+                                        | TMHM(TM50_SUBSTITUTE)
+                                        | TMHM(HM01_CUT)),
 
     [SPECIES_MEOWTH]      = TMHM_LEARNSET(TMHM(TM06_TOXIC)
                                         | TMHM(TM08_BODY_SLAM)
@@ -2071,6 +2077,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM09_TAKE_DOWN)
                                         | TMHM(TM10_DOUBLE_EDGE)
                                         | TMHM(TM20_RAGE)
+                                        | TMHM(TM21_MEGA_DRAIN)
                                         | TMHM(TM29_PSYCHIC)
                                         | TMHM(TM30_TELEPORT)
                                         | TMHM(TM31_MIMIC)
@@ -2906,7 +2913,8 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM40_SKULL_BASH)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM50_SUBSTITUTE)
-                                        | TMHM(HM03_SURF)),
+                                        | TMHM(HM03_SURF)
+                                        | TMHM(HM01_CUT)),
 
     [SPECIES_AERODACTYL]  = TMHM_LEARNSET(TMHM(TM02_RAZOR_WIND)
                                         | TMHM(TM04_WHIRLWIND)
