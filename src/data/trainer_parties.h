@@ -5479,19 +5479,19 @@ static const struct TrainerMonNoItemCustomMoves sParty_LeaderLtSurge[] = {
         .iv = 0,
         .lvl = 21,
         .species = SPECIES_VOLTORB,
-        .moves = {MOVE_SONIC_BOOM, MOVE_TACKLE, MOVE_SCREECH, MOVE_NONE},
+        .moves = {MOVE_TACKLE, MOVE_SCREECH, MOVE_SONIC_BOOM, MOVE_NONE},
     },
     {
         .iv = 0,
         .lvl = 18,
         .species = SPECIES_PIKACHU,
-        .moves = {MOVE_QUICK_ATTACK, MOVE_THUNDER_WAVE, MOVE_GROWL, MOVE_THUNDER_SHOCK},
+        .moves = {MOVE_THUNDER_SHOCK, MOVE_GROWL, MOVE_THUNDER_WAVE, MOVE_QUICK_ATTACK},
     },
     {
         .iv = 0,
         .lvl = 24,
         .species = SPECIES_RAICHU,
-        .moves = {MOVE_QUICK_ATTACK, MOVE_THUNDER_WAVE, MOVE_THUNDER_SHOCK, MOVE_THUNDERBOLT},
+        .moves = {{MOVE_THUNDER_SHOCK, MOVE_GROWL, MOVE_THUNDERBOLT, MOVE_NONE},
     },
 };
 
