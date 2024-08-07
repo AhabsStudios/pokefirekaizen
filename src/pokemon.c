@@ -2710,7 +2710,8 @@ u8 GetDefaultMoveTarget(u8 battlerId)
 
 u8 GetMonGender(struct Pokemon *mon)
 {
-    return GetBoxMonGender(&mon->box);
+    return MON_GENDERLESS;
+    // return GetBoxMonGender(&mon->box);
 }
 
 u8 GetBoxMonGender(struct BoxPokemon *boxMon)

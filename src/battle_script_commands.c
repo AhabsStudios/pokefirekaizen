@@ -2743,7 +2743,7 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 {
                     gBattleMons[gEffectBattler].status2 |= STATUS2_MULTIPLETURNS;
                     gLockedMoves[gEffectBattler] = gCurrentMove;
-                    gBattleMons[gEffectBattler].status2 |= STATUS2_LOCK_CONFUSE_TURN((Random() & 1) + 2); // thrash for 2-3 turns
+                    gBattleMons[gEffectBattler].status2 |= STATUS2_LOCK_CONFUSE_TURN((Random() & 1) + 3); // thrash for 3-4 turns
                 }
                 break;
             case MOVE_EFFECT_KNOCK_OFF:
@@ -7595,10 +7595,12 @@ static void Cmd_counterdamagecalculator(void)
 {
     u8 sideAttacker = GetBattlerSide(gBattlerAttacker);
     u8 sideTarget = GetBattlerSide(gProtectStructs[gBattlerAttacker].physicalBattlerId);
+    u8 physicalBattler = gProtectStructs[gBattlerAttacker].physicalBattlerId;
 
     if (gProtectStructs[gBattlerAttacker].physicalDmg
         && sideAttacker != sideTarget
-        && gBattleMons[gProtectStructs[gBattlerAttacker].physicalBattlerId].hp)
+        && gBattleMons[gProtectStructs[gBattlerAttacker].physicalBattlerId].hp
+        && (gBattleMoves[gLastMoves[physicalBattler]].type == TYPE_NORMAL || gBattleMoves[gLastMoves[physicalBattler]].type == TYPE_FIGHTING))
     {
         gBattleMoveDamage = gProtectStructs[gBattlerAttacker].physicalDmg * 2;
 
