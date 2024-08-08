@@ -327,27 +327,41 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeItem::
 	waitmessage
 	multichoice 10, 0, MULTICHOICE_GAME_CORNER_BATTLE_ITEM_PRIZES, FALSE
 	switch VAR_RESULT
-	case 0, CeladonCity_GameCorner_PrizeRoom_EventScript_SmokeBall
-	case 1, CeladonCity_GameCorner_PrizeRoom_EventScript_MiracleSeed
-	case 2, CeladonCity_GameCorner_PrizeRoom_EventScript_Charcoal
-	case 3, CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
+	case 0, CeladonCity_GameCorner_PrizeRoom_EventScript_RareCandy
+	case 1, CeladonCity_GameCorner_PrizeRoom_EventScript_PPUp
+	case 2, CeladonCity_GameCorner_PrizeRoom_EventScript_MoonStone
+	case 3, CeladonCity_GameCorner_PrizeRoom_EventScript_Elixir
+	case 4, CeladonCity_GameCorner_PrizeRoom_EventScript_Ether
+	case 5, CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
 	case 127, CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_SmokeBall::
-	setvar VAR_TEMP_1, ITEM_PP_UP
-	setvar VAR_TEMP_2, 1000
+CeladonCity_GameCorner_PrizeRoom_EventScript_RareCandy::
+	setvar VAR_TEMP_1, ITEM_RARE_CANDY
+	setvar VAR_TEMP_2, 4000
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeItem
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_MiracleSeed::
+CeladonCity_GameCorner_PrizeRoom_EventScript_PPUp::
+	setvar VAR_TEMP_1, ITEM_PP_UP
+	setvar VAR_TEMP_2, 3000
+	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeItem
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_MoonStone::
 	setvar VAR_TEMP_1, ITEM_MOON_STONE
 	setvar VAR_TEMP_2, 2000
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeItem
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_Charcoal::
-	setvar VAR_TEMP_1, ITEM_RARE_CANDY
-	setvar VAR_TEMP_2, 3000
+CeladonCity_GameCorner_PrizeRoom_EventScript_Elixir::
+	setvar VAR_TEMP_1, ITEM_ELIXIR
+	setvar VAR_TEMP_2, 1000
+	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeItem
+	end
+
+CeladonCity_GameCorner_PrizeRoom_EventScript_Ether::
+	setvar VAR_TEMP_1, ITEM_ETHER
+	setvar VAR_TEMP_2, 500
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeItem
 	end
