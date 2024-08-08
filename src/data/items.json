@@ -5446,7 +5446,7 @@
       "price": 3000,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A simultaneous 3-beam attack that\\nmay paralyze, burn, or freeze the\\nfoe.",
+      "description_english": "A triangular field of energy is\\ncreated and launched at the\\ntarget.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_TM_CASE",

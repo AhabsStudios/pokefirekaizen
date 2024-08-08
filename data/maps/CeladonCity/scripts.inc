@@ -27,10 +27,6 @@ CeladonCity_EventScript_OldMan2::
 	msgbox CeladonCity_Text_BlewItAllAtSlots, MSGBOX_NPC
 	end
 
-CeladonCity_EventScript_SoftboiledTutor::
-	goto EventScript_SoftboiledTutor
-	end
-
 CeladonCity_EventScript_FatMan::
 	lock
 	faceplayer
@@ -103,4 +99,22 @@ CeladonCity_EventScript_PrizeExchangeSign::
 
 CeladonCity_EventScript_GameCornerSign::
 	msgbox CeladonCity_Text_GameCornerSign, MSGBOX_SIGN
+	end
+
+CeladonCity_EventScript_SoftboiledGuy::
+	lock
+	faceplayer
+	goto_if_set FLAG_TUTOR_SOFT_BOILED, CeladonCity_EventScript_AlreadyGotSoftboiled
+	msgbox CeladonCity_Text_SoftboiledGuy
+	checkitemspace ITEM_TM41
+	goto_if_eq VAR_RESULT, FALSE, EventScript_BagIsFull
+	giveitem_msg CeladonCity_Text_ReceivedTM41Softboiled, ITEM_TM41
+	msgbox CeladonCity_Text_Contains_Softboiled
+	setflag FLAG_TUTOR_SOFT_BOILED
+	release
+	end
+
+CeladonCity_EventScript_AlreadyGotSoftboiled::
+	msgbox CeladonCity_Text_Contains_Softboiled
+	release
 	end

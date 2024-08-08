@@ -2314,6 +2314,10 @@ void SetMoveEffect(bool8 primary, u8 certain)
             }
             if (gBattleMons[gEffectBattler].status1)
                 break;
+            // Secondary effects don't work on pokemon of the same move type
+            // Lick, Thunder/wave/shock
+            if (gCurrentMove != MOVE_THUNDER_WAVE && IS_BATTLER_OF_TYPE(gEffectBattler, gBattleMoves[gCurrentMove].type))
+                break;
 
             statusChanged = TRUE;
             break;
@@ -5066,6 +5070,13 @@ static void Cmd_switchineffects(void)
             gBattlescriptCurrInstr += 2;
         }
     }
+
+    // Remove screens
+    i = GetBattlerSide(gActiveBattler);
+    gSideStatuses[i] &= ~SIDE_STATUS_REFLECT;
+    gSideStatuses[i] &= ~SIDE_STATUS_LIGHTSCREEN;
+    gSideTimers[i].reflectTimer = 0;
+    gSideTimers[i].lightscreenTimer = 0;
 }
 
 static void Cmd_trainerslidein(void)
@@ -6859,7 +6870,9 @@ static void Cmd_normalisebuffs(void)
             gBattleMons[i].statStages[j] = DEFAULT_STAT_STAGE;
     }
 
-    gBattlescriptCurrInstr++;
+    // Remove screens
+    // gBattlescriptCurrInstr++;
+    Cmd_removelightscreenreflect();
 }
 
 static void Cmd_setbide(void)
@@ -7025,66 +7038,13 @@ static void Cmd_forcerandomswitch(void)
     }
 }
 
-// Randomly changes user's type to one of its moves' type
+// Changes user's type to the opponent's first type
 static void Cmd_tryconversiontypechange(void)
 {
-    u8 validMoves = 0;
-    u8 moveChecked;
-    u8 moveType;
-
-    while (validMoves < MAX_MON_MOVES)
-    {
-        if (gBattleMons[gBattlerAttacker].moves[validMoves] == MOVE_NONE)
-            break;
-
-        validMoves++;
-    }
-
-    for (moveChecked = 0; moveChecked < validMoves; moveChecked++)
-    {
-        moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[moveChecked]].type;
-
-        if (moveType == TYPE_MYSTERY)
-        {
-            if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-                moveType = TYPE_GHOST;
-            else
-                moveType = TYPE_NORMAL;
-        }
-        if (moveType != gBattleMons[gBattlerAttacker].type1
-            && moveType != gBattleMons[gBattlerAttacker].type2)
-        {
-            break;
-        }
-    }
-
-    if (moveChecked == validMoves)
-    {
-        gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
-    }
-    else
-    {
-        do
-        {
-            while ((moveChecked = Random() & (MAX_MON_MOVES - 1)) >= validMoves);
-
-            moveType = gBattleMoves[gBattleMons[gBattlerAttacker].moves[moveChecked]].type;
-
-            if (moveType == TYPE_MYSTERY)
-            {
-                if (IS_BATTLER_OF_TYPE(gBattlerAttacker, TYPE_GHOST))
-                    moveType = TYPE_GHOST;
-                else
-                    moveType = TYPE_NORMAL;
-            }
-        }
-        while (moveType == gBattleMons[gBattlerAttacker].type1 || moveType == gBattleMons[gBattlerAttacker].type2);
-
-        SET_BATTLER_TYPE(gBattlerAttacker, moveType);
-        PREPARE_TYPE_BUFFER(gBattleTextBuff1, moveType);
-
-        gBattlescriptCurrInstr += 5;
-    }
+    u8 type = gBattleMons[gBattlerTarget].type1;
+    SET_BATTLER_TYPE(gBattlerAttacker, type);
+    PREPARE_TYPE_BUFFER(gBattleTextBuff1, type);
+    gBattlescriptCurrInstr += 5;
 }
 
 static void Cmd_givepaydaymoney(void)

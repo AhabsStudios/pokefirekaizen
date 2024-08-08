@@ -100,3 +100,20 @@ SaffronCity_CopycatsHouse_2F_Text_MySecrets::
 
 SaffronCity_CopycatsHouse_2F_Text_HuhCantSee::
     .string "？　みえないぞ‥$"
+
+SaffronCity_CopycatsHouse_2F_Text_MimicGirl::
+    .string "Oh wow!\n"
+    .string "A POKéDOLL!\p"
+    .string "For me?\n"
+    .string "Thank you!\p"
+    .string "You can have\n"
+    .string "this, then!\p"
+
+SaffronCity_CopycatsHouse_2F_Text_ReceivedTM31Mimic::
+    .string "{PLAYER} received TM31.$"
+
+SaffronCity_CopycatsHouse_2F_Text_Contains_Mimic::
+    .string "TM31 contains my favorite,\n"
+    .string "MIMIC!\p"
+    .string "Use it on a good POKéMON!$"
+
