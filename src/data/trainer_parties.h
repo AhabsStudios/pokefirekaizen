@@ -5411,7 +5411,7 @@ static const struct TrainerMonItemCustomMoves sParty_EliteFourLance[] = {
         .iv = 250,
         .lvl = 60,
         .species = SPECIES_DRAGONITE,
-        .heldItem = ITEM_SITRUS_BERRY,
+        .heldItem = ITEM_NONE,
         .moves = {MOVE_AGILITY, MOVE_SLAM, MOVE_BARRIER, MOVE_HYPER_BEAM},
     },
 };
