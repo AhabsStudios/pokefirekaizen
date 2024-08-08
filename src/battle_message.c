@@ -429,7 +429,7 @@ static const u8 sText_HP2[] = _("HP");
 static const u8 sText_Attack2[] = _("ATTACK");
 static const u8 sText_Defense2[] = _("DEFENSE");
 static const u8 sText_Speed[] = _("SPEED");
-static const u8 sText_SpAtk2[] = _("SP. ATK");
+static const u8 sText_SpAtk2[] = _("SPECIAL");
 static const u8 sText_SpDef2[] = _("SP. DEF");
 static const u8 sText_Accuracy[] = _("accuracy");
 static const u8 sText_Evasiveness[] = _("evasiveness");
@@ -1295,7 +1295,7 @@ static const u8 sText_Dash[] = _("-");
 static const u8 sText_MaxHP[] = _("{FONT_SMALL}Max{FONT_NORMAL} HP");
 static const u8 sText_Attack[] = _("ATTACK ");
 static const u8 sText_Defense[] = _("DEFENSE");
-static const u8 sText_SpAtk[] = _("SP. ATK");
+static const u8 sText_SpAtk[] = _("SPECIAL");
 static const u8 sText_SpDef[] = _("SP. DEF");
 
 // Unused

@@ -1076,7 +1076,7 @@ Help_Text_Defense::
 	.string "DEFENSE$"
 
 Help_Text_SpAtk::
-	.string "SP. ATK$"
+	.string "SPECIAL$"
 
 Help_Text_SpDef::
 	.string "SP. DEF$"
@@ -1232,7 +1232,7 @@ Help_Text_DefineDefense::
 	.string "sustained from a foe's physical hit.$"
 
 Help_Text_DefineSpAtk::
-	.string "SP. ATK (Special Attack) indicates the\n"
+	.string "SPECIAL (Special Attack) indicates the\n"
 	.string "power of a special attack move.\l"
 	.string "The higher this stat, the more powerful\l"
 	.string "the special attack move.\l"

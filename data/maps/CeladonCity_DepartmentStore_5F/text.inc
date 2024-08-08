@@ -3,7 +3,7 @@ CeladonCity_DepartmentStore_5F_Text_ExplainStatEnhancers::
     .string "bought only here.\p"
     .string "HP UP increases the base HP of a\n"
     .string "POKéMON.\p"
-    .string "CALCIUM raises the base SP. ATK\n"
+    .string "CALCIUM raises the base SPECIAL\n"
     .string "stat of one POKéMON.\p"
     .string "ZINC boosts the base SP. DEF stat\n"
     .string "of one POKéMON.\p"
