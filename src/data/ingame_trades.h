@@ -131,10 +131,10 @@ static const struct InGameTrade sInGameTrades[] = {
         .requestedSpecies = SPECIES_SLOWBRO
 #endif
     }, 
-    [INGAME_TRADE_ELECTRODE] = 
+    [INGAME_TRADE_BULBASAUR] = 
     {
-        .nickname = _("ESPHERE"),
-        .species = SPECIES_ELECTRODE,
+        .nickname = _("ICHIGOU"),
+        .species = SPECIES_BULBASAUR,
         .ivs = {19, 16, 18, 25, 25},
         .abilityNum = 1,
         .otId = 50298,
@@ -147,26 +147,26 @@ static const struct InGameTrade sInGameTrades[] = {
         .sheen = 10,
         .requestedSpecies = SPECIES_RAICHU
     }, 
-    [INGAME_TRADE_TANGELA] = 
+    [INGAME_TRADE_CHARMANDER] = 
     {
-        .nickname = _("TANGENY"),
-        .species = SPECIES_TANGELA,
+        .nickname = _("NIGOU"),
+        .species = SPECIES_CHARMANDER,
         .ivs = {22, 17, 25, 16, 23},
         .abilityNum = 0,
         .otId = 60042,
         .conditions = {5, 5, 30, 5, 5},
         .personality = 0x5c77ecfa,
-        .heldItem = ITEM_STARDUST,
+        .heldItem = ITEM_NONE,
         .mailNum = 255,
         .otName = _("NORMA"),
         .otGender = FEMALE,
         .sheen = 10,
         .requestedSpecies = SPECIES_VENONAT
     },
-    [INGAME_TRADE_SEEL] = 
+    [INGAME_TRADE_SQUIRTLE] = 
     {
-        .nickname = _("SEELOR"),
-        .species = SPECIES_SEEL,
+        .nickname = _("SANGOU"),
+        .species = SPECIES_SQUIRTLE,
         .ivs = {24, 15, 22, 16, 23},
         .abilityNum = 0,
         .otId = 9853,
