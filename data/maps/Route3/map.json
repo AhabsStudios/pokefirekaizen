@@ -167,16 +167,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route3_EventScript_RouteSign"
-    },
-    {
-      "type": "hidden_item",
-      "x": 26,
-      "y": 9,
-      "elevation": 3,
-      "item": "ITEM_ORAN_BERRY",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE3_ORAN_BERRY",
-      "quantity": 1,
-      "underfoot": false
     }
   ]
 }
