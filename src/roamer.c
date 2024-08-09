@@ -84,13 +84,13 @@ void ClearRoamerData(void)
     switch (GetStarterSpecies())\
     {\
     default:\
-        a = SPECIES_RAIKOU;\
+        a = SPECIES_MEW;\
         break;\
     case SPECIES_BULBASAUR:\
-        a = SPECIES_ENTEI;\
+        a = SPECIES_MEW;\
         break;\
     case SPECIES_CHARMANDER:\
-        a = SPECIES_SUICUNE;\
+        a = SPECIES_MEW;\
         break;\
     }\
     a;\
@@ -100,9 +100,9 @@ void CreateInitialRoamerMon(void)
 {
     struct Pokemon * mon = &gEnemyParty[0];
     u16 species = GetRoamerSpecies();
-    CreateMon(mon, species, 50, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
+    CreateMon(mon, species, 30, USE_RANDOM_IVS, FALSE, 0, OT_ID_PLAYER_ID, 0);
     ROAMER->species = species;
-    ROAMER->level = 50;
+    ROAMER->level = 30;
     ROAMER->status = 0;
     ROAMER->active = TRUE;
     ROAMER->ivs = GetMonData(mon, MON_DATA_IVS);
@@ -227,7 +227,7 @@ void CreateRoamerMonInstance(void)
 
 bool8 TryStartRoamerEncounter(void)
 {
-    if (IsRoamerAt(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum) == TRUE && (Random() % 4) == 0)
+    if (IsRoamerAt(gSaveBlock1Ptr->location.mapGroup, gSaveBlock1Ptr->location.mapNum) == TRUE && (Random() % 20) == 0)
     {
         CreateRoamerMonInstance();
         return TRUE;
