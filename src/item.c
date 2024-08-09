@@ -14,9 +14,15 @@
 EWRAM_DATA struct BagPocket gBagPockets[NUM_BAG_POCKETS] = {};
 
 void SortAndCompactBagPocket(struct BagPocket * pocket);
+void ItemId_GetHoldEffectParam_Script();
 
 // Item descriptions and data
 #include "data/items.h"
+
+void ItemId_GetHoldEffectParam_Script()
+{
+    VarSet(VAR_RESULT, ItemId_GetHoldEffectParam(VarGet(VAR_0x8004)));
+}
 
 u16 GetBagItemQuantity(u16 * ptr)
 {

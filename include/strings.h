@@ -170,6 +170,7 @@ extern const u8 gText_OakForbidsUseOfItemHere[];
 extern const u8 gText_CantDismountBike[];
 extern const u8 gText_CoinCase[];
 extern const u8 gText_PlayerUsedVar2[];
+extern const u8 gText_PlayerUsedRepel[];
 extern const u8 gText_RepelEffectsLingered[];
 extern const u8 gText_UsedVar2WildLured[];
 extern const u8 gText_UsedVar2WildRepelled[];
