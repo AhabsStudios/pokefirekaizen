@@ -1,4 +1,4 @@
-.equ LOCALID_FINAL_FOSSIL,  14
+.equ LOCALID_FINAL_FOSSIL,  4
 
 
 CeruleanCave_2F_MapScripts::
