@@ -60,6 +60,7 @@ CeruleanCity_EventScript_Rival::
 	call_if_eq VAR_TEMP_1, 1, CeruleanCity_EventScript_RivalStartExit
 	call_if_eq VAR_TEMP_1, 2, CeruleanCity_EventScript_RivalStartExitRight
 	applymovement LOCALID_RIVAL, CeruleanCity_Movement_RivalExit
+	setvar VAR_MAP_SCENE_CERULEAN_CITY_RIVAL, 1
 	waitmovement 0
 	fadedefaultbgm
 	removeobject LOCALID_RIVAL
