@@ -1024,9 +1024,6 @@ static const u16 sTMHMMoves_Duplicate[] =
     MOVE_SURF,
     MOVE_STRENGTH,
     MOVE_FLASH,
-    MOVE_POUND,
-    MOVE_POUND,
-    MOVE_POUND,
 };
 
 enum
@@ -1251,7 +1248,4 @@ static const u16 sTMHMMoves[] =
     MOVE_SURF,
     MOVE_STRENGTH,
     MOVE_FLASH,
-    MOVE_POUND,
-    MOVE_POUND,
-    MOVE_POUND,
 };
