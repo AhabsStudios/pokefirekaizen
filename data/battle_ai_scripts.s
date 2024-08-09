@@ -3224,14 +3224,7 @@ AI_Unknown_End::
 	end
 
 AI_Roaming::
-	if_status2 AI_USER, STATUS2_WRAPPED, AI_Roaming_End
-	if_status2 AI_USER, STATUS2_ESCAPE_PREVENTION, AI_Roaming_End
-	get_ability AI_TARGET
-	if_equal ABILITY_SHADOW_TAG, AI_Roaming_End
-	get_ability AI_USER
-	if_equal ABILITY_LEVITATE, AI_Roaming_Flee
-	get_ability AI_TARGET
-	if_equal ABILITY_ARENA_TRAP, AI_Roaming_End
+	end
 
 AI_Roaming_Flee::
 	flee
