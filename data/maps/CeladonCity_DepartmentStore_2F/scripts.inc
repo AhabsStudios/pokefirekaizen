@@ -29,12 +29,12 @@ CeladonCity_DepartmentStore_2F_Items::
 	.2byte ITEM_GREAT_BALL
 	.2byte ITEM_SUPER_POTION
 	.2byte ITEM_REVIVE
+	.2byte ITEM_SUPER_REPEL
 	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
 	.2byte ITEM_BURN_HEAL
 	.2byte ITEM_ICE_HEAL
-	.2byte ITEM_SUPER_REPEL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_NONE
 	release
 	end
@@ -52,12 +52,15 @@ CeladonCity_DepartmentStore_2F_EventScript_ClerkTMs::
 
 	.align 2
 CeladonCity_DepartmentStore_2F_TMs::
+	.2byte ITEM_TM32
+	.2byte ITEM_TM33
+	.2byte ITEM_TM02
+	.2byte ITEM_TM07
+	.2byte ITEM_TM37
+	.2byte ITEM_TM01
 	.2byte ITEM_TM05
-	.2byte ITEM_TM15
-	.2byte ITEM_TM28
-	.2byte ITEM_TM31
-	.2byte ITEM_TM43
-	.2byte ITEM_TM45
+	.2byte ITEM_TM09
+	.2byte ITEM_TM17
 	.2byte ITEM_NONE
 	release
 	end

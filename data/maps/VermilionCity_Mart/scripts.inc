@@ -24,10 +24,9 @@ VermilionCity_Mart_EventScript_Clerk::
 VermilionCity_Mart_Items::
 	.2byte ITEM_POKE_BALL
 	.2byte ITEM_SUPER_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
 	.2byte ITEM_ICE_HEAL
+	.2byte ITEM_AWAKENING
+	.2byte ITEM_PARALYZE_HEAL
 	.2byte ITEM_REPEL
 	.2byte ITEM_NONE
 	release
