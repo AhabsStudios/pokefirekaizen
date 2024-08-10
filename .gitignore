@@ -63,3 +63,5 @@ prefabs.json
 *.sym
 msys2 - Shortcut.lnk
 porymap - Shortcut.lnk
+*.lnk
+*.ss1
