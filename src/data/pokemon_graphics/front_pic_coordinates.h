@@ -7,8 +7,8 @@ const struct MonCoords gMonFrontPicCoords[] =
     },
     [SPECIES_BULBASAUR] =
     {
-        .size = MON_COORDS_SIZE(40, 40),
-        .y_offset = 16,
+        .size = MON_COORDS_SIZE(36, 32),
+        .y_offset = 14,
     },
     [SPECIES_IVYSAUR] =
     {
