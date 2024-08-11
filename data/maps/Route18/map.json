@@ -29,7 +29,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKER",
-      "x": 46,
+      "x": 50,
       "y": 14,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
@@ -43,7 +43,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKER",
-      "x": 41,
+      "x": 45,
       "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
@@ -57,7 +57,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKER",
-      "x": 39,
+      "x": 43,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_RIGHT",
@@ -71,14 +71,14 @@
   ],
   "warp_events": [
     {
-      "x": 41,
+      "x": 42,
       "y": 9,
       "elevation": 3,
       "dest_map": "MAP_ROUTE18_EAST_ENTRANCE_1F",
       "dest_warp_id": "0"
     },
     {
-      "x": 48,
+      "x": 47,
       "y": 9,
       "elevation": 3,
       "dest_map": "MAP_ROUTE18_EAST_ENTRANCE_1F",
@@ -91,15 +91,15 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 37,
-      "y": 7,
+      "x": 41,
+      "y": 6,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route18_EventScript_CyclingRoadSign"
     },
     {
       "type": "sign",
-      "x": 52,
+      "x": 51,
       "y": 7,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",

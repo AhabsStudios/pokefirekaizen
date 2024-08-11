@@ -35,7 +35,6 @@
       "direction": "right"
     }
   ],
-  "connections_no_include": true,
   "object_events": [
     {
       "type": "object",
@@ -68,7 +67,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 46,
+      "x": 48,
       "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -264,14 +263,14 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 40,
+      "x": 41,
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_DOJO",
       "dest_warp_id": "1"
     },
     {
-      "x": 46,
+      "x": 48,
       "y": 12,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_GYM",
@@ -285,14 +284,14 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 40,
+      "x": 39,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_MART",
       "dest_warp_id": "1"
     },
     {
-      "x": 24,
+      "x": 23,
       "y": 38,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_POKEMON_CENTER_1F",
@@ -306,7 +305,7 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 8,
+      "x": 7,
       "y": 27,
       "elevation": 3,
       "dest_map": "MAP_ROUTE7_EAST_ENTRANCE",
@@ -314,13 +313,13 @@
     },
     {
       "x": 34,
-      "y": 5,
+      "y": 3,
       "elevation": 3,
       "dest_map": "MAP_ROUTE5_SOUTH_ENTRANCE",
       "dest_warp_id": "2"
     },
     {
-      "x": 58,
+      "x": 59,
       "y": 27,
       "elevation": 3,
       "dest_map": "MAP_ROUTE8_WEST_ENTRANCE",
@@ -328,21 +327,21 @@
     },
     {
       "x": 34,
-      "y": 46,
+      "y": 48,
       "elevation": 3,
       "dest_map": "MAP_ROUTE6_NORTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
-      "x": 35,
-      "y": 46,
+      "x": 34,
+      "y": 49,
       "elevation": 3,
       "dest_map": "MAP_ROUTE6_NORTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
-      "x": 35,
-      "y": 5,
+      "x": 34,
+      "y": 2,
       "elevation": 3,
       "dest_map": "MAP_ROUTE5_SOUTH_ENTRANCE",
       "dest_warp_id": "2"
@@ -355,7 +354,9 @@
       "dest_warp_id": "0"
     }
   ],
-  "coord_events": [],
+  "coord_events": [
+
+  ],
   "bg_events": [
     {
       "type": "sign",
@@ -429,5 +430,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_TrainerFanClubSign"
     }
-  ]
+  ],
+  "connections_no_include": true
 }

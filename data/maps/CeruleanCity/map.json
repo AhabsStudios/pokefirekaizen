@@ -21,7 +21,7 @@
     },
     {
       "map": "MAP_ROUTE5",
-      "offset": 0,
+      "offset": 12,
       "direction": "down"
     },
     {
@@ -39,7 +39,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
-      "x": 31,
+      "x": 30,
       "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -201,35 +201,35 @@
   ],
   "warp_events": [
     {
-      "x": 10,
+      "x": 9,
       "y": 11,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_HOUSE1",
       "dest_warp_id": "1"
     },
     {
-      "x": 30,
+      "x": 29,
       "y": 11,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_HOUSE2",
       "dest_warp_id": "1"
     },
     {
-      "x": 15,
+      "x": 14,
       "y": 17,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_HOUSE3",
       "dest_warp_id": "1"
     },
     {
-      "x": 22,
+      "x": 21,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 31,
+      "x": 33,
       "y": 21,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_GYM",
@@ -257,7 +257,7 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 10,
+      "x": 9,
       "y": 8,
       "elevation": 3,
       "dest_map": "MAP_CERULEAN_CITY_HOUSE1",
@@ -292,7 +292,7 @@
       "dest_warp_id": "0"
     },
     {
-      "x": 17,
+      "x": 16,
       "y": 11,
       "elevation": 0,
       "dest_map": "MAP_CERULEAN_CITY_HOUSE5",
@@ -365,8 +365,8 @@
     },
     {
       "type": "sign",
-      "x": 11,
-      "y": 28,
+      "x": 5,
+      "y": 29,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CeruleanCity_EventScript_BikeShopSign"
@@ -391,24 +391,24 @@
     },
     {
       "type": "sign",
-      "x": 11,
-      "y": 25,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "CeruleanCity_BikeShop_EventScript_Bicycle"
-    },
-    {
-      "type": "sign",
-      "x": 11,
-      "y": 27,
-      "elevation": 0,
-      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
-      "script": "CeruleanCity_BikeShop_EventScript_Bicycle"
-    },
-    {
-      "type": "sign",
-      "x": 11,
+      "x": 5,
       "y": 26,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CeruleanCity_BikeShop_EventScript_Bicycle"
+    },
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 28,
+      "elevation": 0,
+      "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
+      "script": "CeruleanCity_BikeShop_EventScript_Bicycle"
+    },
+    {
+      "type": "sign",
+      "x": 5,
+      "y": 27,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CeruleanCity_BikeShop_EventScript_Bicycle"

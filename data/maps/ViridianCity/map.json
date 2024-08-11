@@ -62,7 +62,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_OLD_MAN_1",
-      "x": 34,
+      "x": 35,
       "y": 11,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
@@ -160,7 +160,7 @@
   ],
   "warp_events": [
     {
-      "x": 26,
+      "x": 25,
       "y": 26,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_POKEMON_CENTER_1F",
@@ -174,7 +174,7 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 36,
+      "x": 37,
       "y": 10,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_GYM",
@@ -188,7 +188,7 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 36,
+      "x": 35,
       "y": 19,
       "elevation": 0,
       "dest_map": "MAP_VIRIDIAN_CITY_MART",
@@ -207,7 +207,7 @@
     },
     {
       "type": "trigger",
-      "x": 36,
+      "x": 37,
       "y": 11,
       "elevation": 3,
       "var": "VAR_MAP_SCENE_VIRIDIAN_CITY_GYM_DOOR",
@@ -244,8 +244,8 @@
     },
     {
       "type": "sign",
-      "x": 32,
-      "y": 10,
+      "x": 35,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "ViridianCity_EventScript_GymSign"
@@ -268,7 +268,7 @@
     },
     {
       "type": "sign",
-      "x": 36,
+      "x": 37,
       "y": 10,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
