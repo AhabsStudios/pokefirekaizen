@@ -1,4 +1,5 @@
 {
+  "layouts_table_label": "gMapLayouts",
   "group_order": [
     "gMapGroup_Link",
     "gMapGroup_Dungeons",
@@ -236,7 +237,8 @@
     "BirthIsland_Exterior",
     "OneIsland_KindleRoad_EmberSpa",
     "BirthIsland_Harbor",
-    "NavelRock_Harbor"
+    "NavelRock_Harbor",
+    "DebugRoom_Angry"
   ],
   "gMapGroup_TownsAndRoutes": [
     "PalletTown",

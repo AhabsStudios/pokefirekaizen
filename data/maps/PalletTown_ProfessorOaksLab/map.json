@@ -13,7 +13,7 @@
   "show_map_name": false,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": null,
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
@@ -177,6 +177,13 @@
       "elevation": 3,
       "dest_map": "MAP_PALLET_TOWN",
       "dest_warp_id": "2"
+    },
+    {
+      "x": 12,
+      "y": 5,
+      "elevation": 3,
+      "dest_map": "MAP_DEBUG_ROOM_ANGRY",
+      "dest_warp_id": "0"
     }
   ],
   "coord_events": [

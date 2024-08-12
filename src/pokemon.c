@@ -2937,7 +2937,7 @@ u32 GetMonData(struct Pokemon *mon, s32 field, u8 *data)
     case MON_DATA_SPDEF:
         ret = GetDeoxysStat(mon, STAT_SPDEF);
         if (!ret)
-            ret = mon->spDefense;
+            ret = mon->spAttack;
         break;
     case MON_DATA_ATK2:
         ret = mon->attack;
