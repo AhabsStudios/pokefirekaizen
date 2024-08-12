@@ -7,7 +7,7 @@ const struct MonCoords gMonBackPicCoords[] =
     },
     [SPECIES_BULBASAUR] =
     {
-        .size = MON_COORDS_SIZE(48, 32),
+        .size = MON_COORDS_SIZE(47, 31),
         .y_offset = 16,
     },
     [SPECIES_IVYSAUR] =
@@ -22,8 +22,8 @@ const struct MonCoords gMonBackPicCoords[] =
     },
     [SPECIES_CHARMANDER] =
     {
-        .size = MON_COORDS_SIZE(48, 48),
-        .y_offset = 10,
+        .size = MON_COORDS_SIZE(50, 34),
+        .y_offset = 16,
     },
     [SPECIES_CHARMELEON] =
     {

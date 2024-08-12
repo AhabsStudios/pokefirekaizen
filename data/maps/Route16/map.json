@@ -128,7 +128,7 @@
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SNORLAX",
       "x": 31,
-      "y": 13,
+      "y": 12,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -149,28 +149,28 @@
     },
     {
       "x": 20,
-      "y": 6,
+      "y": 7,
       "elevation": 3,
       "dest_map": "MAP_ROUTE16_NORTH_ENTRANCE_1F",
       "dest_warp_id": "0"
     },
     {
       "x": 27,
-      "y": 6,
+      "y": 7,
       "elevation": 3,
       "dest_map": "MAP_ROUTE16_NORTH_ENTRANCE_1F",
       "dest_warp_id": "1"
     },
     {
       "x": 20,
-      "y": 13,
+      "y": 12,
       "elevation": 3,
       "dest_map": "MAP_ROUTE16_NORTH_ENTRANCE_1F",
       "dest_warp_id": "2"
     },
     {
       "x": 27,
-      "y": 13,
+      "y": 12,
       "elevation": 3,
       "dest_map": "MAP_ROUTE16_NORTH_ENTRANCE_1F",
       "dest_warp_id": "3"

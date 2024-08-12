@@ -169,7 +169,7 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 15,
+      "x": 14,
       "y": 6,
       "elevation": 3,
       "dest_map": "MAP_VERMILION_CITY_POKEMON_CENTER_1F",
@@ -190,15 +190,15 @@
       "dest_warp_id": "1"
     },
     {
-      "x": 29,
+      "x": 28,
       "y": 17,
       "elevation": 0,
       "dest_map": "MAP_VERMILION_CITY_MART",
       "dest_warp_id": "1"
     },
     {
-      "x": 28,
-      "y": 24,
+      "x": 27,
+      "y": 23,
       "elevation": 0,
       "dest_map": "MAP_VERMILION_CITY_HOUSE3",
       "dest_warp_id": "1"
@@ -269,7 +269,7 @@
     {
       "type": "sign",
       "x": 10,
-      "y": 24,
+      "y": 25,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VermilionCity_EventScript_GymSign"
@@ -277,7 +277,7 @@
     {
       "type": "sign",
       "x": 34,
-      "y": 18,
+      "y": 20,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "VermilionCity_EventScript_HarborSign"
