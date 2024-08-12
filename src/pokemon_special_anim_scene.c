@@ -1486,7 +1486,7 @@ static const u8 *const sLevelUpWindowStatNames[] = {
     gText_LevelUp_Attack,
     gText_LevelUp_Defense,
     gText_LevelUp_SpAtk,
-    gText_LevelUp_SpDef,
+    // gText_LevelUp_SpDef,
     gText_LevelUp_Speed
 };
 
@@ -1504,14 +1504,14 @@ void DrawLevelUpWindowPg1(u16 windowId, u16 *beforeStats, u16 *afterStats, u8 bg
     diffStats[1] = afterStats[1] - beforeStats[1];
     diffStats[2] = afterStats[2] - beforeStats[2];
     diffStats[3] = afterStats[4] - beforeStats[4];
-    diffStats[4] = afterStats[5] - beforeStats[5];
-    diffStats[5] = afterStats[3] - beforeStats[3];
+    diffStats[4] = afterStats[3] - beforeStats[3];
+    // diffStats[5] = afterStats[3] - beforeStats[3];
 
     textColor[0] = bgColor;
     textColor[1] = fgColor;
     textColor[2] = shadowColor;
 
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 5; i++)
     {
         AddTextPrinterParameterized3(windowId, FONT_NORMAL, 0, i * 15, textColor, TEXT_SKIP_DRAW, sLevelUpWindowStatNames[i]);
         StringCopy(textbuf, diffStats[i] >= 0 ? gText_LevelUp_Plus : gText_LevelUp_Minus);
@@ -1538,14 +1538,14 @@ void DrawLevelUpWindowPg2(u16 windowId, u16 *currStats, u8 bgColor, u8 fgColor, 
     statsRearrange[1] = currStats[1];
     statsRearrange[2] = currStats[2];
     statsRearrange[3] = currStats[4];
-    statsRearrange[4] = currStats[5];
-    statsRearrange[5] = currStats[3];
+    statsRearrange[4] = currStats[3];
+    // statsRearrange[5] = currStats[3];
 
     textColor[0] = bgColor;
     textColor[1] = fgColor;
     textColor[2] = shadowColor;
 
-    for (i = 0; i < 6; i++)
+    for (i = 0; i < 5; i++)
     {
         if (statsRearrange[i] >= 100)
             ndigits = 3;
