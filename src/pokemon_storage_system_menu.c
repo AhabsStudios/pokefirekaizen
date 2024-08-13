@@ -34,12 +34,12 @@ static const u8 sChooseBoxMenuCorners_Gfx[];
 struct {
     const u8 *text;
     const u8 *desc;
-} static const sMainMenuTexts[OPTIONS_COUNT] = {
+} static const sMainMenuTexts[OPTIONS_COUNT - 1] = {
     [OPTION_WITHDRAW]   = {gText_WithdrawPokemon, gText_WithdrawMonDescription},
     [OPTION_DEPOSIT]    = {gText_DepositPokemon,  gText_DepositMonDescription},
     [OPTION_MOVE_MONS]  = {gText_MovePokemon,     gText_MoveMonDescription},
-    [OPTION_MOVE_ITEMS] = {gText_MoveItems,       gText_MoveItemsDescription},
-    [OPTION_EXIT]       = {gText_SeeYa,           gText_SeeYaDescription}
+    // [OPTION_MOVE_ITEMS] = {gText_MoveItems,       gText_MoveItemsDescription},
+    [OPTION_EXIT - 1]       = {gText_SeeYa,           gText_SeeYaDescription}
 };
 
 void DrawTextWindowAndBufferTiles(const u8 *string, void *dst, u8 zero1, u8 zero2, u8 *unused, s32 bytesToBuffer)
@@ -267,8 +267,8 @@ static void Task_PCMainMenu(u8 taskId)
         case MENU_NOTHING_CHOSEN:
             task->tNextOption = task->tSelectedOption;
             if (JOY_NEW(DPAD_UP) && --task->tNextOption < 0)
-                task->tNextOption = OPTIONS_COUNT - 1;
-            if (JOY_NEW(DPAD_DOWN) && ++task->tNextOption > OPTIONS_COUNT - 1)
+                task->tNextOption = OPTIONS_COUNT - 2;
+            if (JOY_NEW(DPAD_DOWN) && ++task->tNextOption > OPTIONS_COUNT - 2)
                 task->tNextOption = 0;
 
             if (task->tSelectedOption != task->tNextOption)
@@ -279,7 +279,7 @@ static void Task_PCMainMenu(u8 taskId)
             }
             break;
         case MENU_B_PRESSED:
-        case OPTION_EXIT:
+        case OPTION_EXIT - 1:
             ClearStdWindowAndFrame(0, TRUE);
             ClearStdWindowAndFrame(task->tWindowId, TRUE);
             UnlockPlayerFieldControls();
@@ -378,7 +378,7 @@ static const struct WindowTemplate sWindowTemplate_MainMenu = {
     .tilemapLeft = 1,
     .tilemapTop = 1,
     .width = 17,
-    .height = 10,
+    .height = 8,
     .paletteNum = 15,
     .baseBlock = 0x001
 };
