@@ -116,7 +116,7 @@ static const struct BgTemplate sBgTemplates[2] = {
 
 static const struct MenuAction sItemPcSubmenuOptions[] = {
     {gText_Withdraw,          {.void_u8 = Task_ItemPcWithdraw}},
-    {gOtherText_Give,         {.void_u8 = Task_ItemPcGive}},
+    // {gOtherText_Give,         {.void_u8 = Task_ItemPcGive}},
     {gFameCheckerText_Cancel, {.void_u8 = Task_ItemPcCancel}}
 };
 
@@ -163,9 +163,9 @@ static const struct WindowTemplate sWindowTemplates[] = {
     }, {
         .bg = 0,
         .tilemapLeft = 22,
-        .tilemapTop = 13,
+        .tilemapTop = 15,
         .width = 7,
-        .height = 6,
+        .height = 4,
         .paletteNum = 15,
         .baseBlock = 0x01d7
     }, {
@@ -839,8 +839,8 @@ static void Task_ItemPcSubmenuInit(u8 taskId)
 
     ItemPc_SetBorderStyleOnWindow(4);
     windowId = ItemPc_GetOrCreateSubwindow(0);
-    PrintTextArray(4, FONT_NORMAL, 8, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 3, sItemPcSubmenuOptions);
-    Menu_InitCursor(4, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 3, 0);
+    PrintTextArray(4, FONT_NORMAL, 8, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 2, sItemPcSubmenuOptions);
+    Menu_InitCursor(4, FONT_NORMAL, 0, 2, GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, 2, 0);
     CopyItemName(ItemPc_GetItemIdBySlotId(data[1]), gStringVar1);
     StringExpandPlaceholders(gStringVar4, gText_Var1IsSelected);
     ItemPc_AddTextPrinterParameterized(windowId, FONT_NORMAL, gStringVar4, 0, 2, 1, 0, 0, 1);
