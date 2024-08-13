@@ -1230,7 +1230,14 @@ static void Cmd_damagecalc(void)
     gBattleMoveDamage = CalculateBaseDamage(&gBattleMons[gBattlerAttacker], &gBattleMons[gBattlerTarget], gCurrentMove,
                                             sideStatus, gDynamicBasePower,
                                             gBattleStruct->dynamicMoveType, gBattlerAttacker, gBattlerTarget);
-    gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+    gBattleMoveDamage = gBattleMoveDamage * gBattleScripting.dmgMultiplier;
+    // genwun crit formula
+    if(gCritMultiplier == 2)
+    {
+        u8 level = gBattleMons[gBattlerAttacker].level;
+        gBattleMoveDamage = gBattleMoveDamage * (2 * level + 5);
+        gBattleMoveDamage = gBattleMoveDamage / (level + 5);
+    }
 
     if (gStatuses3[gBattlerAttacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
         gBattleMoveDamage *= 2;
@@ -1247,7 +1254,14 @@ void AI_CalcDmg(u8 attacker, u8 defender)
                                             sideStatus, gDynamicBasePower,
                                             gBattleStruct->dynamicMoveType, attacker, defender);
     gDynamicBasePower = 0;
-    gBattleMoveDamage = gBattleMoveDamage * gCritMultiplier * gBattleScripting.dmgMultiplier;
+    gBattleMoveDamage = gBattleMoveDamage * gBattleScripting.dmgMultiplier;
+    // genwun crit formula
+    if(gCritMultiplier == 2)
+    {
+        u8 level = gBattleMons[gBattlerAttacker].level;
+        gBattleMoveDamage = gBattleMoveDamage * (2 * level + 5);
+        gBattleMoveDamage = gBattleMoveDamage / (level + 5);
+    }
 
     if (gStatuses3[attacker] & STATUS3_CHARGED_UP && gBattleMoves[gCurrentMove].type == TYPE_ELECTRIC)
         gBattleMoveDamage *= 2;
