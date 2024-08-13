@@ -2508,14 +2508,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
 
     if (IS_TYPE_PHYSICAL(type))
     {
+        // Critical hit, ignore all stat modifiers
         if (gCritMultiplier == 2)
-        {
-            // Critical hit, if attacker has lost attack stat stages then ignore stat drop
-            if (attacker->statStages[STAT_ATK] > DEFAULT_STAT_STAGE)
-                APPLY_STAT_MOD(damage, attacker, attack, STAT_ATK)
-            else
-                damage = attack;
-        }
+            damage = attack;
         else
             APPLY_STAT_MOD(damage, attacker, attack, STAT_ATK)
 
@@ -2563,14 +2558,9 @@ s32 CalculateBaseDamage(struct BattlePokemon *attacker, struct BattlePokemon *de
 
     if (IS_TYPE_SPECIAL(type))
     {
+        // Critical hit, ignore all stat modifiers
         if (gCritMultiplier == 2)
-        {
-            // Critical hit, if attacker has lost sp. attack stat stages then ignore stat drop
-            if (attacker->statStages[STAT_SPATK] > DEFAULT_STAT_STAGE)
-                APPLY_STAT_MOD(damage, attacker, spAttack, STAT_SPATK)
-            else
-                damage = spAttack;
-        }
+            damage = spAttack;
         else
             APPLY_STAT_MOD(damage, attacker, spAttack, STAT_SPATK)
 
