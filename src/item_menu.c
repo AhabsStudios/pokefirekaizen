@@ -209,18 +209,18 @@ static const struct MenuAction sItemMenuContextActions[] = {
 static const u8 sContextMenuItems_Field[][4] = {
     {
         ITEMMENUACTION_USE,
-        ITEMMENUACTION_GIVE,
         ITEMMENUACTION_TOSS,
-        ITEMMENUACTION_CANCEL
+        ITEMMENUACTION_CANCEL,
+        ITEMMENUACTION_DUMMY
     }, {
         ITEMMENUACTION_USE,
         ITEMMENUACTION_REGISTER,
         ITEMMENUACTION_CANCEL,
         ITEMMENUACTION_DUMMY
     }, {
-        ITEMMENUACTION_GIVE,
         ITEMMENUACTION_TOSS,
         ITEMMENUACTION_CANCEL,
+        ITEMMENUACTION_DUMMY,
         ITEMMENUACTION_DUMMY
     }
 };
@@ -1388,7 +1388,7 @@ static void OpenContextMenu(u8 taskId)
             switch (gBagMenuState.pocket)
             {
             case OPEN_BAG_ITEMS:
-                sContextMenuNumItems = 4;
+                sContextMenuNumItems = 3;
                 if (ItemIsMail(gSpecialVar_ItemId) == TRUE)
                     sContextMenuItemsPtr = sContextMenuItems_CheckGiveTossCancel;
                 else
@@ -1411,7 +1411,7 @@ static void OpenContextMenu(u8 taskId)
                 break;
             case OPEN_BAG_POKEBALLS:
                 sContextMenuItemsPtr = sContextMenuItems_Field[gBagMenuState.pocket];
-                sContextMenuNumItems = 3;
+                sContextMenuNumItems = 2;
                 break;
             }
         }

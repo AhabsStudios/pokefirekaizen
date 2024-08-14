@@ -1020,8 +1020,8 @@ static void CreateNormalContextMenu(u8 taskId)
     }
     else
     {
-        sContextMenuOptions = sOptions_UseGiveTossExit;
-        sContextMenuNumOptions = 4;
+        sContextMenuOptions = sOptions_UseToss_Exit;
+        sContextMenuNumOptions = 3;
     }
     windowId = GetOrCreateVariableWindow(sContextMenuNumOptions + 9);
     AddItemMenuActionTextPrinters(windowId, FONT_NORMAL, GetMenuCursorDimensionByFont(FONT_NORMAL, 0), 2, GetFontAttribute(FONT_NORMAL, FONTATTR_LETTER_SPACING), GetFontAttribute(FONT_NORMAL, FONTATTR_MAX_LETTER_HEIGHT) + 2, sContextMenuNumOptions, sContextMenuActions, sContextMenuOptions);

@@ -44,7 +44,7 @@ enum {
 
 // Window IDs for the context menu that opens when a TM/HM is selected
 enum {
-    WIN_USE_GIVE_EXIT,
+    WIN_USE_EXIT,
     WIN_GIVE_EXIT,
 };
 
@@ -220,11 +220,11 @@ static void (*const sSelectTMActionTasks[])(u8 taskId) = {
 
 static const struct MenuAction sMenuActions[] = {
     [ACTION_USE]  = {gOtherText_Use,  Action_Use },
-    [ACTION_GIVE] = {gOtherText_Give, Action_Give},
+    // [ACTION_GIVE] = {gOtherText_Give, Action_Give},
     [ACTION_EXIT] = {gOtherText_Exit, Action_Exit},
 };
 
-static const u8 sMenuActionIndices_Field[] = {ACTION_USE, ACTION_GIVE, ACTION_EXIT};
+static const u8 sMenuActionIndices_Field[] = {ACTION_USE, ACTION_EXIT};
 static const u8 sMenuActionIndices_UnionRoom[] = {ACTION_GIVE, ACTION_EXIT};
 
 static const struct YesNoFuncTable sYesNoFuncTable = {Task_PrintSaleConfirmedText, Task_SaleOfTMsCanceled};
@@ -337,12 +337,12 @@ static const struct WindowTemplate sYesNoWindowTemplate = {
 };
 
 static const struct WindowTemplate sWindowTemplates_ContextMenu[] = {
-    [WIN_USE_GIVE_EXIT] = {
+    [WIN_USE_EXIT] = {
         .bg = 1,
         .tilemapLeft = 22,
-        .tilemapTop = 13,
+        .tilemapTop = 15,
         .width = 7,
-        .height = 6,
+        .height = 4,
         .paletteNum = 15,
         .baseBlock = 0x1cf
     },
@@ -950,7 +950,7 @@ static void Task_SelectedTMHM_Field(u8 taskId)
     if (!MenuHelpers_IsLinkActive() && InUnionRoom() != TRUE)
     {
         // Regular TM/HM context menu
-        AddContextMenu(&sTMCaseDynamicResources->contextMenuWindowId, WIN_USE_GIVE_EXIT);
+        AddContextMenu(&sTMCaseDynamicResources->contextMenuWindowId, WIN_USE_EXIT);
         sTMCaseDynamicResources->menuActionIndices = sMenuActionIndices_Field;
         sTMCaseDynamicResources->numMenuActions = ARRAY_COUNT(sMenuActionIndices_Field);
     }
