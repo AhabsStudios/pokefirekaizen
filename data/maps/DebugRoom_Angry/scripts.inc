@@ -8,3 +8,8 @@ DebugRoom_Angry_GiveMonAndRareCandies::
 	giveitem ITEM_RARE_CANDY, 50
 	release
 	end
+
+DebugRoom_Angry_WildWrap::
+	setwildbattle SPECIES_EKANS, 8
+	dowildbattle
+	end

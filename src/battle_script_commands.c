@@ -843,6 +843,8 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
+    // wrap
+
     gHitMarker &= ~HITMARKER_ALLOW_NO_PP;
 
     if (!(gHitMarker & HITMARKER_OBEYS) && !(gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS))

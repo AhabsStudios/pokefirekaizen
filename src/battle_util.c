@@ -874,7 +874,7 @@ u8 DoBattlerEndTurnEffects(void)
                 gBattleStruct->turnEffectsTracker++;
                 break;
             case ENDTURN_WRAP:  // wrap
-                if ((gBattleMons[gActiveBattler].status2 & STATUS2_WRAPPED) && gBattleMons[gActiveBattler].hp != 0)
+                /* if ((gBattleMons[gActiveBattler].status2 & STATUS2_WRAPPED) && gBattleMons[gActiveBattler].hp != 0)
                 {
                     gBattleMons[gActiveBattler].status2 -= STATUS2_WRAPPED_TURN(1);
                     if (gBattleMons[gActiveBattler].status2 & STATUS2_WRAPPED)  // damaged by wrap
@@ -902,7 +902,7 @@ u8 DoBattlerEndTurnEffects(void)
                     }
                     BattleScriptExecute(gBattlescriptCurrInstr);
                     effect++;
-                }
+                } */
                 gBattleStruct->turnEffectsTracker++;
                 break;
             case ENDTURN_UPROAR:  // uproar
@@ -1251,6 +1251,7 @@ enum
     CANCELLER_IN_LOVE,
     CANCELLER_BIDE,
     CANCELLER_THAW,
+    CANCELLER_WRAP,
     CANCELLER_END,
 };
 
@@ -1526,6 +1527,37 @@ u8 AtkCanceller_UnableToUseMove(void)
                 }
                 effect = 2;
             }
+            gBattleStruct->atkCancellerTracker++;
+            break;
+        case CANCELLER_WRAP: // gen 1 wrap
+            if (gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED)
+            {
+                gBattleMons[gBattlerAttacker].status2 -= STATUS2_WRAPPED_TURN(1);
+                if (gBattleMons[gBattlerAttacker].status2 & STATUS2_WRAPPED)
+                {
+                    gBattlescriptCurrInstr = BattleScript_WrapTurnDmg;
+                    gBattleTextBuff1[0] = B_BUFF_PLACEHOLDER_BEGIN;
+                    gBattleTextBuff1[1] = B_BUFF_MOVE;
+                    gBattleTextBuff1[2] = *(gBattleStruct->wrappedMove + gBattlerAttacker * 2 + 0);
+                    gBattleTextBuff1[3] = *(gBattleStruct->wrappedMove + gBattlerAttacker * 2 + 1);
+                    gBattleTextBuff1[4] = EOS;
+                    // gen 3 wrap damage temporary, will be replaced with something closer to gen 1
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 16;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                }
+                else  // broke free
+                {
+                    gBattleTextBuff1[0] = B_BUFF_PLACEHOLDER_BEGIN;
+                    gBattleTextBuff1[1] = B_BUFF_MOVE;
+                    gBattleTextBuff1[2] = *(gBattleStruct->wrappedMove + gBattlerAttacker * 2 + 0);
+                    gBattleTextBuff1[3] = *(gBattleStruct->wrappedMove + gBattlerAttacker * 2 + 1);
+                    gBattleTextBuff1[4] = EOS;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_WrapEnds;
+                }
+                effect = 1;
+           }
             gBattleStruct->atkCancellerTracker++;
             break;
         case CANCELLER_END:
