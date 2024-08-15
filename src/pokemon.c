@@ -2095,7 +2095,7 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
 #define CALC_STAT(base, iv, ev, statIndex, field)               \
 {                                                               \
     u8 baseStat = gSpeciesInfo[species].base;                   \
-    s32 n = (((2 * (baseStat + iv) + (ev == 0 ? 0 : 1 + Sqrt(ev - 1)) / 4) * level) / 100) + 5; \
+    s32 n = ((((2 * (baseStat + iv)) + ((ev == 0 ? 0 : 1 + Sqrt(ev - 1)) / 4)) * level) / 100) + 5; \
     SetMonData(mon, field, &n);                                 \
 }
 
@@ -5469,7 +5469,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
 
 void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 {
-    u8 evs[NUM_STATS];
+    u16 evs[NUM_STATS];
     u16 evIncrease = 0;
     u16 totalEVs = 0;
     u16 heldItem;
