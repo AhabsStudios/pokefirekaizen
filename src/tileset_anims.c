@@ -22,14 +22,12 @@ static const u16 sTilesetAnims_General_Flower_Frame0[] = INCBIN_U16("data/tilese
 static const u16 sTilesetAnims_General_Flower_Frame1[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/1.4bpp");
 static const u16 sTilesetAnims_General_Flower_Frame2[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/2.4bpp");
 static const u16 sTilesetAnims_General_Flower_Frame3[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/3.4bpp");
-static const u16 sTilesetAnims_General_Flower_Frame4[] = INCBIN_U16("data/tilesets/primary/general/anim/flower/4.4bpp");
 
 static const u16 *const sTilesetAnims_General_Flower[] = {
     sTilesetAnims_General_Flower_Frame0,
     sTilesetAnims_General_Flower_Frame1,
     sTilesetAnims_General_Flower_Frame2,
-    sTilesetAnims_General_Flower_Frame3,
-    sTilesetAnims_General_Flower_Frame4
+    sTilesetAnims_General_Flower_Frame3
 };
 
 // palette: general 04
