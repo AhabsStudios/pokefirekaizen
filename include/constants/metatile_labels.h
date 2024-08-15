@@ -58,7 +58,7 @@
 
 // gTileset_General
 #define METATILE_General_CalmWater               0x12B
-#define METATILE_General_Door                    0x03D
+#define METATILE_General_Door                    0x061
 #define METATILE_General_Plain_Grass             0x00D
 #define METATILE_General_Plain_Mowed             0x001
 #define METATILE_General_SlidingDoubleDoor       0x15B
