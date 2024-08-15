@@ -179,7 +179,7 @@
       "dest_warp_id": "2"
     },
     {
-      "x": 12,
+      "x": 14,
       "y": 5,
       "elevation": 3,
       "dest_map": "MAP_DEBUG_ROOM_ANGRY",

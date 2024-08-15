@@ -181,10 +181,10 @@ gPikachuIntro_Text_Page3::
     .string "CREDITS:\n"
     .string "APE-AHAB, SourApple, Angrybird,\n"
     .string "Farore, GoliathGastropod,\n"
-    .string "StarGazaar, Max Elixir\n"
+    .string "StarGazaar, MaxElixir, TastySnax\n"
     .string "\n"
     .string "This is KAIZEN ORIGINAL GAME\n"
-    .string "Beta Version 1.0.10 $"
+    .string "Public Beta Version 1.0.12 $"
 
 gOakSpeech_Text_WelcomeToTheWorld::
     .string "Hello, there!\n"
