@@ -22,7 +22,6 @@ const u8 gEnemyMonElevation[NUM_SPECIES] =
     [SPECIES_ARTICUNO] = 6,
     [SPECIES_ZAPDOS] = 8,
     [SPECIES_MOLTRES] = 5,
-    [SPECIES_DRAGONITE] = 6,
     [SPECIES_MEW] = 8,
     [SPECIES_LEDIAN] = 8,
     [SPECIES_CROBAT] = 6,

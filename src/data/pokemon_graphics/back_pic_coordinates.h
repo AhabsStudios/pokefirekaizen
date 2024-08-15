@@ -748,7 +748,7 @@ const struct MonCoords gMonBackPicCoords[] =
     [SPECIES_DRAGONITE] =
     {
         .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 6,
+        .y_offset = 3,
     },
     [SPECIES_MEWTWO] =
     {

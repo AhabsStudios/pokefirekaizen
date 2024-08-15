@@ -738,12 +738,12 @@ const struct MonCoords gMonFrontPicCoords[] =
     [SPECIES_DRATINI] =
     {
         .size = MON_COORDS_SIZE(56, 40),
-        .y_offset = 15,
+        .y_offset = 10,
     },
     [SPECIES_DRAGONAIR] =
     {
         .size = MON_COORDS_SIZE(64, 56),
-        .y_offset = 6,
+        .y_offset = 0,
     },
     [SPECIES_DRAGONITE] =
     {
