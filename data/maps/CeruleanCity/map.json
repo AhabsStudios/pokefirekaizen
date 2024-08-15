@@ -95,7 +95,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SLOWBRO",
-      "x": 32,
+      "x": 31,
       "y": 29,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
@@ -109,7 +109,7 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 33,
+      "x": 32,
       "y": 29,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_LEFT",
