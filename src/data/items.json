@@ -33,12 +33,12 @@
       "secondaryId": 0
     },
     {
-      "english": "ULTRA BALL",
+      "english": "HYPER BALL",
       "itemId": "ITEM_ULTRA_BALL",
       "price": 1200,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A very high-grade BALL that offers\\na higher POKéMON catch rate than\\na GREAT BALL.",
+      "description_english": "A very high-grade BALL that offers\\na higher POKéMON catch rate than\\na SUPER BALL.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_POKE_BALLS",
@@ -49,12 +49,12 @@
       "secondaryId": 1
     },
     {
-      "english": "GREAT BALL",
+      "english": "SUPER BALL",
       "itemId": "ITEM_GREAT_BALL",
       "price": 600,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "A good, quality BALL that offers\\na higher POKéMON catch rate than\\na standard POKé BALL.",
+      "description_english": "A good, quality BALL that offers\\na higher POKéMON catch rate than\\na standard MONSTER BALL.",
       "importance": 0,
       "registrability": 0,
       "pocket": "POCKET_POKE_BALLS",

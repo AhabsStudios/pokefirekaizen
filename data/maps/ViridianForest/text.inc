@@ -66,10 +66,10 @@ ViridianForest_Text_CharliePostBattle::
     .string "They're a lot of fun!$"
 
 ViridianForest_Text_RanOutOfPokeBalls::
-    .string "I was throwing POKé BALLS to\n"
+    .string "I was throwing MONSTER BALLS to\n"
     .string "catch POKéMON, and I ran out.\p"
     .string "That's why you can never have too\n"
-    .string "many POKé BALLS.$"
+    .string "many MONSTER BALLS.$"
 
 ViridianForest_Text_AvoidGrassyAreasWhenWeak::
     .string "TRAINER TIPS\p"

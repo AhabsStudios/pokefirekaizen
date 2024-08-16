@@ -84,7 +84,7 @@ SaffronCity_Text_FullHealCuresStatus::
 
 SaffronCity_Text_GreatBallImprovedCatchRate::
     .string "TRAINER TIPS\p"
-    .string "The new GREAT BALL offers improved\n"
+    .string "The new SUPER BALL offers improved\n"
     .string "catching rates.\p"
     .string "Try it on those hard-to-catch\n"
     .string "POKéMON.$"

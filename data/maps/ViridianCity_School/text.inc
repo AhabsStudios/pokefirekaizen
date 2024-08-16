@@ -10,7 +10,7 @@ ViridianCity_School_Text_ReadBlackboardCarefully::
 ViridianCity_School_Text_NotebookFirstPage::
     .string "Let's check out the notebook.\p"
     .string "First page…\p"
-    .string "POKé BALLS are used to catch\n"
+    .string "MONSTER BALLS are used to catch\n"
     .string "POKéMON.\p"
     .string "Up to six POKéMON can be carried\n"
     .string "in your party.\p"

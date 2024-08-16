@@ -1,5 +1,5 @@
 Route4_PokemonCenter_1F_Text_CanHaveSixMonsWithYou::
-    .string "Okay, set six POKé BALLS in my\n"
+    .string "Okay, set six MONSTER BALLS in my\n"
     .string "belt…\p"
     .string "Yeah, that'll do it. At most, you\n"
     .string "can have six POKéMON with you.$"

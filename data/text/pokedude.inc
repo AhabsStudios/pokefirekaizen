@@ -97,7 +97,7 @@ Pokedude_Text_YeahWeWon::
 Pokedude_Text_WeakenMonBeforeCatching::
 	.string "POKé DUDE: When you're trying to\n"
 	.string "catch a POKéMON, don't throw any\l"
-	.string "POKé BALLS right away.\p"
+	.string "MONSTER BALLS right away.\p"
 	.string "First, you need to weaken it by\n"
 	.string "reducing its HP.$"
 
@@ -121,10 +121,10 @@ Pokedude_Text_CantDoubleUpOnStatus::
 
 Pokedude_Text_LetMeThrowBall::
 	.string "Okay!\n"
-	.string "Let me throw my POKé BALL!$"
+	.string "Let me throw my MONSTER BALL!$"
 
 Pokedude_Text_PickBestKindOfBall::
-	.string "Before you throw a POKé BALL,\n"
+	.string "Before you throw a MONSTER BALL,\n"
 	.string "consider the condition and the\l"
 	.string "type of POKéMON, and pick the kind\l"
 	.string "of BALL that would work best.$"

@@ -119,7 +119,7 @@ Help_Text_RanOutOfPotions::
 	.string "I ran out of POTIONS.$"
 
 Help_Text_CanIBuyPokeBalls::
-	.string "Can I buy POKé BALLS?$"
+	.string "Can I buy MONSTER BALLS?$"
 
 Help_Text_WhatsATrainer::
 	.string "What's a TRAINER?$"
@@ -349,7 +349,7 @@ Help_Text_AnswerCantCatchMons::
 	.string "Try reducing its HP some more, and\l"
 	.string "try to weaken it with paralysis or sleep\l"
 	.string "before trying to catch it.\l"
-	.string "If the POKé BALL rocks for a while,\l"
+	.string "If the MONSTER BALL rocks for a while,\l"
 	.string "the quarry is close to being caught!$"
 
 Help_Text_AnswerRanOutOfPotions::
@@ -361,11 +361,11 @@ Help_Text_AnswerRanOutOfPotions::
 	.string "visiting a town with a POKéMON MART.$"
 
 Help_Text_AnswerCanIBuyPokeBalls::
-	.string "You may buy POKé BALLS at any\n"
+	.string "You may buy MONSTER BALLS at any\n"
 	.string "POKéMON MART in any town.\l"
 	.string "You will not find POKéMON MARTS on\l"
 	.string "roads, in forests, or in caves.\l"
-	.string "Stock up on POKé BALLS while you are\l"
+	.string "Stock up on BALLS while you're\l"
 	.string "visiting a town with a POKéMON MART.$"
 
 Help_Text_AnswerWhatsATrainer::
@@ -553,7 +553,7 @@ Help_Text_UsingKeyItem::
 	.string "  Using a key item$"
 
 Help_Text_UsingPokeBall::
-	.string "  Using a POKé BALL$"
+	.string "  Using a MONSTER BALL$"
 
 Help_Text_UsingPlayer::
 	.string " Using “{PLAYER}”$"
@@ -973,7 +973,7 @@ Help_Text_HowToUseBag2::
 
 Help_Text_HowToReadPokedex::
 	.string "{CIRCLE_1} POKéMON that you have caught are\n"
-	.string "   identified by a POKé BALL mark on\n"
+	.string "   identified by a MONSTER BALL mark on\n"
 	.string "   the POKéDEX list.\n"
 	.string "{CIRCLE_2} A caught POKéMON will provide a\n"
 	.string "   large amount of data.\n"
@@ -1130,7 +1130,7 @@ Help_Text_KeyItems::
 	.string "KEY ITEMS$"
 
 Help_Text_PokeBalls::
-	.string "POKé BALLS$"
+	.string "MONSTER BALLS$"
 
 Help_Text_Pokedex::
 	.string "POKéDEX$"
@@ -1368,10 +1368,10 @@ Help_Text_DefineKeyItems::
 	.string "without opening the MENU and BAG.$"
 
 Help_Text_DefinePokeBalls::
-	.string "POKé BALLS, which are used for\n"
+	.string "MONSTER BALLS, which are used for\n"
 	.string "catching wild POKéMON, are placed in\l"
 	.string "the POKé BALLS POCKET.\l"
-	.string "POKé BALLS may be bought at POKéMON\l"
+	.string "MONSTER BALLS may be bought at POKéMON\l"
 	.string "MARTS. They may be used, given to a\l"
 	.string "POKéMON to hold, or tossed out as\l"
 	.string "garbage.$"

@@ -19,7 +19,7 @@ SilphCo_5F_Text_Grunt1PostBattle::
     .string "TEAM ROCKET!$"
 
 SilphCo_5F_Text_BeauIntro::
-    .string "We study POKé BALL technology on\n"
+    .string "We study MONSTER BALL technology on\n"
     .string "this floor.$"
 
 SilphCo_5F_Text_BeauDefeat::
