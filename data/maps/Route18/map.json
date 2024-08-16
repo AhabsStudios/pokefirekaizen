@@ -71,14 +71,14 @@
   ],
   "warp_events": [
     {
-      "x": 42,
+      "x": 41,
       "y": 9,
       "elevation": 3,
       "dest_map": "MAP_ROUTE18_EAST_ENTRANCE_1F",
       "dest_warp_id": "0"
     },
     {
-      "x": 47,
+      "x": 48,
       "y": 9,
       "elevation": 3,
       "dest_map": "MAP_ROUTE18_EAST_ENTRANCE_1F",
