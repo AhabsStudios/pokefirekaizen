@@ -16,12 +16,12 @@ Route10_Text_ClarkIntro::
 Route10_Text_ClarkDefeat::
     .string "Ha-haha!\n"
     .string "Not laughing!\l"
-    .string "Ha-hay fever! Haha-ha-choo!$"
+    .string "I ate some weird mushroom!$"
 
 Route10_Text_ClarkPostBattle::
-    .string "Haha-ha-choo!\n"
-    .string "Ha-choo!\l"
-    .string "Snort! Snivel!$"
+    .string "Haha-ha-haha!\n"
+    .string "Ha-haha!\l"
+    .string "Haha! Ha…Haha!$"
 
 Route10_Text_HermanIntro::
     .string "Hi, kid!\n"

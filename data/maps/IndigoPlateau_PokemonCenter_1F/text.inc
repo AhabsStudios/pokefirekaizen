@@ -2,7 +2,8 @@ IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice::
     .string "Yo!\n"
     .string "Champ in the making!\p"
     .string "At the POKéMON LEAGUE, you will\n"
-    .string "face the ELITE FOUR all in a row.\p"
+    .string "face the FOUR HEAVNELY KINGS all\n 
+	.string "in a row.\p"
     .string "If you lose, you have to start all\n"
     .string "over again!\p"
     .string "This is it!\n"
@@ -10,7 +11,7 @@ IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice::
 
 IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck::
     .string "From here on, you face the\n"
-    .string "ELITE FOUR one by one.\p"
+    .string "FOUR HEAVENLY KINGS one by one.\p"
     .string "If you win, a door opens to the\n"
     .string "next TRAINER. Good luck!$"
 
@@ -38,6 +39,5 @@ IndigoPlateau_PokemonCenter_1F_Text_LancesCousinGymLeaderFarAway::
     .string "Maybe becoming an ELITE FOUR\n"
     .string "member is in the blood.\p"
     .string "From what I've heard, LANCE has\n"
-    .string "a cousin who's a GYM LEADER\l"
+    .string "a cousin who's a GYM LEADER\n"
     .string "somewhere far away.$"
-

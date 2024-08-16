@@ -155,9 +155,7 @@ CeruleanCity_Text_ThisIsCeruleanCave::
     .string "be allowed inside there.\p"
     .string "You'd have to be strong enough to\n"
     .string "become the POKéMON LEAGUE\l"
-    .string "CHAMPION for starters.\p"
-    .string "And, you would have to have\n"
-    .string "made a great achievement.$"
+    .string "CHAMPION.$"
 
 CeruleanCity_Text_CitySign::
     .string "CERULEAN CITY\n"
@@ -166,14 +164,13 @@ CeruleanCity_Text_CitySign::
 
 CeruleanCity_Text_TrainerTipsHeldItems::
     .string "TRAINER TIPS\p"
-    .string "A POKéMON can be made to hold\n"
-    .string "an item.\p"
-    .string "Some items can even be used by\n"
-    .string "the holding POKéMON in battle.$"
+    .string "When a POKéMON evolves, you can\n"
+	.string "cancel the evolution by pressing\n"
+	.string "the B Button.$"
 
 CeruleanCity_Text_BikeShopSign::
     .string "Grass and caves handled easily!\n"
-    .string "BIKE SHOP$"
+    .string "MIRACLE CYCLE$"
 
 CeruleanCity_Text_GymSign::
     .string "CERULEAN CITY POKéMON GYM\n"

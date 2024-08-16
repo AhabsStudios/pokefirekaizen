@@ -25,10 +25,10 @@ ViridianCity_Text_ExplainCaterpieWeedle::
     .string "stabbed by WEEDLE's POISON STING.$"
 
 ViridianCity_Text_GrandpaHasntHadCoffeeYet::
-    .string "Oh, Grandpa!\n"
-    .string "Don't be so mean!\p"
-    .string "I'm so sorry.\n"
-    .string "He hasn't had his coffee yet.$"
+    .string "Good grief, Grandpa!\n"
+    .string "Sleeping here of all places!\p"
+    .string "I'm so sorry. We'll have to\n"
+    .string "wait for him to sober up.$"
 
 ViridianCity_Text_GoShoppingInPewterOccasionally::
     .string "I go shopping in PEWTER CITY\n"
@@ -37,13 +37,13 @@ ViridianCity_Text_GoShoppingInPewterOccasionally::
     .string "VIRIDIAN FOREST when I go.$"
 
 ViridianCity_Text_ThisIsPrivateProperty::
-    .string "I absolutely forbid you from\n"
-    .string "going through here!\p"
-    .string "This is private property!$"
+    .string "Hic! Hold it right there!\n"
+    .string "Lissen to what I hafta say!\p"
+    .string "… Hey! Don' go, I said!$"
 
 ViridianCity_Text_ShowYouHowToCatchMons::
-    .string "Well, now, I've had my coffee, and\n"
-    .string "that's what I need to get going!\p"
+    .string "Mmmn… Looks like I was pretty\n"
+    .string "drunk then!\p"
     .string "Hm?\n"
     .string "What is that red box you have?\p"
     .string "Ah, so you're working on your\n"
@@ -69,20 +69,20 @@ ViridianCity_Text_WatchThatToLearnBasics::
     .string "of being a POKéMON TRAINER.$"
 
 ViridianCity_Text_WeakenMonsFirstToCatch::
-    .string "Well, now, I've had my coffee, and\n"
-    .string "that's what I need to get going!\p"
-    .string "But I made it too strong.\n"
-    .string "It gave me a headache…\p"
+    .string "Mmmn... Looks like I was pretty\n"
+    .string "drunk then!\p"
+    .string "But my head hurts.\n"
+    .string "I'm giving that stuff up!\p"
     .string "Incidentally, are you filling your\n"
     .string "POKéDEX?\p"
     .string "At first, focus on weakening the\n"
     .string "POKéMON before trying to catch it.$"
 
 ViridianCity_Text_HowsTeachyTVHelping::
-    .string "Well, now, I've had my coffee, and\n"
-    .string "that's what I need to get going!\p"
-    .string "But I made it too strong.\n"
-    .string "It gave me a headache…\p"
+    .string "Mmmn... Looks like I was pretty\n"
+    .string "drunk then!\p"
+    .string "But my head hurts.\n"
+    .string "I'm giving that stuff up!\p"
     .string "Incidentally, is my old TEACHY TV\n"
     .string "helping you?$"
 
