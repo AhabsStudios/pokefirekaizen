@@ -2056,7 +2056,7 @@ const u8 gNinjaskPokedexTextUnused[] = _("");
 
 const u8 gShedinjaPokedexText[] = _(
     "A most peculiar POKéMON that somehow\n"
-    "appears in a POKé BALL when a NINCADA\n"
+    "appears in a MONSTER BALL when a NINCADA\n"
     "evolves.");
 
 const u8 gShedinjaPokedexTextUnused[] = _("");

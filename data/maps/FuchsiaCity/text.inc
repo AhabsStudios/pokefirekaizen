@@ -51,7 +51,7 @@ FuchsiaCity_Text_ChanseySign::
 
 FuchsiaCity_Text_VoltorbSign::
     .string "Name: VOLTORB\n"
-    .string "The very image of a POKé BALL.$"
+    .string "The very image of a MONSTER BALL.$"
 
 FuchsiaCity_Text_KangaskhanSign::
     .string "Name: KANGASKHAN\p"

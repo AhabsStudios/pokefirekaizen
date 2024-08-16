@@ -703,7 +703,7 @@ const u8 gKinglerPokedexTextUnused[] = _("");
 
 const u8 gVoltorbPokedexText[] = _(
     "Usually found in power plants. Easily\n"
-    "mistaken for a POKé BALL, it has\n"
+    "mistaken for a MONSTER BALL, it has\n"
     "zapped many people.");
 
 const u8 gVoltorbPokedexTextUnused[] = _("");
@@ -2047,7 +2047,7 @@ const u8 gNinjaskPokedexTextUnused[] = _("");
 
 const u8 gShedinjaPokedexText[] = _(
     "A most peculiar POKéMON that somehow\n"
-    "appears in a POKé BALL when a NINCADA\n"
+    "appears in a MONSTER BALL when a NINCADA\n"
     "evolves.");
 
 const u8 gShedinjaPokedexTextUnused[] = _("");

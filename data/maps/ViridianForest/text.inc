@@ -90,7 +90,7 @@ ViridianForest_Text_CantCatchOwnedMons::
     .string "TRAINER TIPS\p"
     .string "You can't catch a POKéMON that\n"
     .string "belongs to someone else.\p"
-    .string "Throw POKé BALLS only at wild\n"
+    .string "Throw MONSTER BALLS only at wild\n"
     .string "POKéMON to catch them!$"
 
 ViridianForest_Text_WeakenMonsBeforeCapture::

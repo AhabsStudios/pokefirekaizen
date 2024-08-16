@@ -718,7 +718,7 @@ Help_Text_HowToUseBag::
 	.string "   Pad to check the data headings:\n"
 	.string "   “ITEMS”\n"
 	.string "   “KEY ITEMS”\n"
-	.string "   “POKé BALLS”\n"
+	.string "   “MONSTER BALLS”\n"
 	.string "   Press up or down to select an item.$"
 
 Help_Text_HowToUseAnItem::
@@ -739,12 +739,12 @@ Help_Text_HowToUseKeyItem::
 
 Help_Text_HowToUsePokeBall::
 	.string "{CIRCLE_1} While battling a wild POKéMON,\n"
-	.string "   select the BAG's “POKé BALLS”\n"
+	.string "   select the BAG's “MONSTER BALLS”\n"
 	.string "   POCKET.\n"
 	.string "{CIRCLE_2} Press up or down on the {PLUS} Control\n"
-	.string "   Pad to select a POKé BALL.\n"
+	.string "   Pad to select a MONSTER BALL.\n"
 	.string "{CIRCLE_3} Select “USE” to throw the selected\n"
-	.string "   POKé BALL.$"
+	.string "   MONSTER BALL.$"
 
 Help_Text_HowToUsePlayer::
 	.string "{CIRCLE_1} Select “{PLAYER}” on the MENU.\n"
@@ -968,7 +968,7 @@ Help_Text_HowToUseBag2::
 	.string "   Pad to check the data headings:\n"
 	.string "   “ITEMS”\n"
 	.string "   “KEY ITEMS”\n"
-	.string "   “POKé BALLS”\n"
+	.string "   “MONSTER BALLS”\n"
 	.string "   Press up or down to select an item.$"
 
 Help_Text_HowToReadPokedex::
@@ -1370,7 +1370,7 @@ Help_Text_DefineKeyItems::
 Help_Text_DefinePokeBalls::
 	.string "MONSTER BALLS, which are used for\n"
 	.string "catching wild POKéMON, are placed in\l"
-	.string "the POKé BALLS POCKET.\l"
+	.string "the MONSTER BALLS POCKET.\l"
 	.string "MONSTER BALLS may be bought at POKéMON\l"
 	.string "MARTS. They may be used, given to a\l"
 	.string "POKéMON to hold, or tossed out as\l"
