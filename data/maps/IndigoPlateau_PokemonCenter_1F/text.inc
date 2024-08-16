@@ -2,7 +2,7 @@ IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice::
     .string "Yo!\n"
     .string "Champ in the making!\p"
     .string "At the POKéMON LEAGUE, you will\n"
-    .string "face the FOUR HEAVNELY KINGS all\n 
+    .string "face the FOUR HEAVNELY KINGS all\l" 
 	.string "in a row.\p"
     .string "If you lose, you have to start all\n"
     .string "over again!\p"
@@ -41,3 +41,4 @@ IndigoPlateau_PokemonCenter_1F_Text_LancesCousinGymLeaderFarAway::
     .string "From what I've heard, LANCE has\n"
     .string "a cousin who's a GYM LEADER\n"
     .string "somewhere far away.$"
+	
