@@ -155,6 +155,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM32_DOUBLE_TEAM)
                                         | TMHM(TM33_REFLECT)
                                         | TMHM(TM34_BIDE)
+                                        | TMHM(TM40_SKULL_BASH)
                                         | TMHM(TM44_REST)
                                         | TMHM(TM50_SUBSTITUTE)
                                         | TMHM(HM03_SURF)
@@ -180,6 +181,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM33_REFLECT)
                                         | TMHM(TM34_BIDE)
                                         | TMHM(TM44_REST)
+                                        | TMHM(TM40_SKULL_BASH)
                                         | TMHM(TM50_SUBSTITUTE)
                                         | TMHM(HM03_SURF)
                                         | TMHM(HM04_STRENGTH)),
