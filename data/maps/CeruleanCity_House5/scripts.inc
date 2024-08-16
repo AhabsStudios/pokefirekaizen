@@ -83,29 +83,29 @@ CeruleanCity_House5_EventScript_RevivalHerb::
 	end
 
 CeruleanCity_House5_EventScript_Protein::
-	bufferitemname STR_VAR_1, ITEM_PROTEIN
-	setvar VAR_0x8008, ITEM_PROTEIN
+	bufferitemname STR_VAR_1, ITEM_TAURINE
+	setvar VAR_0x8008, ITEM_TAURINE
 	setvar VAR_0x8009, 1000
 	goto CeruleanCity_House5_EventScript_ExchangePowderForItem
 	end
 
 CeruleanCity_House5_EventScript_Iron::
-	bufferitemname STR_VAR_1, ITEM_IRON
-	setvar VAR_0x8008, ITEM_IRON
+	bufferitemname STR_VAR_1, ITEM_BROMHEXINE
+	setvar VAR_0x8008, ITEM_BROMHEXINE
 	setvar VAR_0x8009, 1000
 	goto CeruleanCity_House5_EventScript_ExchangePowderForItem
 	end
 
 CeruleanCity_House5_EventScript_Carbos::
-	bufferitemname STR_VAR_1, ITEM_CARBOS
-	setvar VAR_0x8008, ITEM_CARBOS
+	bufferitemname STR_VAR_1, ITEM_INDOMETACIN
+	setvar VAR_0x8008, ITEM_INDOMETACIN
 	setvar VAR_0x8009, 1000
 	goto CeruleanCity_House5_EventScript_ExchangePowderForItem
 	end
 
 CeruleanCity_House5_EventScript_Calcium::
-	bufferitemname STR_VAR_1, ITEM_CALCIUM
-	setvar VAR_0x8008, ITEM_CALCIUM
+	bufferitemname STR_VAR_1, ITEM_LYSOZYME
+	setvar VAR_0x8008, ITEM_LYSOZYME
 	setvar VAR_0x8009, 1000
 	goto CeruleanCity_House5_EventScript_ExchangePowderForItem
 	end

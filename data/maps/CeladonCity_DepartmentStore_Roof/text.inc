@@ -22,7 +22,7 @@ CeladonCity_DepartmentStore_Roof_Text_ExplainTM13::
 
 CeladonCity_DepartmentStore_Roof_Text_YaySodaPopHaveThis::
     .string "Yay!\p"
-    .string "SODA POP!\p"
+    .string "PSYCO SODA!\p"
     .string "Thank you!\n"
     .string "You can have this from me!$"
 
@@ -32,7 +32,7 @@ CeladonCity_DepartmentStore_Roof_Text_ExplainTM48::
 
 CeladonCity_DepartmentStore_Roof_Text_YayLemonadeHaveThis::
     .string "Yay!\p"
-    .string "LEMONADE!\p"
+    .string "MIX AU LAIT!\p"
     .string "Thank you!\n"
     .string "You can have this from me!$"
 

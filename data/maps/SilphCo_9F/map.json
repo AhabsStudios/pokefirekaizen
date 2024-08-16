@@ -254,8 +254,8 @@
       "x": 5,
       "y": 8,
       "elevation": 0,
-      "item": "ITEM_CALCIUM",
-      "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_9F_CALCIUM",
+      "item": "ITEM_LYSOZYME",
+      "flag": "FLAG_HIDDEN_ITEM_SILPH_CO_9F_LYSOZYME",
       "quantity": 1,
       "underfoot": false
     },

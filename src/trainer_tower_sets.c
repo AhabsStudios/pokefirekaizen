@@ -326,7 +326,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Single_Unused = {
 	.id = 3,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_SINGLE,
-	.prize = TTPRIZE_IRON,
+	.prize = TTPRIZE_BROMHEXINE,
 	.trainers = {
 	    {
 			.name = _("MILY"),
@@ -778,7 +778,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Double_6 = {
 	.id = 5,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_DOUBLE,
-	.prize = TTPRIZE_CALCIUM,
+	.prize = TTPRIZE_LYSOZYME,
 	.trainers = {
 	    {
 			.name = _("EMY & ALEK"),
@@ -2715,7 +2715,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Double_3 = {
 	.id = 12,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_DOUBLE,
-	.prize = TTPRIZE_IRON,
+	.prize = TTPRIZE_BROMHEXINE,
 	.trainers = {
 	    {
 			.name = _("RIC & RENE"),
@@ -4045,7 +4045,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Knockout_3 = {
 	.id = 16,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_KNOCKOUT,
-	.prize = TTPRIZE_CALCIUM,
+	.prize = TTPRIZE_LYSOZYME,
 	.trainers = {
 	    {
 			.name = _("CAMRYN"),
@@ -4484,7 +4484,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Single_6 = {
 	.id = 17,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_SINGLE,
-	.prize = TTPRIZE_CARBOS,
+	.prize = TTPRIZE_INDOMETACIN,
 	.trainers = {
 	    {
 			.name = _("BRADEN"),
@@ -5840,7 +5840,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Knockout_7 = {
 	.id = 23,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_KNOCKOUT,
-	.prize = TTPRIZE_PROTEIN,
+	.prize = TTPRIZE_TAURINE,
 	.trainers = {
 	    {
 			.name = _("PRISCILLA"),
@@ -7028,7 +7028,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Mixed_2 = {
 	.id = 27,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_SINGLE,
-	.prize = TTPRIZE_PROTEIN,
+	.prize = TTPRIZE_TAURINE,
 	.trainers = {
 	    {
 			.name = _("LORENZO"),
@@ -7480,7 +7480,7 @@ static const struct TrainerTowerFloor sTrainerTowerFloor_Double_7 = {
 	.id = 29,
 	.floorIdx = MAX_TRAINER_TOWER_FLOORS,
 	.challengeType = CHALLENGE_TYPE_DOUBLE,
-	.prize = TTPRIZE_CARBOS,
+	.prize = TTPRIZE_INDOMETACIN,
 	.trainers = {
 		{
 			.name = _("AXE & REN"),

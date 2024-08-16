@@ -48,7 +48,7 @@ Route8_WestEntrance_EventScript_GiveSodaPop::
 
 @ Unused
 Route8_WestEntrance_EventScript_GiveLemonade::
-	removeitem ITEM_LEMONADE
+	removeitem ITEM_MIX_AU_LAIT
 	goto Route8_WestEntrance_EventScript_GuardDrinkTea
 	end
 

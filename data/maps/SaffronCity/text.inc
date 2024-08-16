@@ -76,7 +76,7 @@ SaffronCity_Text_GymSign::
 
 SaffronCity_Text_FullHealCuresStatus::
     .string "TRAINER TIPS\p"
-    .string "FULL HEAL cures all ailments like\n"
+    .string "HEAL-ALL cures all ailments like\n"
     .string "burns, paralysis, poisoning,\l"
     .string "freezing, and sleep.\p"
     .string "It costs a bit more, but it's more\n"

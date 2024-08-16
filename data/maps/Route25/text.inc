@@ -13,13 +13,13 @@ Route25_Text_JoeyPostBattle::
 
 Route25_Text_DanIntro::
     .string "Dad took me to a great party on\n"
-    .string "the S.S. ANNE at VERMILION CITY.$"
+    .string "the ST. ANNE at VERMILION CITY.$"
 
 Route25_Text_DanDefeat::
     .string "I'm not mad!$"
 
 Route25_Text_DanPostBattle::
-    .string "On the S.S. ANNE, I saw TRAINERS\n"
+    .string "On the ST. ANNE, I saw TRAINERS\n"
     .string "from around the world.$"
 
 Route25_Text_FlintIntro::

@@ -51,11 +51,11 @@ CeladonCity_DepartmentStore_5F_EventScript_ClerkVitamins::
 	.align 2
 CeladonCity_DepartmentStore_5F_Vitamins::
 	.2byte ITEM_HP_UP
-	.2byte ITEM_PROTEIN
-	.2byte ITEM_IRON
-	.2byte ITEM_CALCIUM
+	.2byte ITEM_TAURINE
+	.2byte ITEM_BROMHEXINE
+	.2byte ITEM_LYSOZYME
 	.2byte ITEM_ZINC
-	.2byte ITEM_CARBOS
+	.2byte ITEM_INDOMETACIN
 	.2byte ITEM_NONE
 	release
 	end

@@ -12,10 +12,10 @@
 #define CHALLENGE_STATUS_NORMAL   2  // Not started or ongoing
 
 #define TTPRIZE_HP_UP               0
-#define TTPRIZE_PROTEIN             1
-#define TTPRIZE_IRON                2
-#define TTPRIZE_CARBOS              3
-#define TTPRIZE_CALCIUM             4
+#define TTPRIZE_TAURINE             1
+#define TTPRIZE_BROMHEXINE                2
+#define TTPRIZE_INDOMETACIN              3
+#define TTPRIZE_LYSOZYME             4
 #define TTPRIZE_ZINC                5
 #define TTPRIZE_BRIGHT_POWDER       6
 #define TTPRIZE_WHITE_HERB          7

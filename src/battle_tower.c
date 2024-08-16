@@ -160,10 +160,10 @@ const u16 gBattleTowerBannedSpecies[] = {
 
 static const u16 sShortStreakPrizes[] = {
     ITEM_HP_UP,
-    ITEM_PROTEIN,
-    ITEM_IRON,
-    ITEM_CALCIUM,
-    ITEM_CARBOS,
+    ITEM_TAURINE,
+    ITEM_BROMHEXINE,
+    ITEM_LYSOZYME,
+    ITEM_INDOMETACIN,
     ITEM_ZINC
 };
 

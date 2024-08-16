@@ -369,7 +369,7 @@
       "secondaryId": 0
     },
     {
-      "english": "FULL HEAL",
+      "english": "HEAL-ALL",
       "itemId": "ITEM_FULL_HEAL",
       "price": 600,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -433,7 +433,7 @@
       "secondaryId": 0
     },
     {
-      "english": "SODA POP",
+      "english": "PSYCO SODA",
       "itemId": "ITEM_SODA_POP",
       "price": 300,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -449,8 +449,8 @@
       "secondaryId": 0
     },
     {
-      "english": "LEMONADE",
-      "itemId": "ITEM_LEMONADE",
+      "english": "MIX AU LAIT",
+      "itemId": "ITEM_MIX_AU_LAIT",
       "price": 350,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 80,
@@ -1025,8 +1025,8 @@
       "secondaryId": 0
     },
     {
-      "english": "PROTEIN",
-      "itemId": "ITEM_PROTEIN",
+      "english": "TAURINE",
+      "itemId": "ITEM_TAURINE",
       "price": 9800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
@@ -1041,8 +1041,8 @@
       "secondaryId": 0
     },
     {
-      "english": "IRON",
-      "itemId": "ITEM_IRON",
+      "english": "BROMHEXINE",
+      "itemId": "ITEM_BROMHEXINE",
       "price": 9800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
@@ -1057,8 +1057,8 @@
       "secondaryId": 0
     },
     {
-      "english": "CARBOS",
-      "itemId": "ITEM_CARBOS",
+      "english": "INDOMETACIN",
+      "itemId": "ITEM_INDOMETACIN",
       "price": 9800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
@@ -1073,8 +1073,8 @@
       "secondaryId": 0
     },
     {
-      "english": "CALCIUM",
-      "itemId": "ITEM_CALCIUM",
+      "english": "LYSOZYME",
+      "itemId": "ITEM_LYSOZYME",
       "price": 9800,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
@@ -1089,7 +1089,7 @@
       "secondaryId": 0
     },
     {
-      "english": "RARE CANDY",
+      "english": "MYSTERY CANDY",
       "itemId": "ITEM_RARE_CANDY",
       "price": 4800,
       "holdEffect": "HOLD_EFFECT_NONE",
@@ -4246,7 +4246,7 @@
       "price": 0,
       "holdEffect": "HOLD_EFFECT_NONE",
       "holdEffectParam": 0,
-      "description_english": "The ticket required for sailing on\\nthe ferry S.S. ANNE.\\nIt has a drawing of a ship on it.",
+      "description_english": "The ticket required for sailing on\\nthe ferry ST. ANNE.\\nIt has a drawing of a ship on it.",
       "importance": 1,
       "registrability": 0,
       "pocket": "POCKET_KEY_ITEMS",

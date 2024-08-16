@@ -135,7 +135,7 @@ RocketHideout_B4F_EventScript_ItemMaxEther::
 	end
 
 RocketHideout_B4F_EventScript_ItemCalcium::
-	finditem ITEM_CALCIUM
+	finditem ITEM_LYSOZYME
 	end
 
 PokemonTower_3F_EventScript_ItemEscapeRope::
@@ -171,7 +171,7 @@ Route12_EventScript_ItemTM16::
 	end
 
 Route12_EventScript_ItemIron::
-	finditem ITEM_IRON
+	finditem ITEM_BROMHEXINE
 	end
 
 Route15_EventScript_ItemTM20::
@@ -199,7 +199,7 @@ SafariZone_East_EventScript_ItemLeafStone::
 	end
 
 SafariZone_North_EventScript_ItemProtein::
-	finditem ITEM_PROTEIN
+	finditem ITEM_TAURINE
 	end
 
 SafariZone_North_EventScript_ItemTM40::
@@ -239,7 +239,7 @@ SilphCo_4F_EventScript_ItemFullHeal::
 	end
 
 SilphCo_5F_EventScript_ItemProtein::
-	finditem ITEM_PROTEIN
+	finditem ITEM_TAURINE
 	end
 
 SilphCo_5F_EventScript_ItemTM09::
@@ -259,7 +259,7 @@ SilphCo_6F_EventScript_ItemXSpecial::
 	end
 
 SilphCo_7F_EventScript_ItemCalcium::
-	finditem ITEM_CALCIUM
+	finditem ITEM_LYSOZYME
 	end
 
 SilphCo_7F_EventScript_ItemTM03::
@@ -267,7 +267,7 @@ SilphCo_7F_EventScript_ItemTM03::
 	end
 
 SilphCo_10F_EventScript_ItemCarbos::
-	finditem ITEM_CARBOS
+	finditem ITEM_INDOMETACIN
 	end
 
 SilphCo_10F_EventScript_ItemTM26::
@@ -299,7 +299,7 @@ PowerPlant_EventScript_ItemElixir::
 	end
 
 PokemonMansion_1F_EventScript_ItemCarbos::
-	finditem ITEM_CARBOS
+	finditem ITEM_INDOMETACIN
 	end
 
 PokemonMansion_1F_EventScript_ItemEscapeRope::
@@ -307,7 +307,7 @@ PokemonMansion_1F_EventScript_ItemEscapeRope::
 	end
 
 PokemonMansion_2F_EventScript_ItemCalcium::
-	finditem ITEM_CALCIUM
+	finditem ITEM_LYSOZYME
 	end
 
 PokemonMansion_3F_EventScript_ItemMaxPotion::
@@ -315,7 +315,7 @@ PokemonMansion_3F_EventScript_ItemMaxPotion::
 	end
 
 PokemonMansion_3F_EventScript_ItemIron::
-	finditem ITEM_IRON
+	finditem ITEM_BROMHEXINE
 	end
 
 PokemonMansion_B1F_EventScript_ItemTM14::
@@ -451,7 +451,7 @@ RockTunnel_B1F_EventScript_ItemMaxEther::
 	end
 
 SilphCo_8F_EventScript_ItemIron::
-	finditem ITEM_IRON
+	finditem ITEM_BROMHEXINE
 	end
 
 SilphCo_11F_EventScript_ItemZinc::
@@ -459,7 +459,7 @@ SilphCo_11F_EventScript_ItemZinc::
 	end
 
 PokemonMansion_1F_EventScript_ItemProtein::
-	finditem ITEM_PROTEIN
+	finditem ITEM_TAURINE
 	end
 
 PokemonMansion_2F_EventScript_ItemZinc::
@@ -535,7 +535,7 @@ OneIsland_KindleRoad_EventScript_ItemMaxRepel::
 	end
 
 OneIsland_KindleRoad_EventScript_ItemCarbos::
-	finditem ITEM_CARBOS
+	finditem ITEM_INDOMETACIN
 	end
 
 FiveIsland_Meadow_EventScript_ItemMaxPotion::

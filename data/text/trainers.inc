@@ -294,7 +294,7 @@ Route13_Text_GwenRematchIntro::
 
 Route13_Text_AlmaRematchIntro::
 	.string "I cleaned out my savings and\n"
-	.string "bought more CARBOS.$"
+	.string "bought more INDOMETACIN.$"
 
 Route13_Text_PerryRematchIntro::
 	.string "I'm not going to lose this time.\n"
@@ -647,7 +647,7 @@ Route25_Text_JoeyRematchIntro::
 
 Route25_Text_DanRematchIntro::
 	.string "Dad took me to a great party on\n"
-	.string "the S.S. ANNE at VERMILION CITY.$"
+	.string "the ST. ANNE at VERMILION CITY.$"
 
 Route25_Text_FlintRematchIntro::
 	.string "I'm a cool guy.\n"
