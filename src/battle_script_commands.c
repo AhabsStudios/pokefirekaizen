@@ -2331,8 +2331,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
             if (gBattleMons[gEffectBattler].status1)
                 break;
             // Secondary effects don't work on pokemon of the same move type
-            // Lick, Thunder/wave/shock
-            if (gCurrentMove != MOVE_THUNDER_WAVE && IS_BATTLER_OF_TYPE(gEffectBattler, gBattleMoves[gCurrentMove].type))
+            // Lick, Thunder/shock/bolt
+            if (!(gCurrentMove == MOVE_THUNDER_WAVE || gCurrentMove == MOVE_STUN_SPORE) && IS_BATTLER_OF_TYPE(gEffectBattler, gBattleMoves[gCurrentMove].type))
                 break;
 
             statusChanged = TRUE;
