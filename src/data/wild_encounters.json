@@ -3504,7 +3504,7 @@
                 "species": "SPECIES_RHYHORN"
               },
               {
-                "min_level": 30,
+                "min_level": 24,
                 "max_level": 30,
                 "species": "SPECIES_BULBASAUR"
               },
@@ -3529,7 +3529,7 @@
                 "species": "SPECIES_NIDORINA"
               },
               {
-                "min_level": 30,
+                "min_level": 28,
                 "max_level": 30,
                 "species": "SPECIES_IVYSAUR"
               },
