@@ -3108,6 +3108,7 @@ static const u32 sTMHMLearnsets[][2] =
                                         | TMHM(TM44_REST)
                                         | TMHM(TM45_THUNDER_WAVE)
                                         | TMHM(TM50_SUBSTITUTE)
+                                        | TMHM(HM02_FLY)
                                         | TMHM(HM03_SURF)
                                         | TMHM(HM04_STRENGTH)),
 
