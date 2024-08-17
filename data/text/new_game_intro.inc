@@ -184,7 +184,7 @@ gPikachuIntro_Text_Page3::
     .string "StarGazaar, MaxElixir, TastySnax\n"
     .string "\n"
     .string "This is KAIZEN ORIGINAL GAME\n"
-    .string "Public Beta Version 1.0.15 $"
+    .string "Public Beta Version 1.0.16 $"
 
 gOakSpeech_Text_WelcomeToTheWorld::
     .string "Hello, there!\n"
