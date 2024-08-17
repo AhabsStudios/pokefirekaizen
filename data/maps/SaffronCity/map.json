@@ -13,34 +13,13 @@
   "show_map_name": true,
   "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
-  "connections": [
-    {
-      "map": "MAP_ROUTE5",
-      "offset": 0,
-      "direction": "up"
-    },
-    {
-      "map": "MAP_ROUTE6",
-      "offset": 12,
-      "direction": "down"
-    },
-    {
-      "map": "MAP_ROUTE7",
-      "offset": 10,
-      "direction": "left"
-    },
-    {
-      "map": "MAP_ROUTE8",
-      "offset": 10,
-      "direction": "right"
-    }
-  ],
+  "connections": 0,
   "object_events": [
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 22,
-      "y": 15,
+      "x": 24,
+      "y": 17,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -53,8 +32,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 26,
-      "y": 16,
+      "x": 28,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 4,
@@ -67,8 +46,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 48,
-      "y": 13,
+      "x": 50,
+      "y": 15,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -81,8 +60,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 27,
-      "y": 22,
+      "x": 29,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -95,8 +74,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 25,
-      "y": 33,
+      "x": 27,
+      "y": 35,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 7,
@@ -109,8 +88,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 34,
-      "y": 31,
+      "x": 36,
+      "y": 33,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -123,8 +102,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 30,
-      "y": 39,
+      "x": 32,
+      "y": 41,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 5,
@@ -137,8 +116,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
-      "x": 48,
-      "y": 24,
+      "x": 50,
+      "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 4,
@@ -151,8 +130,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
-      "x": 37,
-      "y": 32,
+      "x": 39,
+      "y": 34,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
       "movement_range_x": 1,
@@ -165,8 +144,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_WORKER_M",
-      "x": 21,
-      "y": 23,
+      "x": 23,
+      "y": 25,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_AROUND",
       "movement_range_x": 1,
@@ -179,8 +158,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_MAN",
-      "x": 39,
-      "y": 16,
+      "x": 41,
+      "y": 18,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_UP",
       "movement_range_x": 1,
@@ -193,8 +172,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BOY",
-      "x": 44,
-      "y": 22,
+      "x": 46,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -207,8 +186,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_PIDGEOT",
-      "x": 45,
-      "y": 22,
+      "x": 47,
+      "y": 24,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_FACE_DOWN",
       "movement_range_x": 1,
@@ -221,8 +200,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
-      "x": 32,
-      "y": 39,
+      "x": 34,
+      "y": 41,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 5,
@@ -235,8 +214,8 @@
     {
       "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
-      "x": 47,
-      "y": 24,
+      "x": 49,
+      "y": 26,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -249,106 +228,106 @@
   ],
   "warp_events": [
     {
-      "x": 33,
-      "y": 30,
+      "x": 35,
+      "y": 32,
       "elevation": 0,
       "dest_map": "MAP_SILPH_CO_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 22,
-      "y": 14,
+      "x": 24,
+      "y": 16,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_COPYCATS_HOUSE_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 41,
-      "y": 12,
+      "x": 43,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_DOJO",
       "dest_warp_id": "1"
     },
     {
-      "x": 48,
-      "y": 12,
+      "x": 50,
+      "y": 14,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_GYM",
       "dest_warp_id": "1"
     },
     {
-      "x": 27,
-      "y": 21,
+      "x": 29,
+      "y": 23,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_HOUSE",
       "dest_warp_id": "1"
     },
     {
-      "x": 39,
-      "y": 21,
+      "x": 41,
+      "y": 23,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_MART",
       "dest_warp_id": "1"
     },
     {
-      "x": 23,
-      "y": 38,
+      "x": 25,
+      "y": 40,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_POKEMON_CENTER_1F",
       "dest_warp_id": "1"
     },
     {
-      "x": 43,
-      "y": 38,
+      "x": 45,
+      "y": 40,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_MR_PSYCHICS_HOUSE",
       "dest_warp_id": "1"
     },
     {
-      "x": 8,
-      "y": 27,
+      "x": 10,
+      "y": 29,
       "elevation": 3,
       "dest_map": "MAP_ROUTE7_EAST_ENTRANCE",
       "dest_warp_id": "2"
     },
     {
-      "x": 34,
-      "y": 3,
+      "x": 36,
+      "y": 5,
       "elevation": 3,
       "dest_map": "MAP_ROUTE5_SOUTH_ENTRANCE",
       "dest_warp_id": "2"
     },
     {
-      "x": 58,
-      "y": 27,
+      "x": 60,
+      "y": 29,
       "elevation": 3,
       "dest_map": "MAP_ROUTE8_WEST_ENTRANCE",
       "dest_warp_id": "1"
     },
     {
-      "x": 34,
-      "y": 48,
+      "x": 36,
+      "y": 50,
       "elevation": 3,
       "dest_map": "MAP_ROUTE6_NORTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
-      "x": 34,
-      "y": 49,
+      "x": 36,
+      "y": 51,
       "elevation": 3,
       "dest_map": "MAP_ROUTE6_NORTH_ENTRANCE",
       "dest_warp_id": "0"
     },
     {
-      "x": 34,
-      "y": 2,
+      "x": 36,
+      "y": 4,
       "elevation": 3,
       "dest_map": "MAP_ROUTE5_SOUTH_ENTRANCE",
       "dest_warp_id": "2"
     },
     {
-      "x": 47,
-      "y": 21,
+      "x": 49,
+      "y": 23,
       "elevation": 0,
       "dest_map": "MAP_SAFFRON_CITY_POKEMON_TRAINER_FAN_CLUB",
       "dest_warp_id": "0"
@@ -360,72 +339,72 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 29,
-      "y": 14,
+      "x": 31,
+      "y": 16,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_CitySign"
     },
     {
       "type": "sign",
-      "x": 42,
-      "y": 14,
+      "x": 44,
+      "y": 16,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_DojoSign"
     },
     {
       "type": "sign",
-      "x": 13,
-      "y": 25,
+      "x": 15,
+      "y": 27,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_SilphProductSign"
     },
     {
       "type": "sign",
-      "x": 18,
-      "y": 30,
+      "x": 20,
+      "y": 32,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_TrainerTips2"
     },
     {
       "type": "sign",
-      "x": 29,
-      "y": 31,
+      "x": 31,
+      "y": 33,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_SilphCoSign"
     },
     {
       "type": "sign",
-      "x": 54,
-      "y": 25,
+      "x": 56,
+      "y": 27,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_TrainerTips1"
     },
     {
       "type": "sign",
-      "x": 50,
-      "y": 14,
+      "x": 52,
+      "y": 16,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_GymSign"
     },
     {
       "type": "sign",
-      "x": 40,
-      "y": 38,
+      "x": 42,
+      "y": 40,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_MrPsychicsHouseSign"
     },
     {
       "type": "sign",
-      "x": 49,
-      "y": 22,
+      "x": 51,
+      "y": 24,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "SaffronCity_EventScript_TrainerFanClubSign"

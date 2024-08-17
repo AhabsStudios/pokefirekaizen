@@ -2260,8 +2260,8 @@
     {
       "id": "LAYOUT_SAFFRON_CITY",
       "name": "SaffronCity_Layout",
-      "width": 66,
-      "height": 55,
+      "width": 68,
+      "height": 57,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
