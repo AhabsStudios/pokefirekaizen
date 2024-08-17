@@ -25,9 +25,9 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ChoosePrizeMon::
 	multichoice 11, 0, MULTICHOICE_GAME_CORNER_POKEMON_PRIZES, FALSE
 	switch VAR_RESULT
 	case 0, CeladonCity_GameCorner_PrizeRoom_EventScript_Abra
-	case 1, CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy
-	case 2, CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir
-	case 3, CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini
+	case 1, CeladonCity_GameCorner_PrizeRoom_EventScript_Pikachu
+	case 2, CeladonCity_GameCorner_PrizeRoom_EventScript_HorseaPinsir
+	case 3, CeladonCity_GameCorner_PrizeRoom_EventScript_Dragonair
 	case 4, CeladonCity_GameCorner_PrizeRoom_EventScript_Porygon
 	case 5, CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
 	case 127, CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange
@@ -41,7 +41,7 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_EndPrizeExchange::
 CeladonCity_GameCorner_PrizeRoom_EventScript_Abra::
 	.ifdef FIRERED
 	setvar VAR_TEMP_1, SPECIES_ABRA
-	setvar VAR_TEMP_2, 180
+	setvar VAR_TEMP_2, 150
 	.else
 	.ifdef LEAFGREEN
 	setvar VAR_TEMP_1, SPECIES_ABRA
@@ -51,9 +51,9 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Abra::
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy::
+CeladonCity_GameCorner_PrizeRoom_EventScript_Pikachu::
 	.ifdef FIRERED
-	setvar VAR_TEMP_1, SPECIES_CLEFAIRY
+	setvar VAR_TEMP_1, SPECIES_PIKACHU
 	setvar VAR_TEMP_2, 500
 	.else
 	.ifdef LEAFGREEN
@@ -64,10 +64,10 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_Clefairy::
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir::
+CeladonCity_GameCorner_PrizeRoom_EventScript_HorseaPinsir::
 	.ifdef FIRERED
-	setvar VAR_TEMP_1, SPECIES_DRATINI
-	setvar VAR_TEMP_2, 2800
+	setvar VAR_TEMP_1, SPECIES_HORSEA
+	setvar VAR_TEMP_2, 1000
 	.else
 	.ifdef LEAFGREEN
 	setvar VAR_TEMP_1, SPECIES_PINSIR
@@ -77,10 +77,10 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_DratiniPinsir::
 	goto CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon
 	end
 
-CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini::
+CeladonCity_GameCorner_PrizeRoom_EventScript_Dragonair::
 	.ifdef FIRERED
-	setvar VAR_TEMP_1, SPECIES_SCYTHER
-	setvar VAR_TEMP_2, 5500
+	setvar VAR_TEMP_1, SPECIES_DRAGONAIR
+	setvar VAR_TEMP_2, 5400
 	.else
 	.ifdef LEAFGREEN
 	setvar VAR_TEMP_1, SPECIES_DRATINI
@@ -93,7 +93,7 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ScytherDratini::
 CeladonCity_GameCorner_PrizeRoom_EventScript_Porygon::
 	.ifdef FIRERED
 	setvar VAR_TEMP_1, SPECIES_PORYGON
-	setvar VAR_TEMP_2, 9999
+	setvar VAR_TEMP_2, 8300
 	.else
 	.ifdef LEAFGREEN
 	setvar VAR_TEMP_1, SPECIES_PORYGON
