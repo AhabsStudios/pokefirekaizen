@@ -159,6 +159,13 @@ static const struct MenuAction sMultichoiceList_DomeAmber[] = {
     { gOtherText_Exit }
 };
 
+static const struct MenuAction sMultichoiceList_HelixDomeAmber[] = {
+    { gText_HelixFossil },
+    { gText_DomeFossil },
+    { gText_OldAmber },
+    { gOtherText_Exit }
+};
+
 static const struct MenuAction sMultichoiceList_CeladonVendingMachine[] = {
     { gText_FreshWater_200 },
     { gText_SodaPop_300 },
@@ -560,6 +567,7 @@ static const struct MultichoiceListStruct sMultichoiceLists[] = {
     [MULTICHOICE_62]                                         = MULTICHOICE(sMultichoiceList_62),
     [MULTICHOICE_JOIN_OR_LEAD]                               = MULTICHOICE(sMultichoiceList_JoinOrLead),
     [MULTICHOICE_TRAINER_TOWER_MODE]                         = MULTICHOICE(sMultichoiceList_TrainerTowerMode),
+    [MULTICHOICE_HELIX_DOME_AMBER]                           = MULTICHOICE(sMultichoiceList_HelixDomeAmber),
 };
 
 // From Cool to Berries goes unused
