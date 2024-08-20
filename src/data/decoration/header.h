@@ -550,7 +550,7 @@ const struct Decoration gDecorations[] = {
         DecorGfx_THUNDER_MAT
     }, {
         DECOR_FIRE_BLAST_MAT,
-        _("FIRE BLAST MAT"),
+        _("DAIMONJI MAT"),
         DECORPERM_PASS_FLOOR,
         DECORSHAPE_3x3,
         DECORCAT_MAT,

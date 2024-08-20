@@ -282,7 +282,7 @@ const u8 DecorDesc_THUNDER_MAT[] = _(
 
 const u8 DecorDesc_FIRE_BLAST_MAT[] = _(
     "A mat designed with\n"
-        "a FIRE BLAST image.\n"
+        "a DAIMONJI image.\n"
         "Put items on top.");
 
 const u8 DecorDesc_POWDER_SNOW_MAT[] = _(
