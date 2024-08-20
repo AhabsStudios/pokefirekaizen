@@ -11,9 +11,9 @@ PokemonLeague_LancesRoom_Text_Intro::
     .string "but their powers are superior.\p"
     .string "They're virtually indestructible.\n"
     .string "There's no being clever with them.\p"
-    .string "Well, are you ready to lose?\p"
-    .string "Your LEAGUE challenge ends with\n"
-    .string "me, {PLAYER}!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
+    .string "... Well then! Let's get started!\p"
+    .string "Or, are you going to turn tail and\n"
+    .string "run, {PLAYER}!?{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_LancesRoom_Text_RematchIntro::
     .string "Ah!\n"
@@ -28,9 +28,9 @@ PokemonLeague_LancesRoom_Text_RematchIntro::
     .string "but their powers are superior.\p"
     .string "They're virtually indestructible.\n"
     .string "There's no being clever with them.\p"
-    .string "Well, are you ready to lose?\p"
-    .string "Your LEAGUE challenge ends with\n"
-    .string "me, {PLAYER}!{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
+    .string "... Well then! Let's get started!\p"
+    .string "Or, are you going to turn tail and\n"
+    .string "run, {PLAYER}!?{PLAY_BGM}{MUS_ENCOUNTER_GYM_LEADER}$"
 
 PokemonLeague_LancesRoom_Text_Defeat::
     .string "That's it!\p"
