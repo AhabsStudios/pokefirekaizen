@@ -770,7 +770,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_BLIZZARD] =
     {
         .effect = EFFECT_FREEZE_HIT,
-        .power = 110,
+        .power = 120,
         .type = TYPE_ICE,
         .accuracy = 90,
         .pp = 5,

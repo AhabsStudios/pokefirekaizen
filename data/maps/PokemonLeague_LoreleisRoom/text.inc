@@ -1,7 +1,7 @@
 PokemonLeague_LoreleisRoom_Text_Intro::
     .string "Welcome to the POKéMON LEAGUE.\p"
     .string "I am LORELEI of the\n"
-	.string "FOUR HEAVENLY KINGS."
+	.string "FOUR HEAVENLY KINGS.\l"
     .string "No one can best me when it comes\n"
     .string "to icy POKéMON.\p"
     .string "Freezing moves are powerful.\p"

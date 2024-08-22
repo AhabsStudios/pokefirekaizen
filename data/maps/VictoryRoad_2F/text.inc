@@ -1,6 +1,6 @@
 VictoryRoad_2F_Text_DawsonIntro::
     .string "If you can get through here,\n"
-    .string "you can go meet the FOUR\n"
+    .string "you can go meet the FOUR\l"
 	.string "HEAVENLY KINGS!$"
 
 VictoryRoad_2F_Text_DawsonDefeat::
