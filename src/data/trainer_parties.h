@@ -10652,7 +10652,7 @@ static const struct TrainerMonItemCustomMoves sParty_ChampionRematchCharmander[]
     {
         .iv = 255,
         .lvl = 65,
-        .species = SPECIES_CHARIZARD,
+        .species = SPECIES_FLAREON,
         .heldItem = ITEM_NONE,
         .moves = {MOVE_FLAMETHROWER, MOVE_QUICK_ATTACK, MOVE_SMOG, MOVE_FIRE_SPIN},
     },
