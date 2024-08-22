@@ -109,6 +109,16 @@ static const struct MenuAction sMenuActions_MailSubmenu[] = {
     {gOtherText_Exit, Task_PlayerPcExitMailSubmenu}
 };
 
+static const struct WindowTemplate sWindowTemplate_TopMenu_2Items = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = 1,
+    .width = 13,
+    .height = 4,
+    .paletteNum = 15,
+    .baseBlock = 0x008
+};
+
 static const struct WindowTemplate sWindowTemplate_TopMenu_3Items = {
     .bg = 0,
     .tilemapLeft = 1,
@@ -155,7 +165,7 @@ void BedroomPC(void)
     gPlayerPcMenuManager.notInRoom = FALSE;
     BackupHelpContext();
     sItemOrder = sItemOrder_BedroomPC;
-    sTopMenuItemCount = 3;
+    sTopMenuItemCount = 2;
     taskId = CreateTask(TaskDummy, 0);
     DisplayItemMessageOnField(taskId, FONT_NORMAL, gText_WhatWouldYouLikeToDo, Task_DrawPlayerPcTopMenu);
 }
@@ -167,7 +177,7 @@ void PlayerPC(void)
     gPlayerPcMenuManager.notInRoom = TRUE;
     BackupHelpContext();
     sItemOrder = sItemOrder_PlayerPC;
-    sTopMenuItemCount = 3;
+    sTopMenuItemCount = 2;
     taskId = CreateTask(TaskDummy, 0);
     DisplayItemMessageOnField(taskId, FONT_NORMAL, gText_WhatWouldYouLikeToDo, Task_DrawPlayerPcTopMenu);
 }
@@ -175,8 +185,8 @@ void PlayerPC(void)
 static void Task_DrawPlayerPcTopMenu(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
-    if (sTopMenuItemCount == 3)
-        tWindowId = AddWindow(&sWindowTemplate_TopMenu_3Items);
+    if (sTopMenuItemCount == 2)
+        tWindowId = AddWindow(&sWindowTemplate_TopMenu_2Items);
     else
         tWindowId = AddWindow(&sWindowTemplate_TopMenu_4Items);
     SetStdWindowBorderStyle(tWindowId, 0);
