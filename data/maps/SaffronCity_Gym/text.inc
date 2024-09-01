@@ -13,7 +13,7 @@ SaffronCity_Gym_Text_SabrinaDefeat::
     .string "I admit, I didn't work hard enough\n"
     .string "to win.\p"
     .string "Your victory has earned you the\n"
-    .string "MARSHBADGE.$"
+    .string "GOLDBADGE.$"
 
 SaffronCity_Gym_Text_SabrinaPostBattle::
     .string "Psychic power isn't something that\n"
@@ -22,7 +22,7 @@ SaffronCity_Gym_Text_SabrinaPostBattle::
     .string "People just don't realize it.$"
 
 SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis::
-    .string "The MARSHBADGE makes POKéMON up\n"
+    .string "The GOLDBADGE makes POKéMON up\n"
     .string "to Lv. 70 obey you.\p"
     .string "Stronger POKéMON will become wild,\n"
     .string "ignoring your orders in battle.\p"

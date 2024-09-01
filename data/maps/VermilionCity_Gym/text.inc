@@ -28,7 +28,7 @@ VermilionCity_Gym_Text_ReceivedTM24FromLtSurge::
     .string "from LT. SURGE.$"
 
 VermilionCity_Gym_Text_ExplainTM24::
-    .string "TM24 contains THUNDERBOLT!\p"
+    .string "TM24 contains 10,000 VOLTS!\p"
     .string "Teach it to an ELECTRIC POKéMON!$"
 
 VermilionCity_Gym_Text_MakeRoomInYourBag::

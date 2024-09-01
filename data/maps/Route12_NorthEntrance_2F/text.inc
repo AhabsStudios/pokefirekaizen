@@ -16,7 +16,7 @@ Route12_NorthEntrance_2F_Text_ReceivedTM39FromLittleGirl::
     .string "from the little girl.$"
 
 Route12_NorthEntrance_2F_Text_ExplainTM39::
-    .string "TM39 is a move called SWIFT.\p"
+    .string "TM39 is a move called SPEED STAR.\p"
     .string "It's very accurate, so use it during\n"
     .string "battles you can't afford to lose.$"
 
