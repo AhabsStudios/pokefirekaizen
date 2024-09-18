@@ -5469,7 +5469,7 @@ void AdjustFriendship(struct Pokemon *mon, u8 event)
 
 void MonGainEVs(struct Pokemon *mon, u16 defeatedSpecies)
 {
-    u16 evs[NUM_STATS];
+    u32 evs[NUM_STATS];
     u32 evIncrease = 0;
     u16 totalEVs = 0;
     u16 heldItem;
