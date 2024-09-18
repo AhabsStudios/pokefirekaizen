@@ -11,7 +11,7 @@ IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice::
 
 IndigoPlateau_PokemonCenter_1F_Text_FaceEliteFourGoodLuck::
     .string "From here on, you face the\n"
-    .string "FOUR HEAVENLY KINGS one by one.\p"
+    .string "ELITE FOUR one by one.\p"
     .string "If you win, a door opens to the\n"
     .string "next TRAINER. Good luck!$"
 

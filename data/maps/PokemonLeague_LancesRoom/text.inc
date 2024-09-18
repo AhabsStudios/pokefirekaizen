@@ -1,7 +1,7 @@
 PokemonLeague_LancesRoom_Text_Intro::
     .string "Ah! I've heard about you,\n"
     .string "{PLAYER}!\p"
-    .string "I lead the FOUR HEAVENLY KINGS.\p"
+    .string "I lead the ELITE FOUR.\p"
     .string "You can call me LANCE the DRAGON\n"
     .string "TRAINER.\p"
     .string "Dragons are extremely rare and\n"
@@ -18,7 +18,7 @@ PokemonLeague_LancesRoom_Text_Intro::
 PokemonLeague_LancesRoom_Text_RematchIntro::
     .string "Ah!\n"
     .string "So, you've returned, {PLAYER}!\p"
-    .string "I lead the FOUR HEAVENLY KINGS.\p"
+    .string "I lead the ELITE FOUR.\p"
     .string "You can call me LANCE the DRAGON\n"
     .string "TRAINER.\p"
     .string "Dragons are extremely rare and\n"
@@ -47,7 +47,7 @@ PokemonLeague_LancesRoom_Text_PostBattle::
     .string "There is one more TRAINER to face!\n"
     .string "His name is…\p"
     .string "{RIVAL}!\p"
-    .string "He beat the FOUR HEAVENLY KINGS\n"
+    .string "He beat the ELITE FOUR\n"
     .string "before you.\p"
     .string "He is the real POKéMON LEAGUE\n"
     .string "CHAMPION.$"

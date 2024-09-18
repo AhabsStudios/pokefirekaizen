@@ -1,6 +1,6 @@
 PokemonLeague_AgathasRoom_Text_Intro::
     .string "I am AGATHA of the\n"
-	.string "FOUR HEAVENLY KINGS.\p"
+	.string "ELITE FOUR.\p"
     .string "I hear OAK's taken a lot of\n"
     .string "interest in you, child.\p"
     .string "That old duff was once tough and\n"
