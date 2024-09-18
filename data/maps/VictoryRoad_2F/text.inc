@@ -1,7 +1,7 @@
 VictoryRoad_2F_Text_DawsonIntro::
     .string "If you can get through here,\n"
-    .string "you can go meet the FOUR\l"
-	.string "HEAVENLY KINGS!$"
+    .string "you can go meet the\l"
+	.string "ELITE FOUR!$"
 
 VictoryRoad_2F_Text_DawsonDefeat::
     .string "No!\n"
@@ -24,7 +24,7 @@ VictoryRoad_2F_Text_DaisukePostBattle::
 
 VictoryRoad_2F_Text_NelsonIntro::
     .string "Ah, so you wish to challenge the\n"
-    .string "FOUR HEAVENLY KINGS?$"
+    .string "ELITE FOUR?$"
 
 VictoryRoad_2F_Text_NelsonDefeat::
     .string "You got me!$"

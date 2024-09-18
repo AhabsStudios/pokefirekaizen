@@ -133,7 +133,7 @@ SilphCo_7F_Text_RivalPostBattle::
     .string "how they evolve!\p"
     .string "Am I a genius or what?\p"
     .string "I'm going to the POKéMON LEAGUE to\n"
-    .string "boot out the FOUR HEAVENLY KINGS.\p"
+    .string "boot out the ELITE FOUR.\p"
     .string "I'll become the world's most\n"
     .string "powerful TRAINER!\p"
     .string "{PLAYER}, well, good luck to you!\n"
