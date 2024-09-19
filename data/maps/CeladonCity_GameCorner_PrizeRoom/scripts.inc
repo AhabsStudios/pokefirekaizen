@@ -112,9 +112,9 @@ CeladonCity_GameCorner_PrizeRoom_EventScript_ConfirmPrizeMon::
 	textcolor NPC_TEXT_COLOR_NEUTRAL
 	switch VAR_TEMP_1
 	case SPECIES_ABRA,     CeladonCity_GameCorner_PrizeRoom_EventScript_GiveAbra
-	case SPECIES_CLEFAIRY, CeladonCity_GameCorner_PrizeRoom_EventScript_GiveClefairy
-	case SPECIES_DRATINI,  CeladonCity_GameCorner_PrizeRoom_EventScript_GiveDratini
-	case SPECIES_SCYTHER,  CeladonCity_GameCorner_PrizeRoom_EventScript_GiveScyther
+	case SPECIES_PIKACHU, CeladonCity_GameCorner_PrizeRoom_EventScript_GiveClefairy
+	case SPECIES_DRAGONAIR,  CeladonCity_GameCorner_PrizeRoom_EventScript_GiveDratini
+	case SPECIES_HORSEA,  CeladonCity_GameCorner_PrizeRoom_EventScript_GiveScyther
 	case SPECIES_PORYGON,  CeladonCity_GameCorner_PrizeRoom_EventScript_GivePorygon
 	case SPECIES_PINSIR,   CeladonCity_GameCorner_PrizeRoom_EventScript_GivePinsir
 	end
