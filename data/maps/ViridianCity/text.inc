@@ -82,9 +82,7 @@ ViridianCity_Text_HowsTeachyTVHelping::
     .string "Mmmn... Looks like I was pretty\n"
     .string "drunk then!\p"
     .string "But my head hurts.\n"
-    .string "I'm giving that stuff up!\p"
-    .string "Incidentally, is my old TEACHY TV\n"
-    .string "helping you?$"
+    .string "I'm giving that stuff up!$"
 
 ViridianCity_Text_MyGrandsonOnTheShow::
     .string "Wahaha!\n"

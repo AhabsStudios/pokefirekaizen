@@ -106,6 +106,11 @@ ViridianCity_EventScript_TutorialOldMan::
 	goto_if_eq VAR_MAP_SCENE_VIRIDIAN_CITY_OLD_MAN, 0, ViridianCity_EventScript_TutorialNotReady
 	end
 
+ViridianCity_EventScript_TeachyTVNotHelpful::
+	msgbox ViridianCity_Text_TooBusyForTeachyTV
+	release
+	end
+
 ViridianCity_EventScript_TutorialCompleted::
 	msgbox ViridianCity_Text_WeakenMonsFirstToCatch
 	release
@@ -116,6 +121,11 @@ ViridianCity_EventScript_TutorialStart::
 	release
 	end
 
+@ Unused
+ViridianCity_EventScript_WatchToLearnBasics::
+	msgbox ViridianCity_Text_WatchThatToLearnBasics
+	release
+	end
 
 @ Unused. Starts battle after the post battle text, which is odd.
 ViridianCity_EventScript_TutorialUnused::
