@@ -5750,7 +5750,7 @@ static void Cmd_drawlvlupbox(void)
         SetBgAttribute(1, BG_ATTR_PRIORITY, 0);
         ShowBg(0);
         ShowBg(1);
-        HandleBattleWindow(18, 7, 29, 19, WINDOW_BG1);
+        HandleBattleWindow(18, 9, 29, 19, WINDOW_BG1);
         gBattleScripting.drawlvlupboxState = 4;
         break;
     case 4:
