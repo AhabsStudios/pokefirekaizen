@@ -2,7 +2,7 @@ PokemonLeague_LoreleisRoom_Text_Intro::
     .string "Welcome to the POKéMON LEAGUE.\p"
     .string "I am LORELEI of the ELITE FOUR.\n"
     .string "No one can best me when it comes\n"
-    .string "to icy POKéMON.\p"
+    .string "to icy POKéMON.\n"
     .string "Freezing moves are powerful.\p"
     .string "Your POKéMON will be at my mercy\n"
     .string "when they are frozen solid.\p"

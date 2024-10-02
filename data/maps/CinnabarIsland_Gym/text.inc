@@ -14,7 +14,7 @@ CinnabarIsland_Gym_Text_BlaineDefeat::
     .string "You have earned the VOLCANOBADGE.$"
 
 CinnabarIsland_Gym_Text_FireBlastIsUltimateFireMove::
-    .string "DAIMONJI is the ultimate fire\n"
+    .string "FIRE BLAST is the ultimate fire\n"
     .string "technique.\p"
     .string "Don't waste it on WATER POKéMON.$"
 
@@ -29,7 +29,7 @@ CinnabarIsland_Gym_Text_ReceivedTM38FromBlaine::
     .string "from BLAINE.$"
 
 CinnabarIsland_Gym_Text_BlainePostBattle::
-    .string "TM38 contains DAIMONJI.\n"
+    .string "TM38 contains FIRE BLAST.\n"
     .string "Teach it to FIRE-type POKéMON.\p"
     .string "VULPIX or CHARMELEON would be\n"
     .string "ideal for that move.$"
