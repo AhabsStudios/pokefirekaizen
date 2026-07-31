@@ -6009,10 +6009,10 @@ static const struct TrainerMonItemCustomMoves sParty_ChampionFirstSquirtle[] = {
     },
     {
         .iv = 255,
-        .lvl = 61,
-        .species = SPECIES_EXEGGUTOR,
+        .lvl = 59,
+        .species = SPECIES_ARCANINE,
         .heldItem = ITEM_NONE,
-        .moves = {MOVE_SLEEP_POWDER, MOVE_PSYCHIC, MOVE_MEGA_DRAIN, MOVE_BARRAGE,}
+        .moves = {MOVE_FIRE_BLAST, MOVE_BODY_SLAM, MOVE_HYPER_BEAM, MOVE_AGILITY},
     },
     {
         .iv = 255,
@@ -6103,13 +6103,6 @@ static const struct TrainerMonItemCustomMoves sParty_ChampionFirstCharmander[] =
         .species = SPECIES_GYARADOS,
         .heldItem = ITEM_NONE,
         .moves = {MOVE_HYPER_BEAM, MOVE_HYDRO_PUMP, MOVE_BLIZZARD, MOVE_BITE},
-    },
-    {
-        .iv = 255,
-        .lvl = 59,
-        .species = SPECIES_ARCANINE,
-        .heldItem = ITEM_NONE,
-        .moves = {MOVE_FIRE_BLAST, MOVE_BODY_SLAM, MOVE_HYPER_BEAM, MOVE_AGILITY},
     },
     {
         .iv = 255,
