@@ -129,3 +129,4 @@ agbcc/include/utime.h
 agbcc/include/utmp.h
 agbcc/lib/libc.a
 agbcc/lib/libgcc.a
+.porydaw/

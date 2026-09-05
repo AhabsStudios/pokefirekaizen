@@ -998,7 +998,7 @@ static bool8 AccuracyCalcHelper(u16 move)
         JumpIfMoveFailed(7, move);
         return TRUE;
     }
-
+	
     return FALSE;
 }
 

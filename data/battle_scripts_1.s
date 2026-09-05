@@ -244,6 +244,7 @@ BattleScript_EffectHit::
 BattleScript_HitFromAtkCanceler::
 	attackcanceler
 BattleScript_HitFromAccCheck::
+	jumpifmove MOVE_SWIFT, BattleScript_HitFromAtkString
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
 BattleScript_HitFromAtkString::
 	attackstring

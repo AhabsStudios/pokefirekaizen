@@ -4,7 +4,7 @@ SSAnne_Kitchen_Text_BusyOutOfTheWay::
     .string "Out of the way!$"
 
 SSAnne_Kitchen_Text_SawOddBerryInTrash::
-    .string "I saw an odd BERRY in the trash.\n"
+    .string "I saw an odd BALL in the trash.\n"
     .string "I wonder what that was?$"
 
 SSAnne_Kitchen_Text_SoBusyImDizzy::

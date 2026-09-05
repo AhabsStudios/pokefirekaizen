@@ -210,7 +210,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
 
     [MOVE_GUST] =
     {
-        .effect = EFFECT_GUST,
+        .effect = EFFECT_HIT,
         .power = 40,
         .type = TYPE_NORMAL,
         .accuracy = 100,

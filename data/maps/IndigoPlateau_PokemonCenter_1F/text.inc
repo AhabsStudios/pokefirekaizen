@@ -2,7 +2,7 @@ IndigoPlateau_PokemonCenter_1F_Text_GymGuyAdvice::
     .string "Yo!\n"
     .string "Champ in the making!\p"
     .string "At the POKéMON LEAGUE, you will\n"
-    .string "face the FOUR HEAVNELY KINGS all\l" 
+    .string "face the ELITE FOUR all\l" 
 	.string "in a row.\p"
     .string "If you lose, you have to start all\n"
     .string "over again!\p"
