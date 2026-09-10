@@ -178,13 +178,12 @@ gPikachuIntro_Text_Page2::
     .string "came bundled with the patch.$"
 
 gPikachuIntro_Text_Page3::
-    .string "CREDITS:\n"
-    .string "APE-AHAB, SourApple, Angrybird,\n"
-    .string "Farore, GoliathGastropod,\n"
-    .string "StarGazaar, MaxElixir, TastySnax\n"
-    .string "Manardo, and pret\n"
-    .string "This is KAIZEN ORIGINAL GAME\n"
-    .string "Public Beta Version 1.1.2 $"
+    .string "This is POCKET MONSTERS KAIZEN\n"
+	.string "Public Beta Version 1.3.0"
+	.string "\n"
+	.string "For additional support, please\n"
+	.string "visit the Bowl of Soup Discord\n"
+	.strong "at discord.gg/K3dhrF3tkz.$"
 
 gOakSpeech_Text_WelcomeToTheWorld::
     .string "Hello, there!\n"
