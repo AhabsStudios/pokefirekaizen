@@ -3718,6 +3718,11 @@ BattleScript_MoveUsedIsParalyzed::
 	cancelmultiturnmoves BS_ATTACKER
 	goto BattleScript_MoveEnd
 
+BattleScript_MoveUsedIsTrapped::
+	printstring STRINGID_PKMNCANTFIGHTTRAPPED
+	waitmessage B_WAIT_TIME_SHORT
+	goto BattleScript_MoveEnd
+
 BattleScript_MoveUsedFlinched::
 	printstring STRINGID_PKMNFLINCHED
 	waitmessage B_WAIT_TIME_SHORT

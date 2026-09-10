@@ -686,7 +686,7 @@ static const struct CreditsTextHeader sCreditsTexts[] = {
     { gCreditsString_Special_Thanks, gCreditsString_Hiro_Nakamura_Hiroyuki_Uesugi_Teruki_Murakawa_Kazuya_Suyama, FALSE },
     { gCreditsString_Special_Thanks_2, gCreditsString_Kenji_Tominaga_Kenjiro_Ito_Tomotaka_Komura_Michiko_Takizawa, FALSE },
     { gCreditsString_Special_Thanks_3, gCreditsString_Makiko_Takada_Mikiko_Ohashi_Shusaku_Egami_Takanao_Kondo_Rui_Kawaguchi, FALSE },
-    { gCreditsString_Braille_Code_Check, gCreditsString_Japan_Braille_Library, FALSE },
+    { gCreditsString_KaizenTeamDirector_Programming, gCreditsString_Katsura_Hangrybird_Zig, FALSE },
     { gCreditsString_Information_Supervisors, gCreditsString_Hiroki_Enomoto_Kazuyuki_Terada_Yuri_Sakurai_Yumi_Funasaka_Naoko_Yanase, FALSE },
     { gCreditsString_Coordinators, gCreditsString_Azusa_Tajima_Akira_Kinashi_Kazuki_Yoshihara_Retsuji_Nomoto, FALSE },
     { gCreditsString_Task_Managers, gCreditsString_Hitoshi_Yamagami_Gakuji_Nomoto, TRUE  },
@@ -699,11 +699,11 @@ static const struct CreditsTextHeader sCreditsTexts[] = {
     { gCreditsString_Programmers_2, gCreditsString_Teruki_Murakawa_Souichi_Yamamoto_Yuichiro_Ito_Akira_Kinashi, FALSE },
     { gCreditsString_Environment_Tool_Programmers, gCreditsString_Teruki_Murakawa_Souichi_Yamamoto_Kimiko_Nakamichi, TRUE  },
     { gCreditsString_NOA_Product_Testing, gCreditsString_Thomas_Hertzog_Kathy_Huguenard_Mika_Kurosawa, TRUE  },
-    { gCreditsString_Braille_Code_Check_2, gCreditsString_National_Federation_of_the_Blind_Patricia_A_Maurer_Japan_Braille_Library_European_Blind_Union, TRUE  },
-    { gCreditsString_Braille_Code_Check_3, gCreditsString_National_Information_Library_Service_Margaret_Campion, TRUE  },
+    { gCreditsString_Graphics_Music, gCreditsString_GoliathGastropod_Bonzo_Farore_StarGazaar_BigTaste, TRUE  },
+    { gCreditsString_Testing, gCreditsString_TastySnax12_Manardo_Neccese, TRUE  },
     { gCreditsString_Special_Thanks_4, gCreditsString_Takehiro_Izushi_Motoyasu_Tojima_Hitoshi_Yamagami_Hiroyuki_Uesugi, FALSE },
     { gCreditsString_Special_Thanks_5, gCreditsString_Nicola_Pratt_Barlow_Shellie_Dow_Anthony_Howitt_Naoko_Saeki_Kyoko_Onishi, FALSE },
-    { gCreditsString_Braille_Code_Check_4, gCreditsString_The_Royal_New_Zealand_Foundation_of_the_Blind_Greg_Moran, FALSE },
+    { gCreditsString_SpecialThanks_Kaizen, gCreditsString_GMERC, FALSE },
     { gCreditsString_Graphic_Designer, gCreditsString_Akira_Kinashi, FALSE },
     { gString_Dummy, gString_Dummy, FALSE }
 };

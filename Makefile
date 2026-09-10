@@ -104,7 +104,8 @@ endif
 LIB += -lnosys
 endif
 
-SHA1 := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null) -c
+SHA1CMD := $(shell { command -v sha1sum || command -v shasum; } 2>/dev/null)
+SHA1 := "$(SHA1CMD)" -c
 GFX := tools/gbagfx/gbagfx
 AIF := tools/aif2pcm/aif2pcm
 MID := tools/mid2agb/mid2agb
