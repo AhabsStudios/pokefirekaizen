@@ -2179,8 +2179,14 @@ void SetMoveEffect(bool8 primary, u8 certain)
     if (gBattleMons[gEffectBattler].status2 & STATUS2_SUBSTITUTE && affectsUser != MOVE_EFFECT_AFFECTS_USER)
         INCREMENT_RETURN
 
+    // A move with a less-than-certain chance to inflict a status condition can never do so
+    // against a target that shares a type with the move (e.g. Body Slam can't paralyze a Normal type).
+    // Guaranteed status effects (primary effects, or secondary effects with a 100% chance) ignore this.
     if (gBattleCommunication[MOVE_EFFECT_BYTE] <= PRIMARY_STATUS_MOVE_EFFECT)
     {
+        bool32 statusBlockedByMoveType = (primary != TRUE && certain != MOVE_EFFECT_CERTAIN
+            && IS_BATTLER_OF_TYPE(gEffectBattler, gBattleMoves[gCurrentMove].type));
+
         switch (sStatusFlagsForMoveEffects[gBattleCommunication[MOVE_EFFECT_BYTE]])
         {
         case STATUS1_SLEEP:
@@ -2202,6 +2208,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
             if (gBattleMons[gEffectBattler].ability == ABILITY_VITAL_SPIRIT)
                 break;
             if (gBattleMons[gEffectBattler].ability == ABILITY_INSOMNIA)
+                break;
+            if (statusBlockedByMoveType)
                 break;
 
             CancelMultiTurnMoves(gEffectBattler);
@@ -2246,6 +2254,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 break;
             if (gBattleMons[gEffectBattler].ability == ABILITY_IMMUNITY)
                 break;
+            if (statusBlockedByMoveType)
+                break;
 
             statusChanged = TRUE;
             break;
@@ -2285,6 +2295,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 break;
             if (gBattleMons[gEffectBattler].status1)
                 break;
+            if (statusBlockedByMoveType)
+                break;
 
             statusChanged = TRUE;
             break;
@@ -2298,6 +2310,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
             if (noSunCanFreeze == FALSE)
                 break;
             if (gBattleMons[gEffectBattler].ability == ABILITY_MAGMA_ARMOR)
+                break;
+            if (statusBlockedByMoveType)
                 break;
 
             CancelMultiTurnMoves(gEffectBattler);
@@ -2330,9 +2344,7 @@ void SetMoveEffect(bool8 primary, u8 certain)
             }
             if (gBattleMons[gEffectBattler].status1)
                 break;
-            // Secondary effects don't work on pokemon of the same move type
-            // Lick, Thunder/shock/bolt
-            if (!(gCurrentMove == MOVE_THUNDER_WAVE || gCurrentMove == MOVE_STUN_SPORE) && IS_BATTLER_OF_TYPE(gEffectBattler, gBattleMoves[gCurrentMove].type))
+            if (statusBlockedByMoveType)
                 break;
 
             statusChanged = TRUE;
@@ -2372,6 +2384,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
             if (!IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_POISON) && !IS_BATTLER_OF_TYPE(gEffectBattler, TYPE_STEEL))
             {
                 if (gBattleMons[gEffectBattler].ability == ABILITY_IMMUNITY)
+                    break;
+                if (statusBlockedByMoveType)
                     break;
 
                 // It's redundant, because at this point we know the status1 value is 0.
