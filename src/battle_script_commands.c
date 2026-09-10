@@ -1146,7 +1146,9 @@ static void Cmd_ppreduce(void)
         }
     }
 
-    if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING)) && gBattleMons[gBattlerAttacker].pp[gCurrMovePos])
+    if (!(gHitMarker & (HITMARKER_NO_PPDEDUCT | HITMARKER_NO_ATTACKSTRING))
+        && gBattleMons[gBattlerAttacker].pp[gCurrMovePos]
+        && GetBattlerSide(gBattlerAttacker) != B_SIDE_OPPONENT)
     {
         gProtectStructs[gBattlerAttacker].notFirstStrike = 1;
 
