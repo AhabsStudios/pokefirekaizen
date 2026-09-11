@@ -183,7 +183,7 @@ gPikachuIntro_Text_Page3::
 	.string "\n"
 	.string "For additional support, please\n"
 	.string "visit the Bowl of Soup Discord\n"
-	.strong "at discord.gg/K3dhrF3tkz.$"
+	.string "at discord.gg/K3dhrF3tkz.$"
 
 gOakSpeech_Text_WelcomeToTheWorld::
     .string "Hello, there!\n"
