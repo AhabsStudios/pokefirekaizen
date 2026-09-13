@@ -179,7 +179,7 @@ gPikachuIntro_Text_Page2::
 
 gPikachuIntro_Text_Page3::
     .string "This is POCKET MONSTERS KAIZEN\n"
-	.string "Public Beta Version 1.3.0"
+	.string "Public Beta Version 1.3.1"
 	.string "\n"
 	.string "For additional support, please\n"
 	.string "visit the Bowl of Soup Discord\n"

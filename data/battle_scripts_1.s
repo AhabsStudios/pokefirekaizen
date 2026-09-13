@@ -3781,7 +3781,7 @@ BattleScript_WrapTurnDmg::
 BattleScript_WrapEnds::
 	printstring STRINGID_PKMNFREEDFROM
 	waitmessage B_WAIT_TIME_SHORT
-	return
+	end2
 
 BattleScript_MoveUsedIsInLove::
 	printstring STRINGID_PKMNINLOVE
