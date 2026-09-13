@@ -65,6 +65,10 @@ struct TestingBar
 
 
 static void SpriteCB_HealthBoxOther(struct Sprite *sprite);
+static void SpriteCB_HpLevelText(struct Sprite *sprite);
+static void SpriteCB_HpCurrentText(struct Sprite *sprite);
+static void SpriteCB_HpMaxText(struct Sprite *sprite);
+static void SpriteCB_HpOpponentLevelText(struct Sprite *sprite);
 static void SpriteCB_HealthBar(struct Sprite *sprite);
 static const u8 *GetBattleInterfaceGfxPtr(u8 which);
 static void UpdateHpTextInHealthboxInDoubles(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent);
@@ -522,6 +526,12 @@ static void Debug_DrawNumberPair(s16 num1, s16 num2, u16 *dest)
 #define sHealthboxOtherSpriteId oam.affineParam
 #define sHealthBarSpriteId      data[5]
 #define sBattlerId              data[6]
+#define sHpTextSpriteId         data[4] // player singles only - Level digits sprite
+#define sHpCurrentSpriteId      data[3] // player singles only - current HP digits sprite
+#define sHpMaxSpriteId          data[2] // player singles only - max HP digits sprite
+
+// sprite data for the dedicated bold HP/Level text sprites (player singles only)
+#define sHpText_HealthboxSpriteId data[5]
 
 // sprite data for other (right) healthbox sprite
 #define sHealthboxSpriteId      data[5]
@@ -536,6 +546,126 @@ enum
     HEALTHBAR_TYPE_PLAYER_DOUBLE,
     HEALTHBAR_TYPE_OPPONENT,
 };
+
+// Dedicated sprites for the bold-font HP/Level numerals on the player's
+// singles healthbox. Three separate sprites, each with its own small 4-tile
+// allocation exactly matching its SPRITE_SHAPE(32x8) - no shared tags, no
+// manual tile-offset tricks, so a sprite's OAM shape can never read past
+// tiles it actually owns (that was the cause of the garbage-tile bug: the
+// old shared-sheet design let one sprite's shape span tiles beyond what was
+// actually allocated to it). Each also has its own fully independent x/y so
+// nudging one never affects the others.
+// Level sprite - tiles 0-2, one per digit.
+// Current-HP sprite - tiles 0-3: digits+slash. Max-HP sprite - tiles 0-2:
+// digits. The two are positioned side by side so they read as one
+// "123/126" string (see SpriteCB_HpCurrentText/SpriteCB_HpMaxText).
+static const struct OamData sOamData_HpText =
+{
+    .shape = SPRITE_SHAPE(32x8),
+    .size = SPRITE_SIZE(32x8),
+    .priority = 0, // above the healthbar/healthbox (priority 1) so it never gets clipped by them
+};
+
+static const struct SpriteTemplate sHpTextLevelSpriteTemplate =
+{
+    .tileTag = TAG_HP_TEXT_LEVEL_TILE,
+    .paletteTag = TAG_HEALTHBAR_PAL,
+    .oam = &sOamData_HpText,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sHpTextCurrentSpriteTemplate =
+{
+    .tileTag = TAG_HP_TEXT_CURRENT_TILE,
+    .paletteTag = TAG_HEALTHBAR_PAL,
+    .oam = &sOamData_HpText,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+static const struct SpriteTemplate sHpTextMaxSpriteTemplate =
+{
+    .tileTag = TAG_HP_TEXT_MAX_TILE,
+    .paletteTag = TAG_HEALTHBAR_PAL,
+    .oam = &sOamData_HpText,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+// Same idea, for the opponent's singles healthbox Level digits.
+static const struct SpriteTemplate sHpTextOpponentLevelSpriteTemplate =
+{
+    .tileTag = TAG_HP_TEXT_OPPONENT_LEVEL_TILE,
+    .paletteTag = TAG_HEALTHBAR_PAL,
+    .oam = &sOamData_HpText,
+    .anims = gDummySpriteAnimTable,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = SpriteCallbackDummy,
+};
+
+// Syncs the Level-digits sprite's position with its healthbox, exactly like
+// SpriteCB_HealthBoxOther does for the box's own second half. Tune these
+// x/y offsets to nudge the Level digits without touching anything else.
+static void SpriteCB_HpLevelText(struct Sprite *sprite)
+{
+    u8 healthboxSpriteId = sprite->sHpText_HealthboxSpriteId;
+
+    // Center-to-corner offset for SPRITE_SHAPE(32x8) is (-16,-4) vs (-32,-16)
+    // for the old shared 64x32 shape (see sCenterToCornerVecTable in
+    // src/sprite.c), so these x/y are 16/12 less than the values that were
+    // confirmed correct on-screen back when this was one big 64x32 sprite.
+    sprite->x = gSprites[healthboxSpriteId].x + 56;
+    sprite->y = gSprites[healthboxSpriteId].y - 5;
+    sprite->x2 = gSprites[healthboxSpriteId].x2;
+    sprite->y2 = gSprites[healthboxSpriteId].y2;
+}
+
+// Syncs the current-HP-digits sprite's position with its healthbox. Tune
+// these x/y offsets to nudge the current HP digits without touching anything
+// else. Keep x 32px (4 tiles) less than SpriteCB_HpMaxText's so the two read
+// as one continuous "123/126" string.
+static void SpriteCB_HpCurrentText(struct Sprite *sprite)
+{
+    u8 healthboxSpriteId = sprite->sHpText_HealthboxSpriteId;
+
+    // See the center-to-corner note in SpriteCB_HpLevelText.
+    sprite->x = gSprites[healthboxSpriteId].x + 24;
+    sprite->y = gSprites[healthboxSpriteId].y + 12;
+    sprite->x2 = gSprites[healthboxSpriteId].x2;
+    sprite->y2 = gSprites[healthboxSpriteId].y2;
+}
+
+// Syncs the max-HP-digits sprite's position with its healthbox. Keep x 32px
+// (4 tiles) more than SpriteCB_HpCurrentText's and y matching it, so the two
+// read as one continuous "123/126" string.
+static void SpriteCB_HpMaxText(struct Sprite *sprite)
+{
+    u8 healthboxSpriteId = sprite->sHpText_HealthboxSpriteId;
+
+    // See the center-to-corner note in SpriteCB_HpLevelText.
+    sprite->x = gSprites[healthboxSpriteId].x + 56;
+    sprite->y = gSprites[healthboxSpriteId].y + 12;
+    sprite->x2 = gSprites[healthboxSpriteId].x2;
+    sprite->y2 = gSprites[healthboxSpriteId].y2;
+}
+
+// Syncs the opponent's Level-digits sprite with its (opponent) healthbox.
+// Y confirmed correct; X needed a large leftward correction from the
+// player's own offset since the opponent box's "Lv" sits at a different
+// vanilla tile position (0x400 vs 0x820) - still just a working guess.
+static void SpriteCB_HpOpponentLevelText(struct Sprite *sprite)
+{
+    u8 healthboxSpriteId = sprite->sHpText_HealthboxSpriteId;
+
+    sprite->x = gSprites[healthboxSpriteId].x + 41;
+    sprite->y = gSprites[healthboxSpriteId].y - 5;
+    sprite->x2 = gSprites[healthboxSpriteId].x2;
+    sprite->y2 = gSprites[healthboxSpriteId].y2;
+}
 
 u8 CreateBattlerHealthboxSprites(u8 battlerId)
 {
@@ -609,6 +739,44 @@ u8 CreateBattlerHealthboxSprites(u8 battlerId)
     healthbarSprite->sHealthbarType = healthbarType;
     healthbarSprite->invisible = TRUE;
 
+    if (!IsDoubleBattle() && GetBattlerSide(battlerId) == B_SIDE_PLAYER)
+    {
+        // Three independent sprites, each with its own exclusive tile
+        // allocation (see sHpTextLevelSpriteTemplate and friends) - no
+        // shared tags, no manual tile offsets to keep straight.
+        u8 hpTextSpriteId = CreateSpriteAtEnd(&sHpTextLevelSpriteTemplate, 140, 60, 0);
+        u8 hpCurrentSpriteId = CreateSpriteAtEnd(&sHpTextCurrentSpriteTemplate, 140, 60, 0);
+        u8 hpMaxSpriteId = CreateSpriteAtEnd(&sHpTextMaxSpriteTemplate, 140, 60, 0);
+
+        gSprites[hpTextSpriteId].sHpText_HealthboxSpriteId = healthboxSpriteId;
+        gSprites[hpTextSpriteId].invisible = TRUE;
+        gSprites[hpTextSpriteId].callback = SpriteCB_HpLevelText;
+
+        gSprites[hpCurrentSpriteId].sHpText_HealthboxSpriteId = healthboxSpriteId;
+        gSprites[hpCurrentSpriteId].invisible = TRUE;
+        gSprites[hpCurrentSpriteId].callback = SpriteCB_HpCurrentText;
+
+        gSprites[hpMaxSpriteId].sHpText_HealthboxSpriteId = healthboxSpriteId;
+        gSprites[hpMaxSpriteId].invisible = TRUE;
+        gSprites[hpMaxSpriteId].callback = SpriteCB_HpMaxText;
+
+        gSprites[healthboxSpriteId].sHpTextSpriteId = hpTextSpriteId;
+        gSprites[healthboxSpriteId].sHpCurrentSpriteId = hpCurrentSpriteId;
+        gSprites[healthboxSpriteId].sHpMaxSpriteId = hpMaxSpriteId;
+    }
+    else if (!IsDoubleBattle() && GetBattlerSide(battlerId) == B_SIDE_OPPONENT)
+    {
+        // Opponent only shows a Level counter (no numeric HP), so it only
+        // needs the one dedicated sprite.
+        u8 hpTextSpriteId = CreateSpriteAtEnd(&sHpTextOpponentLevelSpriteTemplate, 140, 60, 0);
+
+        gSprites[hpTextSpriteId].sHpText_HealthboxSpriteId = healthboxSpriteId;
+        gSprites[hpTextSpriteId].invisible = TRUE;
+        gSprites[hpTextSpriteId].callback = SpriteCB_HpOpponentLevelText;
+
+        gSprites[healthboxSpriteId].sHpTextSpriteId = hpTextSpriteId;
+    }
+
     return healthboxSpriteId;
 }
 
@@ -681,6 +849,16 @@ void SetHealthboxSpriteInvisible(u8 healthboxSpriteId)
     gSprites[healthboxSpriteId].invisible = TRUE;
     gSprites[gSprites[healthboxSpriteId].sHealthBarSpriteId].invisible = TRUE;
     gSprites[gSprites[healthboxSpriteId].sHealthboxOtherSpriteId].invisible = TRUE;
+    if (!IsDoubleBattle() && GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_PLAYER)
+    {
+        gSprites[gSprites[healthboxSpriteId].sHpTextSpriteId].invisible = TRUE;
+        gSprites[gSprites[healthboxSpriteId].sHpCurrentSpriteId].invisible = TRUE;
+        gSprites[gSprites[healthboxSpriteId].sHpMaxSpriteId].invisible = TRUE;
+    }
+    else if (!IsDoubleBattle() && GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_OPPONENT)
+    {
+        gSprites[gSprites[healthboxSpriteId].sHpTextSpriteId].invisible = TRUE;
+    }
 }
 
 void SetHealthboxSpriteVisible(u8 healthboxSpriteId)
@@ -688,6 +866,16 @@ void SetHealthboxSpriteVisible(u8 healthboxSpriteId)
     gSprites[healthboxSpriteId].invisible = FALSE;
     gSprites[gSprites[healthboxSpriteId].sHealthBarSpriteId].invisible = FALSE;
     gSprites[gSprites[healthboxSpriteId].sHealthboxOtherSpriteId].invisible = FALSE;
+    if (!IsDoubleBattle() && GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_PLAYER)
+    {
+        gSprites[gSprites[healthboxSpriteId].sHpTextSpriteId].invisible = FALSE;
+        gSprites[gSprites[healthboxSpriteId].sHpCurrentSpriteId].invisible = FALSE;
+        gSprites[gSprites[healthboxSpriteId].sHpMaxSpriteId].invisible = FALSE;
+    }
+    else if (!IsDoubleBattle() && GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_OPPONENT)
+    {
+        gSprites[gSprites[healthboxSpriteId].sHpTextSpriteId].invisible = FALSE;
+    }
 }
 
 static void UpdateSpritePos(u8 spriteId, s16 x, s16 y)
@@ -756,6 +944,12 @@ void InitBattlerHealthboxCoords(u8 battler)
     UpdateSpritePos(gHealthboxSpriteIds[battler], x, y);
 }
 
+static const u8 sText_LvSymbolOnly[] = _("{LV_2}");
+
+// Local tiles 0-2 of the dedicated Level-digits sprite (see
+// sHpTextLevelSpriteTemplate / SpriteCB_HpLevelText in CreateBattlerHealthboxSprites).
+#define HPTEXT_TILE_LEVEL 0
+
 static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 {
     u32 windowId, spriteTileNum;
@@ -763,6 +957,57 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
     u8 text[16] = _("{LV_2}");
     u32 xPos;
     u8 *objVram;
+
+    if (GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_PLAYER && !IsDoubleBattle())
+    {
+        // Player singles: "Lv" symbol on the narrow font (1 tile, unchanged
+        // vanilla position), digits on the dedicated bold HP-text sprite.
+        u8 hpTextSpriteId = gSprites[healthboxSpriteId].sHpTextSpriteId;
+        u8 boldText[20] = __("{COLOR 01}{HIGHLIGHT 00}");
+        u32 hpTextTileNum = gSprites[hpTextSpriteId].oam.tileNum;
+        u8 i;
+
+        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(sText_LvSymbolOnly, 0, 3, &windowId);
+        spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
+        TextIntoHealthboxObject((void *)(OBJ_VRAM0) + spriteTileNum + 0x820, windowTileData, 1);
+        RemoveWindowOnHealthbox(windowId);
+
+        ConvertIntToDecimalStringN(boldText + 6, lvl, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, boldText, 0, 0, 0, 0, 0);
+        for (i = 0; i < 3; i++)
+        {
+            CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
+                      (void *)(OBJ_VRAM0) + (hpTextTileNum + HPTEXT_TILE_LEVEL + i) * TILE_SIZE_4BPP,
+                      TILE_SIZE_4BPP);
+        }
+        return;
+    }
+
+    if (GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_OPPONENT && !IsDoubleBattle())
+    {
+        // Opponent singles: same treatment as player singles above - "Lv"
+        // symbol stays on the narrow font (1 tile, unchanged vanilla
+        // position), digits go on the dedicated bold HP-text sprite.
+        u8 hpTextSpriteId = gSprites[healthboxSpriteId].sHpTextSpriteId;
+        u8 boldText[20] = __("{COLOR 01}{HIGHLIGHT 00}");
+        u32 hpTextTileNum = gSprites[hpTextSpriteId].oam.tileNum;
+        u8 i;
+
+        windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(sText_LvSymbolOnly, 0, 3, &windowId);
+        spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum * TILE_SIZE_4BPP;
+        TextIntoHealthboxObject((void *)(OBJ_VRAM0) + spriteTileNum + 0x400, windowTileData, 1);
+        RemoveWindowOnHealthbox(windowId);
+
+        ConvertIntToDecimalStringN(boldText + 6, lvl, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, boldText, 0, 0, 0, 0, 0);
+        for (i = 0; i < 3; i++)
+        {
+            CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
+                      (void *)(OBJ_VRAM0) + (hpTextTileNum + HPTEXT_TILE_LEVEL + i) * TILE_SIZE_4BPP,
+                      TILE_SIZE_4BPP);
+        }
+        return;
+    }
 
     objVram = ConvertIntToDecimalStringN(text + 2, lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
     xPos = 5 * (3 - (objVram - (text + 2)));
@@ -772,14 +1017,13 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 
     if (GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_PLAYER)
     {
+        // Only reachable in double battles now (player singles is handled above).
         objVram = (void *)(OBJ_VRAM0);
-        if (!IsDoubleBattle())
-            objVram += spriteTileNum + 0x820;
-        else
-            objVram += spriteTileNum + 0x420;
+        objVram += spriteTileNum + 0x420;
     }
     else
     {
+        // Only reachable in double battles now (opponent singles is handled above).
         objVram = (void *)(OBJ_VRAM0);
         objVram += spriteTileNum + 0x400;
     }
@@ -789,32 +1033,51 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 
 void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
 {
-    u32 windowId, spriteTileNum;
-    u8 *windowTileData;
-
     if (GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_PLAYER && !IsDoubleBattle())
     {
-        // Only in the Japanese release can HP be displayed as text outside of double battles
-        u8 text[8];
+        // Player singles: bold numerals on their own dedicated sprites
+        // instead of the narrow proportional font, so digits get their own
+        // full tile each with no shared/legacy tile-packing to worry about.
+        u8 text[20] = __("{COLOR 01}{HIGHLIGHT 00}");
+        u8 i;
+
         if (maxOrCurrent != HP_CURRENT) // singles, max
         {
-            ConvertIntToDecimalStringN(text, value, STR_CONV_MODE_RIGHT_ALIGN, 3);
-            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 0, 5, &windowId);
-            spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum;
-            TextIntoHealthboxObject((void *)(OBJ_VRAM0) + spriteTileNum * TILE_SIZE_4BPP + 0xA40, windowTileData, 2);
-            RemoveWindowOnHealthbox(windowId);
+            u8 hpMaxSpriteId = gSprites[healthboxSpriteId].sHpMaxSpriteId;
+            u32 hpMaxTileNum = gSprites[hpMaxSpriteId].oam.tileNum;
+            u8 *txtEnd;
+            u8 digitCount;
+
+            // Left-aligned (no leading-space padding) so the digits sit
+            // flush against the "/" with no gap, matching vanilla FireRed.
+            // Since this sprite's own tile 0 is fixed right after the "/",
+            // fewer digits just means fewer tiles get written - no repositioning
+            // needed, and a 3-digit value naturally fills the tiles with no gap.
+            txtEnd = ConvertIntToDecimalStringN(text + 6, value, STR_CONV_MODE_LEFT_ALIGN, 3);
+            digitCount = txtEnd - (text + 6);
+            RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, text, 0, 0, 0, 0, 0);
+            for (i = 0; i < digitCount; i++)
+            {
+                CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
+                          (void *)(OBJ_VRAM0) + (hpMaxTileNum + i) * TILE_SIZE_4BPP,
+                          TILE_SIZE_4BPP);
+            }
         }
         else // singles, current
         {
-            u8 *strptr;
-            strptr = ConvertIntToDecimalStringN(text, value, STR_CONV_MODE_RIGHT_ALIGN, 3);
-            *strptr++ = CHAR_SLASH;
-            *strptr++ = EOS;
-            windowTileData = AddTextPrinterAndCreateWindowOnHealthbox(text, 4, 5, &windowId);
-            spriteTileNum = gSprites[healthboxSpriteId].oam.tileNum;
-            TextIntoHealthboxObject((void *)(OBJ_VRAM0) + spriteTileNum * TILE_SIZE_4BPP + 0x2E0, windowTileData, 1);
-            TextIntoHealthboxObject((void *)(OBJ_VRAM0) + spriteTileNum * TILE_SIZE_4BPP + 0xA00, windowTileData + 0x20, 2);
-            RemoveWindowOnHealthbox(windowId);
+            u8 hpCurrentSpriteId = gSprites[healthboxSpriteId].sHpCurrentSpriteId;
+            u32 hpCurrentTileNum = gSprites[hpCurrentSpriteId].oam.tileNum;
+            u8 *txtPtr = ConvertIntToDecimalStringN(text + 6, value, STR_CONV_MODE_RIGHT_ALIGN, 3);
+
+            *txtPtr++ = CHAR_SLASH;
+            *txtPtr++ = EOS;
+            RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, text, 0, 0, 0, 0, 0);
+            for (i = 0; i < 4; i++)
+            {
+                CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
+                          (void *)(OBJ_VRAM0) + (hpCurrentTileNum + i) * TILE_SIZE_4BPP,
+                          TILE_SIZE_4BPP);
+            }
         }
     }
     else

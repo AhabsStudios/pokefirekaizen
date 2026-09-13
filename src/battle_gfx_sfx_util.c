@@ -71,6 +71,40 @@ static const struct CompressedSpriteSheet sSpriteSheet_SafariHealthbox =
     .tag = TAG_HEALTHBOX_SAFARI_TILE,
 };
 
+// Dedicated sprites for the bold HP/Level numerals on the player's singles
+// healthbox. Each is its own sprite with its own small tile allocation
+// (4 tiles, matching its SPRITE_SHAPE(32x8) exactly) - no shared tag/manual
+// tile-offset tricks, so a sprite's OAM shape can never read past tiles it
+// actually owns (see CreateBattlerHealthboxSprites in battle_interface.c).
+static const struct CompressedSpriteSheet sSpriteSheet_HpTextLevel =
+{
+    .data = gBlankGfxCompressed,
+    .size = 0x80,
+    .tag = TAG_HP_TEXT_LEVEL_TILE,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_HpTextCurrent =
+{
+    .data = gBlankGfxCompressed,
+    .size = 0x80,
+    .tag = TAG_HP_TEXT_CURRENT_TILE,
+};
+
+static const struct CompressedSpriteSheet sSpriteSheet_HpTextMax =
+{
+    .data = gBlankGfxCompressed,
+    .size = 0x80,
+    .tag = TAG_HP_TEXT_MAX_TILE,
+};
+
+// Same idea, for the opponent's singles healthbox Level digits.
+static const struct CompressedSpriteSheet sSpriteSheet_HpTextOpponentLevel =
+{
+    .data = gBlankGfxCompressed,
+    .size = 0x80,
+    .tag = TAG_HP_TEXT_OPPONENT_LEVEL_TILE,
+};
+
 static const struct CompressedSpriteSheet sSpriteSheets_HealthBar[MAX_BATTLERS_COUNT] =
 {
     {
@@ -514,6 +548,13 @@ bool8 BattleLoadAllHealthBoxesGfx(u8 state)
                 LoadCompressedSpriteSheetUsingHeap(&sSpriteSheets_HealthBar[gBattlerPositions[0]]);
             else if (state == 5)
                 LoadCompressedSpriteSheetUsingHeap(&sSpriteSheets_HealthBar[gBattlerPositions[1]]);
+            else if (state == 6)
+            {
+                LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_HpTextLevel);
+                LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_HpTextCurrent);
+                LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_HpTextMax);
+                LoadCompressedSpriteSheetUsingHeap(&sSpriteSheet_HpTextOpponentLevel);
+            }
             else
                 retVal = TRUE;
         }
