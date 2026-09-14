@@ -368,6 +368,9 @@ static const struct WindowTemplate sStandardBattleWindowTemplates[] = {
     DUMMY_WIN_TEMPLATE
 };
 
+static const u16 sBattleActionMenuWindow_Gfx[] = INCBIN_U16("graphics/battle_interface/action_menu_window.4bpp");
+static const u16 sBattleActionMenuWindow_Pal[] = INCBIN_U16("graphics/battle_interface/action_menu_window.gbapal");
+
 static const u32 sBattleTerrainPalette_Grass[] = INCBIN_U32("graphics/battle_terrain/grass/terrain.gbapal.lz");
 static const u32 sBattleTerrainTiles_Grass[] = INCBIN_U32("graphics/battle_terrain/grass/terrain.4bpp.lz");
 static const u32 sBattleTerrainTilemap_Grass[] = INCBIN_U32("graphics/battle_terrain/grass/terrain.bin.lz");
@@ -690,13 +693,15 @@ void InitBattleBgsVideo(void)
 
 void LoadBattleMenuWindowGfx(void)
 {
-    LoadUserWindowGfx(2, 0x012, BG_PLTT_ID(1));
-    LoadUserWindowGfx(2, 0x022, BG_PLTT_ID(1));
+    LoadBgTiles(GetWindowAttribute(2, WINDOW_BG), sBattleActionMenuWindow_Gfx, 0x120, 0x012);
+    LoadPalette(sBattleActionMenuWindow_Pal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
+    LoadBgTiles(GetWindowAttribute(2, WINDOW_BG), sBattleActionMenuWindow_Gfx, 0x120, 0x022);
+    LoadPalette(sBattleActionMenuWindow_Pal, BG_PLTT_ID(1), PLTT_SIZE_4BPP);
 
     gPlttBufferUnfaded[BG_PLTT_ID(5) + 12] = RGB( 9,  9,  9);
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 13] = RGB( 9,  9,  9);
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 14] = RGB(31, 31, 31);
-    gPlttBufferUnfaded[BG_PLTT_ID(5) + 15] = RGB( 26,  26,  25);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 13] = RGB(30, 30, 30);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 14] = RGB(13, 14, 20);
+    gPlttBufferUnfaded[BG_PLTT_ID(5) + 15] = RGB(16, 17, 25);
     CpuCopy16(&gPlttBufferUnfaded[BG_PLTT_ID(5) + 12], &gPlttBufferFaded[BG_PLTT_ID(5) + 12], PLTT_SIZEOF(4));
 
     if (gBattleTypeFlags & (BATTLE_TYPE_FIRST_BATTLE | BATTLE_TYPE_POKEDUDE))

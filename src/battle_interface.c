@@ -532,7 +532,6 @@ static void Debug_DrawNumberPair(s16 num1, s16 num2, u16 *dest)
 
 // sprite data for the dedicated bold HP/Level text sprites (player singles only)
 #define sHpText_HealthboxSpriteId data[5]
-#define sHpText_TripleDigit       data[6] // Level sprite only - set by UpdateLvlInHealthbox, read by its position callback
 
 // sprite data for other (right) healthbox sprite
 #define sHealthboxSpriteId      data[5]
@@ -567,21 +566,16 @@ enum
 // recolored to the same palette roles the bold digits use (TEXT_COLOR_WHITE
 // for the main stroke, TEXT_COLOR_LIGHT_GRAY for the shadow bevel,
 // TEXT_COLOR_TRANSPARENT for the background) so it matches them visually.
-// Shifted down 1 pixel row and right 1 pixel column from the raw
-// Level_Glyph.png pixels (dropping the already-blank final row/rightmost
-// column) so it sits 1px lower/righter on screen without needing a separate
-// sprite just for that offset. Used for both the player's and opponent's
-// Level sprites (both needed the same right-shift, so one shared tile).
 static const u8 sLevelLetterTile[32] =
 {
     0x00, 0x00, 0x00, 0x00,
+    0x00, 0x11, 0x03, 0x00,
+    0x31, 0x11, 0x03, 0x00,
+    0x33, 0x11, 0x03, 0x00,
+    0x31, 0x11, 0x03, 0x00,
+    0x33, 0x11, 0x11, 0x03,
+    0x00, 0x33, 0x33, 0x03,
     0x00, 0x00, 0x00, 0x00,
-    0x00, 0x10, 0x31, 0x00,
-    0x10, 0x13, 0x31, 0x00,
-    0x30, 0x13, 0x31, 0x00,
-    0x10, 0x13, 0x31, 0x00,
-    0x30, 0x13, 0x11, 0x31,
-    0x00, 0x30, 0x33, 0x33,
 };
 
 static const struct OamData sOamData_HpText =
@@ -641,19 +635,13 @@ static void SpriteCB_HpLevelText(struct Sprite *sprite)
 
     // Center-to-corner offset for SPRITE_SHAPE(32x8) is (-16,-4) vs (-32,-16)
     // for the old shared 64x32 shape (see sCenterToCornerVecTable in
-    // src/sprite.c), so these x/y start 16/12 less than the values that were
-    // confirmed correct back when this was one big 64x32 sprite, then:
-    // - x -8 (1 tile) since tile 0 is now the "L" glyph and digits moved to
-    //   tile 1, keeping the digits where they were confirmed correct.
-    // - x +10, y +1, then x -2, y -1 from later pixel-nudge passes.
-    // - a further -7 (1 tile, +1px nudge) when the level is 3 digits (100),
-    //   so the whole "L"+digits group shifts left by about one character's
-    //   worth of space and stays inside the box (clear of long nicknames)
-    //   instead of overflowing its right edge - see sHpText_TripleDigit, set
-    //   by UpdateLvlInHealthbox. Only applies when tripleDigit is set, so
-    //   1-2 digit levels are completely unaffected by this term.
-    sprite->x = gSprites[healthboxSpriteId].x + 56 - (sprite->sHpText_TripleDigit ? 7 : 0);
-    sprite->y = gSprites[healthboxSpriteId].y - 5;
+    // src/sprite.c), so these x/y are 16/12 less than the values that were
+    // confirmed correct on-screen back when this was one big 64x32 sprite.
+    // x is a further 8px (1 tile) less than that, since tile 0 is now the
+    // "L" glyph and digits moved to tile 1 - this keeps the digits exactly
+    // where they were confirmed correct, with "L" filling the freed space.
+    sprite->x = gSprites[healthboxSpriteId].x + 58;
+    sprite->y = gSprites[healthboxSpriteId].y - 4;
     sprite->x2 = gSprites[healthboxSpriteId].x2;
     sprite->y2 = gSprites[healthboxSpriteId].y2;
 }
@@ -688,16 +676,14 @@ static void SpriteCB_HpMaxText(struct Sprite *sprite)
 }
 
 // Syncs the opponent's Level-digits sprite with its (opponent) healthbox.
-// x/y confirmed correct at +41/-5 for the digits alone, then:
-// - x -8 (1 tile) since tile 0 is now the "L" glyph and digits moved to
-//   tile 1, same reasoning as SpriteCB_HpLevelText.
-// - x +16, y +1 from the final pixel-nudge pass.
+// x is 8px (1 tile) less than the confirmed-correct digit position, since
+// tile 0 is now the "L" glyph and digits moved to tile 1 (same reasoning as
+// SpriteCB_HpLevelText).
 static void SpriteCB_HpOpponentLevelText(struct Sprite *sprite)
 {
     u8 healthboxSpriteId = sprite->sHpText_HealthboxSpriteId;
 
-    // See sHpText_TripleDigit note in SpriteCB_HpLevelText.
-    sprite->x = gSprites[healthboxSpriteId].x + 49 - (sprite->sHpText_TripleDigit ? 8 : 0);
+    sprite->x = gSprites[healthboxSpriteId].x + 33;
     sprite->y = gSprites[healthboxSpriteId].y - 5;
     sprite->x2 = gSprites[healthboxSpriteId].x2;
     sprite->y2 = gSprites[healthboxSpriteId].y2;
@@ -1009,13 +995,10 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 
         // Left-aligned (no leading-space padding), same reasoning as the max
         // HP digits: tile 1 is fixed right after the "L" glyph, so digits
-        // sit flush against it with no gap. A 3-digit level (100) fills all
-        // 3 available digit tiles, so the sprite's position callback shifts
-        // the whole group left by one tile (see sHpText_TripleDigit) to keep
-        // it inside the box instead of overflowing.
+        // sit flush against it with no gap, and a 3-digit level (100) still
+        // fits exactly in the 3 available digit tiles with no repositioning.
         txtEnd = ConvertIntToDecimalStringN(boldText + 6, lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
         digitCount = txtEnd - (boldText + 6);
-        gSprites[hpTextSpriteId].sHpText_TripleDigit = (digitCount == 3);
         RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, boldText, 0, 0, 0, 0, 0);
         for (i = 0; i < digitCount; i++)
         {
@@ -1040,7 +1023,6 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 
         txtEnd = ConvertIntToDecimalStringN(boldText + 6, lvl, STR_CONV_MODE_LEFT_ALIGN, 3);
         digitCount = txtEnd - (boldText + 6);
-        gSprites[hpTextSpriteId].sHpText_TripleDigit = (digitCount == 3);
         RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, boldText, 0, 0, 0, 0, 0);
         for (i = 0; i < digitCount; i++)
         {

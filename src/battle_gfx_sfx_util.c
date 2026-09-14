@@ -22,17 +22,26 @@ static void Task_ClearBitWhenBattleTableAnimDone(u8 taskId);
 static void Task_ClearBitWhenSpecialAnimDone(u8 taskId);
 static void ClearSpritesBattlerHealthboxAnimData(void);
 
+// The rebuilt singles healthbox base art (see singles_user_base_graphic.png
+// / singles_opponent_base_graphic.png) is compiled as two 64-pixel-wide
+// halves (left/right), each matching its own sprite's 8-tile width exactly,
+// then concatenated - avoiding any risk of tile-order mismatch from
+// compiling one wide image and expecting narrower sprites to reinterpret
+// it correctly. This is the same two-sprite-per-box layout (and the exact
+// same sHealthboxOtherSpriteId/tileNum-offset/SpriteCB_HealthBoxOther code)
+// vanilla singles battles have always used, just with new tile content, so
+// every already-tuned healthbar/HP-text/Level-text position needs no change.
 static const struct CompressedSpriteSheet sSpriteSheet_SinglesPlayerHealthbox =
 {
     .data = gHealthboxSinglesPlayerGfx,
-    .size = 0x1000,
+    .size = 0x1000, // two 64x64 sprites = 128 tiles
     .tag = TAG_HEALTHBOX_PLAYER1_TILE,
 };
 
 static const struct CompressedSpriteSheet sSpriteSheet_SinglesOpponentHealthbox =
 {
     .data = gHealthboxSinglesOpponentGfx,
-    .size = 0x1000,
+    .size = 0x800, // two 64x32 sprites = 64 tiles
     .tag = TAG_HEALTHBOX_OPPONENT1_TILE,
 };
 
