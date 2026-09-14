@@ -49,8 +49,6 @@ static void SetGpuRegsForTitleScreenRun(void);
 static void SetTitleScreenScene_Restart(s16 *data);
 static void SetTitleScreenScene_Cry(s16 *data);
 static void Task_TitleScreen_SlideWin0(u8 taskId);
-static void Task_TitleScreen_BlinkPressStart(u8 taskId);
-static void SignalEndTitleScreenPaletteSomethingTask(void);
 static void UpdateScanlineEffectRegBuffer(s16 y);
 static void ScheduleStopScanlineEffect(void);
 static void LoadMainTitleScreenPalsAndResetBgs(void);
@@ -616,7 +614,6 @@ static void SetTitleScreenScene_Run(s16 *data)
     {
     case 0:
         SetHelpContext(HELPCONTEXT_TITLE_SCREEN);
-        CreateTask(Task_TitleScreen_BlinkPressStart, 0);
 #if defined(FIRERED)
         CreateTask(Task_FlameSpawner, 5);
 #elif defined(LEAFGREEN)
@@ -673,14 +670,12 @@ static void SetTitleScreenScene_Restart(s16 *data)
         {
             FadeOutMapMusic(10);
             BeginNormalPaletteFade(PALETTES_ALL, 3, 0, 0x10, RGB_BLACK);
-            SignalEndTitleScreenPaletteSomethingTask();
             data[1]++;
         }
         break;
     case 2:
         if (IsNotWaitingForBGMStop() && !gPaletteFade.active)
         {
-            DestroyTask(FindTaskIdByFunc(Task_TitleScreen_BlinkPressStart));
             data[2] = 0;
             tState++;
         }
@@ -689,7 +684,6 @@ static void SetTitleScreenScene_Restart(s16 *data)
         data[2]++;
         if (data[2] >= 20)
         {
-            DestroyTask(FindTaskIdByFunc(Task_TitleScreen_BlinkPressStart));
             tState++;
         }
         break;
@@ -720,7 +714,6 @@ static void SetTitleScreenScene_Cry(s16 *data)
         else if (!IsSlashSpriteDeactivated(tSlashSpriteId))
         {
             BeginNormalPaletteFade((PALETTES_ALL & ~(1 << 0x1C) & ~(1 << 0x1D) & ~(1 << 0x1E) & ~(1 << 0x1F)), 0, 0, 16, RGB_WHITE);
-            SignalEndTitleScreenPaletteSomethingTask();
             FadeOutBGM(4);
             tState++;
         }
@@ -806,56 +799,6 @@ static void Task_TitleScreen_SlideWin0(u8 taskId)
         DestroyTask(taskId);
         break;
     }
-}
-
-static void Task_TitleScreen_BlinkPressStart(u8 taskId)
-{
-    s16 *data = gTasks[taskId].data;
-    s32 i;
-
-    if (data[15] && gPaletteFade.active)
-        data[14] = 1;
-    if (data[14] && !gPaletteFade.active)
-        DestroyTask(taskId);
-    else
-    {
-        if (!data[1])
-            data[2] = 60;
-        else
-            data[2] = 30;
-        data[0]++;
-        if (data[0] >= data[2])
-        {
-            data[0] = 0;
-            data[1] ^= 1;
-            if (data[1])
-            {
-                for (i = 0; i < 5; i++)
-                {
-                    gPlttBufferUnfaded[BG_PLTT_ID(15) + 1 + i] = gGraphics_TitleScreen_BackgroundPals[6];
-                    gPlttBufferFaded[BG_PLTT_ID(15) + 1 + i] = gGraphics_TitleScreen_BackgroundPals[6];
-                }
-            }
-            else
-            {
-                for (i = 0; i < 5; i++)
-                {
-                    gPlttBufferUnfaded[BG_PLTT_ID(15) + 1 + i] = gGraphics_TitleScreen_BackgroundPals[1 + i];
-                    gPlttBufferFaded[BG_PLTT_ID(15) + 1 + i] = gGraphics_TitleScreen_BackgroundPals[1 + i];
-                }
-            }
-            if (data[14])
-            {
-                BlendPalettes(0x00008000, gPaletteFade.y, gPaletteFade.blendColor);
-            }
-        }
-    }
-}
-
-static void SignalEndTitleScreenPaletteSomethingTask(void)
-{
-    u8 taskId = FindTaskIdByFunc(Task_TitleScreen_BlinkPressStart);
-    gTasks[taskId].data[15] = TRUE;
 }
 
 static void UpdateScanlineEffectRegBuffer(s16 y)

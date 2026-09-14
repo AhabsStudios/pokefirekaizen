@@ -1380,7 +1380,12 @@ static void MoveSelectionDisplayMoveNames(void)
 
 static void MoveSelectionDisplayPpString(void)
 {
-    StringCopy(gDisplayedStringBattle, gText_MoveInterfacePP);
+    // Same inline {PALETTE 5}{COLOR_HIGHLIGHT_SHADOW 13 14 15} prefix
+    // MoveSelectionDisplayMoveType uses for "TYPE/NORMAL" - the window
+    // template's own fgColor/shadowColor fields aren't sufficient on their
+    // own to get the right colors applied at runtime for this text.
+    u8 *txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceDynamicColors);
+    StringCopy(txtPtr, gText_MoveInterfacePP);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP);
 }
 
@@ -1393,7 +1398,9 @@ static void MoveSelectionDisplayPpNumber(void)
         return;
     SetPpNumbersPaletteInMoveSelection();
     moveInfo = (struct ChooseMoveStruct *)(&gBattleBufferA[gActiveBattler][4]);
-    txtPtr = ConvertIntToDecimalStringN(gDisplayedStringBattle, moveInfo->currentPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
+    // See MoveSelectionDisplayPpString for why this prefix is needed.
+    txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceDynamicColors);
+    txtPtr = ConvertIntToDecimalStringN(txtPtr, moveInfo->currentPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
     *txtPtr = CHAR_SLASH;
     ConvertIntToDecimalStringN(++txtPtr, moveInfo->maxPp[gMoveSelectionCursor[gActiveBattler]], STR_CONV_MODE_RIGHT_ALIGN, 2);
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
