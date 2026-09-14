@@ -28,34 +28,29 @@ static void Task_CleanUp(u8 taskId);
 static u8 GetClosenessFromFriendship(u16 friendship);
 static u16 GetAnimTypeByItemId(u16 itemId);
 
+// The cinematic (fade to black, sprite zoom, item-use bounce, wobble, etc.) played by
+// Task_UseItem_Normal/Task_ForgetMove/Task_EvoStone_CantEvolve/Task_UseTM_NoForget is skipped
+// entirely: these entry points now jump straight to the caller's follow-up callback, which
+// applies the item's effect and prints its result message through the normal party menu flow.
+// sCancelDisabled is forced FALSE so that TM/HM callers (CB2_UseItem, CB2_UseTMHMAfterForgettingMove)
+// always take their full ItemUseCB path instead of the shortcut meant to follow a completed animation.
+
 void StartUseItemAnim_Normal(u8 slotId, u16 itemId, MainCallback callback)
 {
-    struct PokemonSpecialAnim * ptr = AllocPSA(slotId, itemId, callback);
-    if (ptr == NULL)
-        SetMainCallback2(callback);
-    else
-        SetUpUseItemAnim_Normal(ptr);
+    sCancelDisabled = FALSE;
+    SetMainCallback2(callback);
 }
 
 void StartUseItemAnim_ForgetMoveAndLearnTMorHM(u8 slotId, u16 itemId, u16 moveId, MainCallback callback)
 {
-    struct PokemonSpecialAnim * ptr = AllocPSA(slotId, itemId, callback);
-    if (ptr == NULL)
-        SetMainCallback2(callback);
-    else
-    {
-        StringCopy(ptr->nameOfMoveForgotten, gMoveNames[moveId]);
-        SetUpUseItemAnim_ForgetMoveAndLearnTMorHM(ptr);
-    }
+    sCancelDisabled = FALSE;
+    SetMainCallback2(callback);
 }
 
 void StartUseItemAnim_CantEvolve(u8 slotId, u16 itemId, MainCallback callback)
 {
-    struct PokemonSpecialAnim * ptr = AllocPSA(slotId, itemId, callback);
-    if (ptr == NULL)
-        SetMainCallback2(callback);
-    else
-        SetUpUseItemAnim_CantEvolve(ptr);
+    sCancelDisabled = FALSE;
+    SetMainCallback2(callback);
 }
 
 static struct PokemonSpecialAnim * AllocPSA(u8 slotId, u16 itemId, MainCallback callback)

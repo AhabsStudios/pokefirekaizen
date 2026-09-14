@@ -18,10 +18,9 @@ static EWRAM_DATA u8 sMessageWindowId = {0};
 
 static void Task_ContinueTaskAfterMessagePrints(u8 taskId);
 
-void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
+static void StartMessagePrinterAndContinueTask(u8 taskId, u8 windowId, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
 {
     sMessageWindowId = windowId;
-    DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
 
     if (string != gStringVar4)
         StringExpandPlaceholders(gStringVar4, string);
@@ -30,6 +29,22 @@ void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 palet
     AddTextPrinterParameterized2(windowId, fontId, gStringVar4, textSpeed, NULL, TEXT_COLOR_DARK_GRAY, TEXT_COLOR_WHITE, TEXT_COLOR_LIGHT_GRAY);
     sMessageNextTask = taskFunc;
     gTasks[taskId].func = Task_ContinueTaskAfterMessagePrints;
+}
+
+void DisplayMessageAndContinueTask(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
+{
+    DrawDialogFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
+    StartMessagePrinterAndContinueTask(taskId, windowId, fontId, textSpeed, string, taskFunc);
+}
+
+// Same as DisplayMessageAndContinueTask, but draws a plain rectangular frame from
+// whichever tiles/palette are passed in, instead of the fixed flared dialogue graphic.
+// Pairs with graphics loaded via LoadUserWindowGfx so the box follows the player's
+// chosen window frame (Options > Frame).
+void DisplayMessageAndContinueTaskWithPlainFrame(u8 taskId, u8 windowId, u16 tileNum, u8 paletteNum, u8 fontId, u8 textSpeed, const u8 *string, void *taskFunc)
+{
+    DrawStdFrameWithCustomTileAndPalette(windowId, TRUE, tileNum, paletteNum);
+    StartMessagePrinterAndContinueTask(taskId, windowId, fontId, textSpeed, string, taskFunc);
 }
 
 bool16 RunTextPrinters_CheckActive(u8 textPrinterId)

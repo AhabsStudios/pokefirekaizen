@@ -1020,7 +1020,7 @@ void DisplayItemMessageInBag(u8 taskId, u8 fontId, const u8 * string, TaskFunc f
     s16 *data = gTasks[taskId].data;
     data[10] = OpenBagWindow(5);
     FillWindowPixelBuffer(data[10], PIXEL_FILL(1));
-    DisplayMessageAndContinueTask(taskId, data[10], 0x06D, 0x0D, fontId, GetTextSpeedSetting(), string, followUpFunc);
+    DisplayMessageAndContinueTaskWithPlainFrame(taskId, data[10], 0x06D, 0x0D, fontId, GetTextSpeedSetting(), string, followUpFunc);
     ScheduleBgCopyTilemapToVram(0);
 }
 

@@ -4262,8 +4262,15 @@ static void CB2_ReturnToBerryPouchMenu(void)
 
 static void Task_DoUseItemAnim(u8 taskId)
 {
+    // Closes the party menu without Task_ClosePartyMenu's fade-to-black: the item-use
+    // cinematic that used to fill that gap is skipped (see pokemon_special_anim.c), so the
+    // fade-out would otherwise just be a pause before the party menu immediately reopens.
     sPartyMenuInternal->exitCallback = CB2_DoUseItemAnim;
-    Task_ClosePartyMenu(taskId);
+    if (gPartyMenu.menuType == PARTY_MENU_TYPE_IN_BATTLE)
+        UpdatePartyToFieldOrder();
+    SetMainCallback2(sPartyMenuInternal->exitCallback);
+    FreePartyPointers();
+    DestroyTask(taskId);
 }
 
 static void CB2_DoUseItemAnim(void)
@@ -4456,8 +4463,7 @@ void ItemUseCB_Medicine(u8 taskId, TaskFunc func)
     else
     {
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, mon, item, 0xFFFF);
-        Task_DoUseItemAnim(taskId);
-        gItemUseCB = ItemUseCB_MedicineStep;
+        ItemUseCB_MedicineStep(taskId, func);
     }
 }
 
@@ -4649,8 +4655,7 @@ static void TryUsePPItemOutsideBattle(u8 taskId)
     }
     else
     {
-        Task_DoUseItemAnim(taskId);
-        gItemUseCB = ItemUseCB_RestorePP;
+        ItemUseCB_RestorePP(taskId, NULL);
     }
 }
 
@@ -4785,8 +4790,7 @@ void ItemUseCB_TMHM(u8 taskId, TaskFunc func)
     if (GiveMoveToMon(mon, learnMoveId) != MON_HAS_MAX_MOVES)
     {
         ItemUse_SetQuestLogEvent(QL_EVENT_USED_ITEM, mon, item, 0xFFFF);
-        Task_DoUseItemAnim(taskId);
-        gItemUseCB = ItemUseCB_LearnedMove;
+        Task_LearnedMove(taskId);
     }
     else
     {
@@ -5035,8 +5039,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc func)
     }
     else
     {
-        Task_DoUseItemAnim(taskId);
-        gItemUseCB = ItemUseCB_RareCandyStep;
+        ItemUseCB_RareCandyStep(taskId, func);
     }
 }
 
