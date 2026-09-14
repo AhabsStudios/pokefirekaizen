@@ -566,15 +566,22 @@ enum
 // recolored to the same palette roles the bold digits use (TEXT_COLOR_WHITE
 // for the main stroke, TEXT_COLOR_LIGHT_GRAY for the shadow bevel,
 // TEXT_COLOR_TRANSPARENT for the background) so it matches them visually.
+// Shifted 1px right from the original hand-authored art (column 7 was
+// always blank, so this loses nothing) to exactly cancel out the Level
+// sprite's own -1px x nudge (see SpriteCB_HpLevelText) - that nudge exists
+// so the digit tiles can move 1px left without clipping (a same-tile pixel
+// shift on the digits would, unlike this, discard real ink at column 0 for
+// digits like "0"/"9"), and this keeps the "L" glyph's own screen position
+// unaffected by it.
 static const u8 sLevelLetterTile[32] =
 {
     0x00, 0x00, 0x00, 0x00,
-    0x00, 0x11, 0x03, 0x00,
-    0x31, 0x11, 0x03, 0x00,
-    0x33, 0x11, 0x03, 0x00,
-    0x31, 0x11, 0x03, 0x00,
-    0x33, 0x11, 0x11, 0x03,
-    0x00, 0x33, 0x33, 0x03,
+    0x00, 0x10, 0x31, 0x00,
+    0x10, 0x13, 0x31, 0x00,
+    0x30, 0x13, 0x31, 0x00,
+    0x10, 0x13, 0x31, 0x00,
+    0x30, 0x13, 0x11, 0x31,
+    0x00, 0x30, 0x33, 0x33,
     0x00, 0x00, 0x00, 0x00,
 };
 
@@ -640,7 +647,19 @@ static void SpriteCB_HpLevelText(struct Sprite *sprite)
     // x is a further 8px (1 tile) less than that, since tile 0 is now the
     // "L" glyph and digits moved to tile 1 - this keeps the digits exactly
     // where they were confirmed correct, with "L" filling the freed space.
-    sprite->x = gSprites[healthboxSpriteId].x + 58;
+    // -6 on top of that - calibrated directly against hp-box-ref.png (the
+    // CHARMANDER/player box's L glyph sat at screen x=202 pre-calibration
+    // vs x=196 in the reference, with the healthbox itself at an identical
+    // screen position in both images). y is a further +1 (down 1px) per a
+    // later visual pass - see ShiftDigitTileUp1Px, which cancels this for
+    // the digit tiles so only the "L" glyph actually moves down. x is a
+    // further -1 (left 1px, the digits' own desired nudge) - the "L" tile's
+    // own pixel data is pre-shifted +1px (see sLevelLetterTile) to cancel
+    // this out for the glyph, since shifting the digits' own pixel content
+    // left would clip real ink for digits like "0"/"9" that reach their
+    // tile's left edge, while the sprite's x is just a coordinate - moving
+    // it loses nothing.
+    sprite->x = gSprites[healthboxSpriteId].x + 51;
     sprite->y = gSprites[healthboxSpriteId].y - 4;
     sprite->x2 = gSprites[healthboxSpriteId].x2;
     sprite->y2 = gSprites[healthboxSpriteId].y2;
@@ -679,12 +698,17 @@ static void SpriteCB_HpMaxText(struct Sprite *sprite)
 // x is 8px (1 tile) less than the confirmed-correct digit position, since
 // tile 0 is now the "L" glyph and digits moved to tile 1 (same reasoning as
 // SpriteCB_HpLevelText).
+// +11 on top of that - calibrated directly against hp-box-ref.png (the
+// GEODUDE/opponent box's L glyph sat at screen x=63 pre-calibration vs
+// x=74 in the reference, with the healthbox itself at an identical screen
+// position in both images). y is a further +1 (down 1px) and x a further -1
+// (left 1px) per a later visual pass - see the comment in SpriteCB_HpLevelText.
 static void SpriteCB_HpOpponentLevelText(struct Sprite *sprite)
 {
     u8 healthboxSpriteId = sprite->sHpText_HealthboxSpriteId;
 
-    sprite->x = gSprites[healthboxSpriteId].x + 33;
-    sprite->y = gSprites[healthboxSpriteId].y - 5;
+    sprite->x = gSprites[healthboxSpriteId].x + 43;
+    sprite->y = gSprites[healthboxSpriteId].y - 4;
     sprite->x2 = gSprites[healthboxSpriteId].x2;
     sprite->y2 = gSprites[healthboxSpriteId].y2;
 }
@@ -973,6 +997,48 @@ void InitBattlerHealthboxCoords(u8 battler)
 // Digits go in tiles 1-3 (see sHpTextLevelSpriteTemplate / SpriteCB_HpLevelText).
 #define HPTEXT_TILE_LEVEL 1
 
+// The Level sprite as a whole was moved down 1px (see SpriteCB_HpLevelText /
+// SpriteCB_HpOpponentLevelText) to put the "L" glyph where it needed to be.
+// That also drags the digit tiles down 1px, which they don't want - this
+// shifts a digit's freshly-rendered pixel content up 1px (canceling the
+// sprite-level move) before it gets copied to VRAM. Only ever applied to
+// the dynamically-rendered digit tiles, never to the hand-authored "L"
+// tile itself.
+// NOTE: this only shifts rows (vertically), not columns - an earlier
+// version also shifted columns left to nudge the digits horizontally, but
+// that silently discarded real ink at column 0 for digits like "0"/"9"
+// whose glyph reaches the tile's left edge (visible as clipping). The
+// digits' horizontal nudge is done losslessly instead, by moving the
+// sprite's own x by -1 (see SpriteCB_HpLevelText), with the "L" tile's own
+// pixel data pre-shifted +1px to cancel that out just for the glyph.
+static void ShiftDigitTileUp1Px(u8 *tile)
+{
+    u8 px[8][8];
+    u8 shifted[8][8];
+    s32 r, c;
+
+    for (r = 0; r < 8; r++)
+    {
+        for (c = 0; c < 8; c++)
+        {
+            u8 byte = tile[r * 4 + c / 2];
+            px[r][c] = (c & 1) ? ((byte >> 4) & 0xF) : (byte & 0xF);
+        }
+    }
+
+    for (r = 0; r < 8; r++)
+    {
+        for (c = 0; c < 8; c++)
+            shifted[r][c] = (r + 1 < 8) ? px[r + 1][c] : 0;
+    }
+
+    for (r = 0; r < 8; r++)
+    {
+        for (c = 0; c < 4; c++)
+            tile[r * 4 + c] = (shifted[r][c * 2] & 0xF) | ((shifted[r][c * 2 + 1] & 0xF) << 4);
+    }
+}
+
 static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
 {
     u32 windowId, spriteTileNum;
@@ -1002,9 +1068,20 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
         RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, boldText, 0, 0, 0, 0, 0);
         for (i = 0; i < digitCount; i++)
         {
-            CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
+            u8 digitTile[TILE_SIZE_4BPP];
+            CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32], digitTile, TILE_SIZE_4BPP);
+            ShiftDigitTileUp1Px(digitTile);
+            CpuCopy32(digitTile,
                       (void *)(OBJ_VRAM0) + (hpTextTileNum + HPTEXT_TILE_LEVEL + i) * TILE_SIZE_4BPP,
                       TILE_SIZE_4BPP);
+        }
+        // Clear any digit tiles left over from a previous, longer level
+        // (e.g. switching from a level-100 mon to a level-99 one otherwise
+        // leaves that old trailing "0" tile on screen, since the loop above
+        // only ever writes digitCount tiles and never touches the rest).
+        for (; i < 3; i++)
+        {
+            CpuFill32(0, (void *)(OBJ_VRAM0) + (hpTextTileNum + HPTEXT_TILE_LEVEL + i) * TILE_SIZE_4BPP, TILE_SIZE_4BPP);
         }
         return;
     }
@@ -1026,9 +1103,17 @@ static void UpdateLvlInHealthbox(u8 healthboxSpriteId, u8 lvl)
         RenderTextHandleBold(gMonSpritesGfxPtr->barFontGfx, 0, boldText, 0, 0, 0, 0, 0);
         for (i = 0; i < digitCount; i++)
         {
-            CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
+            u8 digitTile[TILE_SIZE_4BPP];
+            CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32], digitTile, TILE_SIZE_4BPP);
+            ShiftDigitTileUp1Px(digitTile);
+            CpuCopy32(digitTile,
                       (void *)(OBJ_VRAM0) + (hpTextTileNum + HPTEXT_TILE_LEVEL + i) * TILE_SIZE_4BPP,
                       TILE_SIZE_4BPP);
+        }
+        // See the comment on the matching loop above.
+        for (; i < 3; i++)
+        {
+            CpuFill32(0, (void *)(OBJ_VRAM0) + (hpTextTileNum + HPTEXT_TILE_LEVEL + i) * TILE_SIZE_4BPP, TILE_SIZE_4BPP);
         }
         return;
     }
@@ -1085,6 +1170,14 @@ void UpdateHpTextInHealthbox(u8 healthboxSpriteId, s16 value, u8 maxOrCurrent)
                 CpuCopy32(&gMonSpritesGfxPtr->barFontGfx[i * 64 + 32],
                           (void *)(OBJ_VRAM0) + (hpMaxTileNum + i) * TILE_SIZE_4BPP,
                           TILE_SIZE_4BPP);
+            }
+            // Clear any digit tiles left over from a previous, longer max HP
+            // value (e.g. switching from a mon with 3-digit max HP to one
+            // with 2 digits otherwise leaves that old trailing digit tile on
+            // screen, since the loop above only ever writes digitCount tiles).
+            for (; i < 3; i++)
+            {
+                CpuFill32(0, (void *)(OBJ_VRAM0) + (hpMaxTileNum + i) * TILE_SIZE_4BPP, TILE_SIZE_4BPP);
             }
         }
         else // singles, current
