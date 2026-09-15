@@ -5208,6 +5208,21 @@ static void Cmd_handlelearnnewmove(void)
     }
 }
 
+// The "Learn/forget move?" yes-no box and the level-up stat-gain banner
+// both draw on a BG layer that ties in priority with the healthbox Level/HP
+// digit sprites, so those digits render on top of the popups instead of
+// being covered like the rest of the healthbox is - see
+// SetHealthboxHpTextInvisibility. Hiding/showing every battler's digits
+// around these popups (rather than figuring out exactly which one is
+// relevant) is simplest and safe, since a battler with no active healthbox
+// sprites just no-ops.
+static void SetAllHealthboxHpTextInvisibility(bool8 invisible)
+{
+    u32 i;
+    for (i = 0; i < gBattlersCount; i++)
+        SetHealthboxHpTextInvisibility(gHealthboxSpriteIds[i], invisible);
+}
+
 static void Cmd_yesnoboxlearnmove(void)
 {
     gActiveBattler = 0;
@@ -5220,6 +5235,7 @@ static void Cmd_yesnoboxlearnmove(void)
         gBattleScripting.learnMoveState++;
         gBattleCommunication[CURSOR_POSITION] = 0;
         BattleCreateYesNoCursorAt();
+        SetAllHealthboxHpTextInvisibility(TRUE);
         break;
     case 1:
         if (JOY_NEW(DPAD_UP) && gBattleCommunication[CURSOR_POSITION] != 0)
@@ -5242,6 +5258,7 @@ static void Cmd_yesnoboxlearnmove(void)
             if (gBattleCommunication[1] == 0)
             {
                 HandleBattleWindow(23, 8, 29, 13, WINDOW_CLEAR);
+                SetAllHealthboxHpTextInvisibility(FALSE);
                 BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
                 gBattleScripting.learnMoveState++;
             }
@@ -5308,6 +5325,7 @@ static void Cmd_yesnoboxlearnmove(void)
         break;
     case 4:
         HandleBattleWindow(23, 8, 29, 13, WINDOW_CLEAR);
+        SetAllHealthboxHpTextInvisibility(FALSE);
         gBattlescriptCurrInstr += 5;
         break;
     case 5:
@@ -5329,6 +5347,7 @@ static void Cmd_yesnoboxstoplearningmove(void)
         gBattleScripting.learnMoveState++;
         gBattleCommunication[CURSOR_POSITION] = 0;
         BattleCreateYesNoCursorAt();
+        SetAllHealthboxHpTextInvisibility(TRUE);
         break;
     case 1:
         if (JOY_NEW(DPAD_UP) && gBattleCommunication[CURSOR_POSITION] != 0)
@@ -5355,12 +5374,14 @@ static void Cmd_yesnoboxstoplearningmove(void)
                 gBattlescriptCurrInstr += 5;
 
             HandleBattleWindow(23, 8, 29, 13, WINDOW_CLEAR);
+            SetAllHealthboxHpTextInvisibility(FALSE);
         }
         else if (JOY_NEW(B_BUTTON))
         {
             PlaySE(SE_SELECT);
             gBattlescriptCurrInstr = T1_READ_PTR(gBattlescriptCurrInstr + 1);
             HandleBattleWindow(23, 8, 29, 13, WINDOW_CLEAR);
+            SetAllHealthboxHpTextInvisibility(FALSE);
         }
         break;
     }
@@ -5742,6 +5763,13 @@ static void Cmd_drawlvlupbox(void)
             gBattleScripting.drawlvlupboxState = 3;
         else
             gBattleScripting.drawlvlupboxState = 1;
+
+        // The banner/box below draw on BG layers that tie in priority with
+        // the healthbox Level/HP digit sprites at some point during this
+        // sequence, so those digits render on top of them instead of being
+        // covered like the rest of the healthbox is - see
+        // SetHealthboxHpTextInvisibility. Restored in the state 10 case below.
+        SetAllHealthboxHpTextInvisibility(TRUE);
     }
 
     switch (gBattleScripting.drawlvlupboxState)
@@ -5826,6 +5854,7 @@ static void Cmd_drawlvlupbox(void)
             SetBgAttribute(1, BG_ATTR_PRIORITY, 1);
             ShowBg(0);
             ShowBg(1);
+            SetAllHealthboxHpTextInvisibility(FALSE);
             gBattlescriptCurrInstr++;
         }
         break;

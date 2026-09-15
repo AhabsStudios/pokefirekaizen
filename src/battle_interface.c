@@ -926,6 +926,35 @@ void SetHealthboxSpriteVisible(u8 healthboxSpriteId)
     }
 }
 
+// Hides/shows just the Level/HP digit sprites (not the healthbox/healthbar
+// itself) - for popups that should visually cover the numbers but not the
+// rest of the healthbox, like the "Learn/forget move?" yes-no box and the
+// level-up stat-gain banner. Both draw on a BG layer at the same priority
+// as these digit sprites (0), and GBA draws a sprite on top of a
+// same-priority BG on ties, so without this the numbers punch straight
+// through those popups instead of being covered like the rest of the box.
+void SetHealthboxHpTextInvisibility(u8 healthboxSpriteId, bool8 invisible)
+{
+    // Don't force the digits visible again if the healthbox itself is
+    // currently hidden (e.g. a fainted/switched-out battler, via
+    // SetHealthboxSpriteInvisible elsewhere) - otherwise un-hiding after a
+    // popup incorrectly redraws a KO'd Pokemon's level/HP text that should
+    // have stayed hidden.
+    if (!invisible && gSprites[healthboxSpriteId].invisible)
+        return;
+
+    if (!IsDoubleBattle() && GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_PLAYER)
+    {
+        gSprites[gSprites[healthboxSpriteId].sHpTextSpriteId].invisible = invisible;
+        gSprites[gSprites[healthboxSpriteId].sHpCurrentSpriteId].invisible = invisible;
+        gSprites[gSprites[healthboxSpriteId].sHpMaxSpriteId].invisible = invisible;
+    }
+    else if (!IsDoubleBattle() && GetBattlerSide(gSprites[healthboxSpriteId].sBattlerId) == B_SIDE_OPPONENT)
+    {
+        gSprites[gSprites[healthboxSpriteId].sHpTextSpriteId].invisible = invisible;
+    }
+}
+
 static void UpdateSpritePos(u8 spriteId, s16 x, s16 y)
 {
     gSprites[spriteId].x = x;

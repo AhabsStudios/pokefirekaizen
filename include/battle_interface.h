@@ -78,6 +78,7 @@ u8 CreateSafariPlayerHealthboxSprites(void);
 void SetBattleBarStruct(u8 battlerId, u8 healthboxSpriteId, s32 maxVal, s32 currVal, s32 receivedValue);
 void SetHealthboxSpriteInvisible(u8 healthboxSpriteId);
 void SetHealthboxSpriteVisible(u8 healthboxSpriteId);
+void SetHealthboxHpTextInvisibility(u8 healthboxSpriteId, bool8 invisible);
 void DestoryHealthboxSprite(u8 healthboxSpriteId);
 void DummyBattleInterfaceFunc(u8 healthboxSpriteId, bool8 isDoubleBattleBankOnly);
 void UpdateOamPriorityInAllHealthboxes(u8 priority);
