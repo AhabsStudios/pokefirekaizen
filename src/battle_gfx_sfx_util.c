@@ -207,7 +207,31 @@ void SpriteCB_TrainerSlideIn(struct Sprite *sprite)
     {
         sprite->x2 += sprite->data[0];
         if (sprite->x2 == 0)
+        {
             sprite->callback = SpriteCallbackDummy;
+            PlaySE(SE_M_HARDEN);
+        }
+    }
+}
+
+// Same as SpriteCB_TrainerSlideIn, but also darkens the sprite's palette while
+// it slides in and restores it on arrival. Used for the opposing trainer only.
+void SpriteCB_EnemyTrainerSlideIn(struct Sprite *sprite)
+{
+    if (!(gIntroSlideFlags & 1))
+    {
+        if (!sprite->data[1])
+        {
+            sprite->data[1] = 1;
+            BlendPalettesGradually(1 << (16 + sprite->oam.paletteNum), 0, 0, 10, RGB(8, 8, 8), 0, 1);
+        }
+        sprite->x2 += sprite->data[0];
+        if (sprite->x2 == 0)
+        {
+            sprite->callback = SpriteCallbackDummy;
+            BlendPalettesGradually(1 << (16 + sprite->oam.paletteNum), 0, 10, 0, RGB(8, 8, 8), 0, 1);
+            PlaySE(SE_M_HARDEN);
+        }
     }
 }
 

@@ -1376,7 +1376,7 @@ static void PokedudeHandleDrawTrainerPic(void)
         gSprites[gBattlerSpriteIds[gActiveBattler]].data[5] = gSprites[gBattlerSpriteIds[gActiveBattler]].oam.tileNum;
         gSprites[gBattlerSpriteIds[gActiveBattler]].oam.tileNum = GetSpriteTileStartByTag(gTrainerFrontPicTable[tranerPicid].tag);
         gSprites[gBattlerSpriteIds[gActiveBattler]].oam.affineParam = tranerPicid;
-        gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCB_TrainerSlideIn;
+        gSprites[gBattlerSpriteIds[gActiveBattler]].callback = SpriteCB_EnemyTrainerSlideIn;
     }
     gBattlerControllerFuncs[gActiveBattler] = CompleteOnBattlerSpriteCallbackDummy;
 }

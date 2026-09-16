@@ -43,6 +43,7 @@ static void AnimTask_ThrowBallSpecial_ResetPlayerSprite(u8);
 static void SpriteCB_ThrowBall_ArcFlight(struct Sprite *);
 static void TrainerBallBlock(struct Sprite *);
 static void SpriteCB_ThrowBall_TenFrameDelay(struct Sprite *);
+static void SpriteCB_ThrowBall_MissedOpenDelay(struct Sprite *);
 static void SpriteCB_ThrowBall_ShrinkMon(struct Sprite *);
 static void SpriteCB_ThrowBall_InitialFall(struct Sprite *);
 static void SpriteCB_ThrowBall_Bounce(struct Sprite *);
@@ -742,17 +743,10 @@ void AnimTask_ThrowBall(u8 taskId)
     s16 destY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) - 16;
 
     // A miss is known before the throw animation starts (decided back in
-    // Cmd_handleballthrow), so aim the arc off the right edge of the screen
-    // from the very first frame instead of redirecting it after it arrives.
-    // The vertical destination is kept at the ball's own spawn height (not
-    // the target's, which sits close to the top of the screen) so the
-    // throw's usual mid-arc hump stays well clear of the top edge - it just
-    // sails past at throwing height and exits to the right.
+    // Cmd_handleballthrow), so aim the throw a little wide of the target from
+    // the very first frame - it lands just past the Pokemon instead of on it.
     if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_MISSED)
-    {
-        destX = DISPLAY_WIDTH + 40;
-        destY = 80;
-    }
+        destX += 24;
 
     ballId = ItemIdToBallId(gLastUsedItem);
     spriteId = CreateSprite(&gBallSpriteTemplates[ballId], 32, 80, 29);
@@ -856,15 +850,29 @@ static void SpriteCB_ThrowBall_ArcFlight(struct Sprite *sprite)
         }
         else if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_MISSED)
         {
-            // The arc was already aimed well past the target and off screen
-            // (see AnimTask_ThrowBall), so it's done the moment it arrives.
+            // It still opens with the usual spark particles, but skips
+            // LaunchBallFadeMonTask/SpriteCB_ThrowBall_ShrinkMon entirely -
+            // the Pokemon is never faded, shrunk, or hidden, since the ball
+            // landed just wide of it and never actually attempted a capture.
+            StartSpriteAnim(sprite, 1);
             sprite->x += sprite->x2;
             sprite->y += sprite->y2;
-            sprite->x2 = sprite->y2 = 0;
-            sprite->data[0] = 0;
-            sprite->callback = BattleAnimObj_SignalEnd;
-            gDoingBattleAnim = FALSE;
-            UpdateOamPriorityInAllHealthboxes(1);
+            sprite->x2 = 0;
+            sprite->y2 = 0;
+
+            for (i = 0; i < 8; i++)
+                sprite->data[i] = 0;
+
+            sprite->data[5] = 0;
+            sprite->callback = SpriteCB_ThrowBall_MissedOpenDelay;
+
+            ballId = ItemIdToBallId(gLastUsedItem);
+            switch (ballId)
+            {
+            case 0 ... POKEBALL_COUNT - 1:
+                AnimateBallOpenParticles(sprite->x, sprite->y - 5, 1, 28, ballId);
+                break;
+            }
         }
         else
         {
@@ -899,6 +907,24 @@ static void SpriteCB_ThrowBall_TenFrameDelay(struct Sprite *sprite)
         sprite->data[5] = CreateTask(TaskDummy, 50);
         sprite->callback = SpriteCB_ThrowBall_ShrinkMon;
         gSprites[gBattlerSpriteIds[gBattleAnimTarget]].data[1] = 0;
+    }
+}
+
+// Same pacing as SpriteCB_ThrowBall_TenFrameDelay, but once the open/spark
+// phase has played out, the ball fades away using the same alpha-blend fade
+// SpriteCB_ThrowBall_FinishClick plays after a successful catch, instead of
+// closing, falling, and bouncing - there's nothing inside it to shake or drop.
+static void SpriteCB_ThrowBall_MissedOpenDelay(struct Sprite *sprite)
+{
+    if (++sprite->data[5] == 10)
+    {
+        // SpriteCB_ThrowBall_DoClick normally sets these once the capture
+        // click sequence wraps up; since we skip straight past it to the
+        // fade-out, they need to be set here instead.
+        gDoingBattleAnim = FALSE;
+        UpdateOamPriorityInAllHealthboxes(1);
+        sprite->data[0] = 0;
+        sprite->callback = SpriteCB_ThrowBall_FinishClick;
     }
 }
 

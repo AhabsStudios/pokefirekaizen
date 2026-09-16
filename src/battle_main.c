@@ -75,6 +75,7 @@ static void SpriteCB_UnusedDebugSprite_Step(struct Sprite *sprite);
 static void CB2_EndLinkBattle(void);
 static void EndLinkBattleInSteps(void);
 static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite);
+static void SpriteCB_WaitHardenSEThenCry(struct Sprite *sprite);
 static void SpriteCB_WildMonShowHealthbox(struct Sprite *sprite);
 static void SpriteCB_Flicker(struct Sprite *sprite);
 static void SpriteCB_AnimFaintOpponent(struct Sprite *sprite);
@@ -1881,7 +1882,7 @@ void SpriteCB_EnemyMon(struct Sprite *sprite)
 {
     sprite->callback = SpriteCB_MoveWildMonToRight;
     StartSpriteAnimIfDifferent(sprite, 0);
-    BeginNormalPaletteFade(0x20000, 0, 10, 10, RGB(8, 8, 8));
+    BlendPalettesGradually(1 << (16 + sprite->oam.paletteNum), 0, 0, 10, RGB(8, 8, 8), 0, 1);
 }
 
 static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite)
@@ -1891,9 +1892,19 @@ static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite)
         sprite->x2 += 2;
         if (sprite->x2 == 0)
         {
-            sprite->callback = SpriteCB_WildMonShowHealthbox;
-            PlayCry_Normal(sprite->data[2], 25);
+            sprite->callback = SpriteCB_WaitHardenSEThenCry;
+            BlendPalettesGradually(1 << (16 + sprite->oam.paletteNum), 0, 10, 0, RGB(8, 8, 8), 0, 1);
+            PlaySE(SE_M_HARDEN);
         }
+    }
+}
+
+static void SpriteCB_WaitHardenSEThenCry(struct Sprite *sprite)
+{
+    if (!IsSEPlaying())
+    {
+        sprite->callback = SpriteCB_WildMonShowHealthbox;
+        PlayCry_Normal(sprite->data[2], 25);
     }
 }
 
@@ -1905,7 +1916,6 @@ static void SpriteCB_WildMonShowHealthbox(struct Sprite *sprite)
         SetHealthboxSpriteVisible(gHealthboxSpriteIds[sprite->sBattler]);
         sprite->callback = SpriteCallbackDummy_2;
         StartSpriteAnimIfDifferent(sprite, 0);
-        BeginNormalPaletteFade(0x20000, 0, 10, 0, RGB(8, 8, 8));
     }
 }
 
