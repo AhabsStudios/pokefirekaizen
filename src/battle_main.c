@@ -3985,6 +3985,9 @@ static void HandleAction_UseMove(void)
     else if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS || gBattleMons[gBattlerAttacker].status2 & STATUS2_RECHARGE)
     {
         gCurrentMove = gChosenMove = gLockedMoves[gBattlerAttacker];
+        // Rage's PP is only spent when the move is first selected, not on the turns it's forced to repeat
+        if (gCurrentMove == MOVE_RAGE)
+            gHitMarker |= HITMARKER_NO_PPDEDUCT;
     }
     // encore forces you to use the same move
     else if (gDisableStructs[gBattlerAttacker].encoredMove != MOVE_NONE

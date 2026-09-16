@@ -1041,6 +1041,20 @@ static void Cmd_accuracycheck(void)
 
         if (JumpIfMoveAffectedByProtect(move))
             return;
+
+        // Every move except Swift has a flat 1/256 chance to miss, regardless of its calculated accuracy.
+        if (move != MOVE_SWIFT && (Random() % 256) == 0)
+        {
+            gMoveResultFlags |= MOVE_RESULT_MISSED;
+            if (gBattleTypeFlags & BATTLE_TYPE_DOUBLE
+             && (gBattleMoves[move].target == MOVE_TARGET_BOTH || gBattleMoves[move].target == MOVE_TARGET_FOES_AND_ALLY))
+                gBattleCommunication[MISS_TYPE] = B_MSG_AVOIDED_ATK;
+            else
+                gBattleCommunication[MISS_TYPE] = B_MSG_MISSED;
+            JumpIfMoveFailed(7, move);
+            return;
+        }
+
         if (AccuracyCalcHelper(move))
             return;
 
@@ -2659,6 +2673,8 @@ void SetMoveEffect(bool8 primary, u8 certain)
                 break;
             case MOVE_EFFECT_RAGE:
                 gBattleMons[gBattlerAttacker].status2 |= STATUS2_RAGE;
+                gBattleMons[gBattlerAttacker].status2 |= STATUS2_MULTIPLETURNS;
+                gLockedMoves[gBattlerAttacker] = MOVE_RAGE;
                 gBattlescriptCurrInstr++;
                 break;
             case MOVE_EFFECT_STEAL_ITEM:
@@ -7680,7 +7696,17 @@ static void Cmd_disablelastusedattack(void)
         gDisableStructs[gBattlerTarget].disabledMove = gBattleMons[gBattlerTarget].moves[i];
         gDisableStructs[gBattlerTarget].disableTimer = (Random() & 3) + 2;
         gDisableStructs[gBattlerTarget].disableTimerStartValue = gDisableStructs[gBattlerTarget].disableTimer; // used to save the random amount of turns?
-        gBattlescriptCurrInstr += 5;
+
+        if ((gBattleMons[gBattlerTarget].status2 & STATUS2_RAGE) && gBattleMons[gBattlerTarget].statStages[STAT_ATK] < MAX_STAT_STAGE)
+        {
+            gBattleMons[gBattlerTarget].statStages[STAT_ATK]++;
+            BattleScriptPush(gBattlescriptCurrInstr + 5);
+            gBattlescriptCurrInstr = BattleScript_RageIsBuilding;
+        }
+        else
+        {
+            gBattlescriptCurrInstr += 5;
+        }
     }
     else
     {

@@ -406,10 +406,6 @@ TwoIsland_EventScript_ItemRevive::
 	finditem ITEM_REVIVE
 	end
 
-ThreeIsland_EventScript_ItemZinc::
-	finditem ITEM_ZINC
-	end
-
 ViridianForest_EventScript_ItemPotion2::
 	finditem ITEM_POTION
 	end
@@ -454,16 +450,8 @@ SilphCo_8F_EventScript_ItemIron::
 	finditem ITEM_BROMHEXINE
 	end
 
-SilphCo_11F_EventScript_ItemZinc::
-	finditem ITEM_ZINC
-	end
-
 PokemonMansion_1F_EventScript_ItemProtein::
 	finditem ITEM_TAURINE
-	end
-
-PokemonMansion_2F_EventScript_ItemZinc::
-	finditem ITEM_ZINC
 	end
 
 PokemonMansion_2F_EventScript_ItemHPUp::

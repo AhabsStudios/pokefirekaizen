@@ -223,16 +223,6 @@
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route14_EventScript_RouteSign"
-    },
-    {
-      "type": "hidden_item",
-      "x": 9,
-      "y": 20,
-      "elevation": 3,
-      "item": "ITEM_ZINC",
-      "flag": "FLAG_HIDDEN_ITEM_ROUTE14_ZINC",
-      "quantity": 1,
-      "underfoot": false
     }
   ]
 }

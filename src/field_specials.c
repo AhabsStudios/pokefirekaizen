@@ -1227,7 +1227,7 @@ void ListMenu(void)
         break;
     case LISTMENU_BERRY_POWDER:
         task->data[0] = 7;
-        task->data[1] = 12;
+        task->data[1] = 11;
         task->data[2] = 16;
         task->data[3] = 1;
         task->data[4] = 17;
@@ -1315,7 +1315,6 @@ static const u8 *const sListMenuLabels[][12] = {
         gText_Iron_1000,
         gText_Carbos_1000,
         gText_Calcium_1000,
-        gText_Zinc_1000,
         gText_HpUp_1000,
         gText_PpUp_3000,
         gOtherText_Exit,

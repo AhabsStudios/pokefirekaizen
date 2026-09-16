@@ -1124,6 +1124,7 @@ BattleScript_EffectRage::
 	setmoveeffect 0
 	goto BattleScript_HitFromAtkString
 BattleScript_RageMiss::
+	jumpifstatus2 BS_ATTACKER, STATUS2_RAGE, BattleScript_PrintMoveMissed
 	setmoveeffect MOVE_EFFECT_RAGE
 	clearstatusfromeffect BS_ATTACKER
 	goto BattleScript_PrintMoveMissed

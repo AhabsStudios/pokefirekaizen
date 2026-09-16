@@ -47,10 +47,9 @@ CeruleanCity_House5_EventScript_ChooseExchangeItem::
 	case 5, CeruleanCity_House5_EventScript_Iron
 	case 6, CeruleanCity_House5_EventScript_Carbos
 	case 7, CeruleanCity_House5_EventScript_Calcium
-	case 8, CeruleanCity_House5_EventScript_Zinc
-	case 9, CeruleanCity_House5_EventScript_HPUp
-	case 10, CeruleanCity_House5_EventScript_PPUp
-	case 11, CeruleanCity_House5_EventScript_ExitMenu
+	case 8, CeruleanCity_House5_EventScript_HPUp
+	case 9, CeruleanCity_House5_EventScript_PPUp
+	case 10, CeruleanCity_House5_EventScript_ExitMenu
 	case 127, CeruleanCity_House5_EventScript_ExitMenu
 	end
 
@@ -106,13 +105,6 @@ CeruleanCity_House5_EventScript_Carbos::
 CeruleanCity_House5_EventScript_Calcium::
 	bufferitemname STR_VAR_1, ITEM_LYSOZYME
 	setvar VAR_0x8008, ITEM_LYSOZYME
-	setvar VAR_0x8009, 1000
-	goto CeruleanCity_House5_EventScript_ExchangePowderForItem
-	end
-
-CeruleanCity_House5_EventScript_Zinc::
-	bufferitemname STR_VAR_1, ITEM_ZINC
-	setvar VAR_0x8008, ITEM_ZINC
 	setvar VAR_0x8009, 1000
 	goto CeruleanCity_House5_EventScript_ExchangePowderForItem
 	end
