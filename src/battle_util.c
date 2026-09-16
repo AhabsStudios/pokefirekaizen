@@ -202,7 +202,11 @@ void MarkBattlerReceivedLinkData(u8 battlerId)
 
 void CancelMultiTurnMoves(u8 battler)
 {
-    gBattleMons[battler].status2 &= ~STATUS2_MULTIPLETURNS;
+    // Rage's forced lock is only paused by things that stop the user from moving
+    // (sleep, freeze, a trapping move, flinching, hitting itself in confusion, etc.)
+    // and continues once that's over - it's never ended this way, only by fainting.
+    if (!(gBattleMons[battler].status2 & STATUS2_RAGE))
+        gBattleMons[battler].status2 &= ~STATUS2_MULTIPLETURNS;
     gBattleMons[battler].status2 &= ~STATUS2_LOCK_CONFUSE;
     gBattleMons[battler].status2 &= ~STATUS2_UPROAR;
     gBattleMons[battler].status2 &= ~STATUS2_BIDE;

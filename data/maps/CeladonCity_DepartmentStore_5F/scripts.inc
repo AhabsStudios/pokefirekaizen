@@ -54,7 +54,6 @@ CeladonCity_DepartmentStore_5F_Vitamins::
 	.2byte ITEM_TAURINE
 	.2byte ITEM_BROMHEXINE
 	.2byte ITEM_LYSOZYME
-	.2byte ITEM_ZINC
 	.2byte ITEM_INDOMETACIN
 	.2byte ITEM_NONE
 	release

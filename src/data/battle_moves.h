@@ -1290,7 +1290,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT] =
     [MOVE_RAGE] =
     {
         .effect = EFFECT_RAGE,
-        .power = 20,
+        .power = 50,
         .type = TYPE_NORMAL,
         .accuracy = 100,
         .pp = 20,

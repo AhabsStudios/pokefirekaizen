@@ -89,6 +89,7 @@ enum {
     BALL_3_SHAKES_SUCCESS,
     BALL_TRAINER_BLOCK,
     BALL_GHOST_DODGE,
+    BALL_MISSED,
 };
 
 enum {
