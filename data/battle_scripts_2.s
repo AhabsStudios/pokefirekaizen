@@ -113,6 +113,16 @@ BattleScript_ShakeBallThrow::
 BattleScript_CatchFailEnd::
 	finishaction
 
+BattleScript_MissedBallThrow::
+	printstring STRINGID_YOUMISSEDPKMN
+	waitmessage B_WAIT_TIME_LONG
+	jumpifnotbattletype BATTLE_TYPE_SAFARI, BattleScript_CatchFailEnd
+	jumpifbyte CMP_NOT_EQUAL, gNumSafariBalls, 0, BattleScript_CatchFailEnd
+	printstring STRINGID_OUTOFSAFARIBALLS
+	waitmessage B_WAIT_TIME_LONG
+	setbyte gBattleOutcome, B_OUTCOME_NO_SAFARI_BALLS
+	goto BattleScript_CatchFailEnd
+
 BattleScript_TrainerBallBlock::
 	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_TRAINERBLOCKEDBALL

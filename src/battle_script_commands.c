@@ -9655,6 +9655,12 @@ static void Cmd_handleballthrow(void)
             else
                 gBattleCommunication[MULTISTRING_CHOOSER] = 1;
         }
+        else if (gLastUsedItem != ITEM_MASTER_BALL && odds <= 3) // odds are so low the ball never even connects
+        {
+            BtlController_EmitBallThrowAnim(BUFFER_A, BALL_MISSED);
+            MarkBattlerForControllerExec(gActiveBattler);
+            gBattlescriptCurrInstr = BattleScript_MissedBallThrow;
+        }
         else // mon may be caught, calculate shakes
         {
             u8 shakes;

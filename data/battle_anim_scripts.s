@@ -11056,6 +11056,7 @@ Special_BallThrow:
 	createvisualtask AnimTask_IsBallBlockedByTrainerOrDodged, 2
 	jumpreteq -1, BallThrowTrainerBlock
 	jumpreteq -2, BallThrowGhostDodged
+	jumpreteq -3, BallThrowMissed
 BallThrowEnd:
 	waitforvisualfinish
 	createvisualtask AnimTask_FreeBallGfx, 2
@@ -11079,6 +11080,10 @@ BallThrowGhostDodged:
 	createvisualtask AnimTask_WindUpLunge, 2, ANIM_TARGET, 48, 6, 16, 48, -48, 16
 	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_TARGET
 	waitplaysewithpan SE_M_TAKE_DOWN, SOUND_PAN_TARGET, 48
+	waitforvisualfinish
+	goto BallThrowEnd
+
+BallThrowMissed:
 	waitforvisualfinish
 	goto BallThrowEnd
 

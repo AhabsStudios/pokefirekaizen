@@ -691,6 +691,9 @@ void AnimTask_IsBallBlockedByTrainerOrDodged(u8 taskId)
     case BALL_GHOST_DODGE:
         gBattleAnimArgs[ARG_RET_ID] = -2;
         break;
+    case BALL_MISSED:
+        gBattleAnimArgs[ARG_RET_ID] = -3;
+        break;
     default:
         gBattleAnimArgs[ARG_RET_ID] = 0;
         break;
@@ -735,12 +738,27 @@ void AnimTask_ThrowBall(u8 taskId)
 {
     u8 ballId;
     u8 spriteId;
+    s16 destX = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X);
+    s16 destY = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) - 16;
+
+    // A miss is known before the throw animation starts (decided back in
+    // Cmd_handleballthrow), so aim the arc off the right edge of the screen
+    // from the very first frame instead of redirecting it after it arrives.
+    // The vertical destination is kept at the ball's own spawn height (not
+    // the target's, which sits close to the top of the screen) so the
+    // throw's usual mid-arc hump stays well clear of the top edge - it just
+    // sails past at throwing height and exits to the right.
+    if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_MISSED)
+    {
+        destX = DISPLAY_WIDTH + 40;
+        destY = 80;
+    }
 
     ballId = ItemIdToBallId(gLastUsedItem);
     spriteId = CreateSprite(&gBallSpriteTemplates[ballId], 32, 80, 29);
     gSprites[spriteId].data[0] = 34;
-    gSprites[spriteId].data[1] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_X);
-    gSprites[spriteId].data[2] = GetBattlerSpriteCoord(gBattleAnimTarget, BATTLER_COORD_Y) - 16;
+    gSprites[spriteId].data[1] = destX;
+    gSprites[spriteId].data[2] = destY;
     gSprites[spriteId].callback = SpriteCB_ThrowBall_Init;
     gBattleSpritesDataPtr->animationData->wildMonInvisible = gSprites[gBattlerSpriteIds[gBattleAnimTarget]].invisible;
     gTasks[taskId].data[0] = spriteId;
@@ -835,6 +853,18 @@ static void SpriteCB_ThrowBall_ArcFlight(struct Sprite *sprite)
         else if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_GHOST_DODGE)
         {
             sprite->callback = GhostBallDodge;
+        }
+        else if (gBattleSpritesDataPtr->animationData->ballThrowCaseId == BALL_MISSED)
+        {
+            // The arc was already aimed well past the target and off screen
+            // (see AnimTask_ThrowBall), so it's done the moment it arrives.
+            sprite->x += sprite->x2;
+            sprite->y += sprite->y2;
+            sprite->x2 = sprite->y2 = 0;
+            sprite->data[0] = 0;
+            sprite->callback = BattleAnimObj_SignalEnd;
+            gDoingBattleAnim = FALSE;
+            UpdateOamPriorityInAllHealthboxes(1);
         }
         else
         {
