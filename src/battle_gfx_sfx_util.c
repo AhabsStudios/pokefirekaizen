@@ -201,7 +201,21 @@ static void DoBattleSpriteAffineAnim(struct Sprite *sprite, bool8 arg1)
     AnimateSprite(sprite);
 }
 
+// Plain slide, no darken and no arrival SFX. Used for mid-battle trainer
+// slides (e.g. the opposing trainer reappearing to send out their next mon).
 void SpriteCB_TrainerSlideIn(struct Sprite *sprite)
+{
+    if (!(gIntroSlideFlags & 1))
+    {
+        sprite->x2 += sprite->data[0];
+        if (sprite->x2 == 0)
+            sprite->callback = SpriteCallbackDummy;
+    }
+}
+
+// Same as SpriteCB_TrainerSlideIn, but plays an arrival SFX. Used only for the
+// battle-start trainer entrance.
+void SpriteCB_TrainerIntroSlideIn(struct Sprite *sprite)
 {
     if (!(gIntroSlideFlags & 1))
     {
@@ -209,13 +223,18 @@ void SpriteCB_TrainerSlideIn(struct Sprite *sprite)
         if (sprite->x2 == 0)
         {
             sprite->callback = SpriteCallbackDummy;
-            PlaySE(SE_M_HARDEN);
+            // In trainer battles both trainers arrive on the same frame; only
+            // trigger if it isn't already playing so the two calls don't
+            // retrigger (and cut off) the same song.
+            if (!IsSEPlaying())
+                PlaySE(SE_M_HARDEN);
         }
     }
 }
 
-// Same as SpriteCB_TrainerSlideIn, but also darkens the sprite's palette while
-// it slides in and restores it on arrival. Used for the opposing trainer only.
+// Same as SpriteCB_TrainerIntroSlideIn, but also darkens the sprite's palette
+// while it slides in and restores it on arrival. Used only for the opposing
+// trainer's battle-start entrance.
 void SpriteCB_EnemyTrainerSlideIn(struct Sprite *sprite)
 {
     if (!(gIntroSlideFlags & 1))
@@ -230,7 +249,8 @@ void SpriteCB_EnemyTrainerSlideIn(struct Sprite *sprite)
         {
             sprite->callback = SpriteCallbackDummy;
             BlendPalettesGradually(1 << (16 + sprite->oam.paletteNum), 0, 10, 0, RGB(8, 8, 8), 0, 1);
-            PlaySE(SE_M_HARDEN);
+            if (!IsSEPlaying())
+                PlaySE(SE_M_HARDEN);
         }
     }
 }

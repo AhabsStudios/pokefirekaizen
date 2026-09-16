@@ -1894,7 +1894,11 @@ static void SpriteCB_MoveWildMonToRight(struct Sprite *sprite)
         {
             sprite->callback = SpriteCB_WaitHardenSEThenCry;
             BlendPalettesGradually(1 << (16 + sprite->oam.paletteNum), 0, 10, 0, RGB(8, 8, 8), 0, 1);
-            PlaySE(SE_M_HARDEN);
+            // In double battles both opposing mons can arrive on the same frame;
+            // only trigger if it isn't already playing so the two calls don't
+            // retrigger (and cut off) the same song.
+            if (!IsSEPlaying())
+                PlaySE(SE_M_HARDEN);
         }
     }
 }
@@ -2655,6 +2659,12 @@ static void BattleIntroDrawPartySummaryScreens(void)
     struct HpAndStatus hpStatus[PARTY_SIZE];
 
     if (gBattleControllerExecFlags)
+        return;
+
+    // The trainer entrance SFX (SE_M_HARDEN) is still playing right as this
+    // state is reached; without this, the party ball tray's own SE_BALL_TRAY_ENTER
+    // sound (started on the same music players) immediately cuts it off.
+    if ((gBattleTypeFlags & BATTLE_TYPE_TRAINER) && IsSEPlaying())
         return;
 
     if (gBattleTypeFlags & BATTLE_TYPE_TRAINER)
