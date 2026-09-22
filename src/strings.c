@@ -1108,7 +1108,7 @@ ALIGNED(4) const u8 gCreditsString_Kenji_Tominaga_Kenjiro_Ito_Tomotaka_Komura_Mi
 ALIGNED(4) const u8 gCreditsString_Special_Thanks_3[] = _("Special Thanks\n\n\n\n\n\n");
 ALIGNED(4) const u8 gCreditsString_Makiko_Takada_Mikiko_Ohashi_Shusaku_Egami_Takanao_Kondo_Rui_Kawaguchi[] = _("\nMakiko Takada\nMikiko Ohashi\nShusaku Egami\nTakanao Kondo\nRui Kawaguchi\n");
 ALIGNED(4) const u8 gCreditsString_KaizenTeamDirector_Programming[] = _("Kaizen Team Director\n\nProgramming\n\n\n\n");
-ALIGNED(4) const u8 gCreditsString_Katsura_Hangrybird_Zig[] = _("Katsura\n\nHangrybird\nZig\n\n\n");
+ALIGNED(4) const u8 gCreditsString_Katsura_Hangrybird_Zig[] = _("\nKatsura\n\nHangrybird\nZig\n\n");
 ALIGNED(4) const u8 gCreditsString_Information_Supervisors[] = _("Information Supervisors\n\n\n\n\n\n");
 ALIGNED(4) const u8 gCreditsString_Hiroki_Enomoto_Kazuyuki_Terada_Yuri_Sakurai_Yumi_Funasaka_Naoko_Yanase[] = _("\nHiroki Enomoto\nKazuyuki Terada\nYuri Sakurai\nYumi Funasaka\nNaoko Yanase\n");
 ALIGNED(4) const u8 gCreditsString_Coordinators[] = _("Coordinators\n\n\n\n\n\n");
@@ -1134,7 +1134,7 @@ ALIGNED(4) const u8 gCreditsString_Teruki_Murakawa_Souichi_Yamamoto_Kimiko_Nakam
 ALIGNED(4) const u8 gCreditsString_NOA_Product_Testing[] = _("NOA Product Testing\n\n\n\n\n\n");
 ALIGNED(4) const u8 gCreditsString_Thomas_Hertzog_Kathy_Huguenard_Mika_Kurosawa[] = _("\nThomas Hertzog\nKathy Huguenard\nMika Kurosawa\n\n\n");
 ALIGNED(4) const u8 gCreditsString_Graphics_Music[] = _("Graphics\n\n\n\nMusic\n\n");
-ALIGNED(4) const u8 gCreditsString_GoliathGastropod_Bonzo_Farore_StarGazaar_BigTaste[] = _("GoliathGastropod\nBonzo\nFarore\nStarGazaar\nBigTaste\n\n");
+ALIGNED(4) const u8 gCreditsString_GoliathGastropod_Bonzo_Farore_StarGazaar_BigTaste[] = _("\nGoliathGastropod\nBonzo\nFarore\nStarGazaar\nBigTaste\n");
 ALIGNED(4) const u8 gCreditsString_SpecialThanks_Kaizen[] = _("\n\nSpecial Thanks\n\n\n\n");
 ALIGNED(4) const u8 gCreditsString_GMERC[] = _("\n\n\nGMERC\n\n\n");
 ALIGNED(4) const u8 gCreditsString_Special_Thanks_4[] = _("Special Thanks\n\n\n\n\n\n");

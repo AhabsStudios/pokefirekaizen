@@ -241,7 +241,7 @@ static const struct WindowTemplate sWindowTemplates_Charizard[] = {
         .tilemapTop = 5,
         .width = 10,
         .height = 10,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x0048
     }, {
         .bg = 0,
@@ -249,7 +249,7 @@ static const struct WindowTemplate sWindowTemplates_Charizard[] = {
         .tilemapTop = 3,
         .width = 12,
         .height = 13,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x00ac
     }, DUMMY_WIN_TEMPLATE
 };
@@ -269,7 +269,7 @@ static const struct WindowTemplate sWindowTemplates_Venusaur[] = {
         .tilemapTop = 5,
         .width = 10,
         .height = 10,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x0048
     }, {
         .bg = 0,
@@ -277,7 +277,7 @@ static const struct WindowTemplate sWindowTemplates_Venusaur[] = {
         .tilemapTop = 5,
         .width = 12,
         .height = 10,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x00ac
     }, DUMMY_WIN_TEMPLATE
 };
@@ -297,7 +297,7 @@ static const struct WindowTemplate sWindowTemplates_Blastoise[] = {
         .tilemapTop = 5,
         .width = 10,
         .height = 10,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x0048
     }, {
         .bg = 0,
@@ -305,7 +305,7 @@ static const struct WindowTemplate sWindowTemplates_Blastoise[] = {
         .tilemapTop = 4,
         .width = 10,
         .height = 12,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x00ac
     }, DUMMY_WIN_TEMPLATE
 };
@@ -325,7 +325,7 @@ static const struct WindowTemplate sWindowTemplates_Pikachu[] = {
         .tilemapTop = 5,
         .width = 10,
         .height = 10,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x0048
     }, {
         .bg = 0,
@@ -333,7 +333,7 @@ static const struct WindowTemplate sWindowTemplates_Pikachu[] = {
         .tilemapTop = 4,
         .width = 12,
         .height = 12,
-        .paletteNum = 10,
+        .paletteNum = 11,
         .baseBlock = 0x00ac
     }, DUMMY_WIN_TEMPLATE
 };
@@ -342,16 +342,20 @@ static const u16 sCreditsMonCircle_Pal[] = INCBIN_U16("graphics/credits/white_ci
 static const u32 sCreditsMonCircle_Tiles[] = INCBIN_U32("graphics/credits/white_circle.8bpp.lz");
 static const u32 sCreditsMonCircle_Tilemap[] = INCBIN_U32("graphics/credits/white_circle.bin.lz");
 
+static const u16 sCharizardCredits_Pal[] = INCBIN_U16("graphics/credits/charizard_credits.gbapal");
 static const u32 sCharizard1_Tiles[] = INCBIN_U32("graphics/credits/charizard_1.4bpp.lz");
 static const u32 sCharizard2_Tiles[] = INCBIN_U32("graphics/credits/charizard_2.4bpp.lz");
 
+static const u16 sVenusaurCredits_Pal[] = INCBIN_U16("graphics/credits/venusaur_credits.gbapal");
 static const u32 sVenusaurUnused_Tiles[] = INCBIN_U32("graphics/credits/venusaur_unused.4bpp.lz");
 static const u32 sVenusaur1_Tiles[] = INCBIN_U32("graphics/credits/venusaur_1.4bpp.lz");
 static const u32 sVenusaur2_Tiles[] = INCBIN_U32("graphics/credits/venusaur_2.4bpp.lz");
 
+static const u16 sBlastoiseCredits_Pal[] = INCBIN_U16("graphics/credits/blastoise_credits.gbapal");
 static const u32 sBlastoise1_Tiles[] = INCBIN_U32("graphics/credits/blastoise_1.4bpp.lz");
 static const u32 sBlastoise2_Tiles[] = INCBIN_U32("graphics/credits/blastoise_2.4bpp.lz");
 
+static const u16 sPikachuCredits_Pal[] = INCBIN_U16("graphics/credits/pikachu_credits.gbapal");
 static const u32 sPikachu1_Tiles[] = INCBIN_U32("graphics/credits/pikachu_1.4bpp.lz");
 static const u32 sPikachu2_Tiles[] = INCBIN_U32("graphics/credits/pikachu_2.4bpp.lz");
 
@@ -1051,6 +1055,7 @@ static void LoadCreditsMonPic(u8 whichMon)
         InitWindows(sWindowTemplates_Charizard);
         FillWindowPixelBuffer(0, PIXEL_FILL(0));
         LoadMonPicInWindow(SPECIES_CHARIZARD, SHINY_ODDS, 0, TRUE, 10, 0);
+        LoadPalette(sCharizardCredits_Pal, BG_PLTT_ID(11), sizeof(sCharizardCredits_Pal));
         CopyToWindowPixelBuffer(1, (const void *)sCharizard1_Tiles, 0, 0);
         CopyToWindowPixelBuffer(2, (const void *)sCharizard2_Tiles, 0, 0);
         break;
@@ -1058,6 +1063,7 @@ static void LoadCreditsMonPic(u8 whichMon)
         InitWindows(sWindowTemplates_Venusaur);
         FillWindowPixelBuffer(0, PIXEL_FILL(0));
         LoadMonPicInWindow(SPECIES_VENUSAUR, SHINY_ODDS, 0, TRUE, 10, 0);
+        LoadPalette(sVenusaurCredits_Pal, BG_PLTT_ID(11), sizeof(sVenusaurCredits_Pal));
         CopyToWindowPixelBuffer(1, (const void *)sVenusaur1_Tiles, 0, 0);
         CopyToWindowPixelBuffer(2, (const void *)sVenusaur2_Tiles, 0, 0);
         break;
@@ -1065,6 +1071,7 @@ static void LoadCreditsMonPic(u8 whichMon)
         InitWindows(sWindowTemplates_Blastoise);
         FillWindowPixelBuffer(0, PIXEL_FILL(0));
         LoadMonPicInWindow(SPECIES_BLASTOISE, SHINY_ODDS, 0, TRUE, 10, 0);
+        LoadPalette(sBlastoiseCredits_Pal, BG_PLTT_ID(11), sizeof(sBlastoiseCredits_Pal));
         CopyToWindowPixelBuffer(1, (const void *)sBlastoise1_Tiles, 0, 0);
         CopyToWindowPixelBuffer(2, (const void *)sBlastoise2_Tiles, 0, 0);
         break;
@@ -1072,6 +1079,7 @@ static void LoadCreditsMonPic(u8 whichMon)
         InitWindows(sWindowTemplates_Pikachu);
         FillWindowPixelBuffer(0, PIXEL_FILL(0));
         LoadMonPicInWindow(SPECIES_PIKACHU, SHINY_ODDS, 0, TRUE, 10, 0);
+        LoadPalette(sPikachuCredits_Pal, BG_PLTT_ID(11), sizeof(sPikachuCredits_Pal));
         CopyToWindowPixelBuffer(1, (const void *)sPikachu1_Tiles, 0, 0);
         CopyToWindowPixelBuffer(2, (const void *)sPikachu2_Tiles, 0, 0);
         break;
