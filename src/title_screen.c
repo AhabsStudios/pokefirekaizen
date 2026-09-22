@@ -28,12 +28,15 @@ enum TitleScreenScene
 };
 
 #if   defined(FIRERED)
-#define TITLE_SPECIES SPECIES_CHARIZARD
+#define TITLE_SPECIES SPECIES_RHYDON
 #elif defined(LEAFGREEN)
 #define TITLE_SPECIES SPECIES_VENUSAUR
 #endif
 
 static EWRAM_DATA u8 sTitleScreenTimerTaskId = 0;
+#if defined(FIRERED)
+static EWRAM_DATA u16 sPushStartRow0Saved[32] = {0};
+#endif
 
 static void ResetGpuRegs(void);
 static void CB2_TitleScreenRun(void);
@@ -58,6 +61,7 @@ static void LoadSpriteGfxAndPals(void);
 #if defined(FIRERED)
 static void SpriteCallback_TitleScreenFlame(struct Sprite *sprite);
 static void Task_FlameSpawner(u8 taskId);
+static void Task_TitleScreen_BlinkPushStart(u8 taskId);
 #elif defined(LEAFGREEN)
 static void SpriteCallback_TitleScreenLeaf(struct Sprite *sprite);
 static void Task_LeafSpawner(u8 taskId);
@@ -71,12 +75,39 @@ static void DeactivateSlashSprite(u8 spriteId);
 static bool32 IsSlashSpriteDeactivated(u8 spriteId);
 static void SpriteCallback_Slash(struct Sprite *sprite);
 
+#if defined(LEAFGREEN)
 static const u8 sBorderBgTiles[] = INCBIN_U8("graphics/title_screen/border_bg.4bpp.lz");
+static const u8 sBorderBgMap[] = INCBIN_U8("graphics/title_screen/leafgreen/border_bg.bin.lz");
+#endif
 
 #if defined(FIRERED)
-static const u8 sBorderBgMap[] = INCBIN_U8("graphics/title_screen/firered/border_bg.bin.lz");
+// Kaizen title screen BG palette bank layout (BG_PLTT is shared across all 4 BGs):
+//   banks 0-1 (32 colors): logo (BG1, 8bpp)
+//   bank  2   (16 colors): shared grayscale, background copy (BG3, 4bpp)
+//   banks 3-5 (48 colors): gagarth box art (BG2, 8bpp)
+//   bank  6   (16 colors): shared grayscale, text copy (BG0, 4bpp)
+#define KAIZEN_LOGO_PLTT_SLOT      0
+#define KAIZEN_LOGO_PLTT_BANKS     2
+#define KAIZEN_BG_GRAY_PLTT_SLOT   2
+#define KAIZEN_GAGARTH_PLTT_SLOT   3
+#define KAIZEN_GAGARTH_PLTT_BANKS  3
+#define KAIZEN_TEXT_GRAY_PLTT_SLOT 6
+#define KAIZEN_LOGO_PLTT_MASK      ((1 << KAIZEN_LOGO_PLTT_SLOT) | (1 << (KAIZEN_LOGO_PLTT_SLOT + 1)))
+#define KAIZEN_GAGARTH_PLTT_MASK   (((1 << KAIZEN_GAGARTH_PLTT_BANKS) - 1) << KAIZEN_GAGARTH_PLTT_SLOT)
+
+// used by the flash/dim/reveal choreography in SetTitleScreenScene_FadeIn, which is
+// otherwise shared verbatim between versions
+#define TITLESCREEN_MON_PLTT_SLOT  KAIZEN_GAGARTH_PLTT_SLOT
+#define TITLESCREEN_MON_PLTT_BANKS KAIZEN_GAGARTH_PLTT_BANKS
+#define TITLESCREEN_MON_PLTT_MASK  KAIZEN_GAGARTH_PLTT_MASK
+#define TITLESCREEN_MON_PLTT_SRC   gGraphics_TitleScreen_KaizenGagarthPals
+#define TITLESCREEN_DIM_PLTT_MASK  KAIZEN_LOGO_PLTT_MASK
 #elif defined(LEAFGREEN)
-static const u8 sBorderBgMap[] = INCBIN_U8("graphics/title_screen/leafgreen/border_bg.bin.lz");
+#define TITLESCREEN_MON_PLTT_SLOT  13
+#define TITLESCREEN_MON_PLTT_BANKS 1
+#define TITLESCREEN_MON_PLTT_MASK  (1 << 13)
+#define TITLESCREEN_MON_PLTT_SRC   gGraphics_TitleScreen_BoxArtMonPals
+#define TITLESCREEN_DIM_PLTT_MASK  (PALETTES_BG & ~(1 << 13) & ~(1 << 14) & ~(1 << 15))
 #endif
 
 static const u32 sSlash_Gfx[] = INCBIN_U32("graphics/title_screen/slash.4bpp.lz");
@@ -239,6 +270,53 @@ static const struct SpriteTemplate sSlashSpriteTemplate = {
     .callback = SpriteCallbackDummy
 };
 
+#if defined(FIRERED)
+// Kaizen title screen char (tile) VRAM layout note: BG char blocks are 16KB each,
+// but a single bg's tile number field can address the whole 64KB tile region linearly
+// from its charBaseIndex, so a bg's tiles are free to spill past one 16KB block as
+// long as nothing else's data lives in the bytes it spills into.
+// kaizen_gagarth.8bpp is 26304B (411 8bpp tiles), which doesn't fit in one 16KB block,
+// so gagarth (bg2) is placed at charBaseIndex 0 where it can spill into the otherwise
+// unused block 1. logo (10048B) and text (1376B) share block 2 back-to-back via the
+// tile offset passed to DecompressAndCopyTileDataToVram. background keeps block 3.
+#define KAIZEN_LOGO_TILE_OFFSET 0
+#define KAIZEN_TEXT_TILE_OFFSET (10048 / 32) // right after logo's tiles in block 2
+static const struct BgTemplate sBgTemplates[] = {
+    {
+        .bg = 0,
+        .charBaseIndex = 2,
+        .mapBaseIndex = 31,
+        .screenSize = 0,
+        .paletteMode = 0, // 4bpp - copyright / push start text
+        .priority = 0,
+        .baseTile = 0
+    }, {
+        .bg = 1,
+        .charBaseIndex = 2,
+        .mapBaseIndex = 30,
+        .screenSize = 0,
+        .paletteMode = 1, // 8bpp - logo
+        .priority = 1,
+        .baseTile = 0
+    }, {
+        .bg = 2,
+        .charBaseIndex = 0,
+        .mapBaseIndex = 29,
+        .screenSize = 0,
+        .paletteMode = 1, // 8bpp - gagarth box art
+        .priority = 2,
+        .baseTile = 0
+    }, {
+        .bg = 3,
+        .charBaseIndex = 3,
+        .mapBaseIndex = 28,
+        .screenSize = 0,
+        .paletteMode = 0, // 4bpp - background
+        .priority = 3,
+        .baseTile = 0
+    }
+};
+#elif defined(LEAFGREEN)
 static const struct BgTemplate sBgTemplates[] = {
     {
         .bg = 0,
@@ -274,6 +352,7 @@ static const struct BgTemplate sBgTemplates[] = {
         .baseTile = 0
     }
 };
+#endif
 
 static void (*const sSceneFuncs[])(s16 *data) = {
     [TITLESCREENSCENE_INIT]        = SetTitleScreenScene_Init,
@@ -362,6 +441,20 @@ void CB2_InitTitleScreen(void)
         sTitleScreenTimerTaskId = TASK_NONE;
         break;
     case 1:
+#if defined(FIRERED)
+        LoadPalette(gGraphics_TitleScreen_KaizenLogoPals, BG_PLTT_ID(KAIZEN_LOGO_PLTT_SLOT), KAIZEN_LOGO_PLTT_BANKS * PLTT_SIZE_4BPP);
+        DecompressAndCopyTileDataToVram(1, gGraphics_TitleScreen_KaizenLogoTiles, 0, KAIZEN_LOGO_TILE_OFFSET, 0);
+        DecompressAndCopyTileDataToVram(1, gGraphics_TitleScreen_KaizenLogoMap, 0, 0, 1);
+        LoadPalette(gGraphics_TitleScreen_KaizenGagarthPals, BG_PLTT_ID(KAIZEN_GAGARTH_PLTT_SLOT), KAIZEN_GAGARTH_PLTT_BANKS * PLTT_SIZE_4BPP);
+        DecompressAndCopyTileDataToVram(2, gGraphics_TitleScreen_KaizenGagarthTiles, 0, 0, 0);
+        DecompressAndCopyTileDataToVram(2, gGraphics_TitleScreen_KaizenGagarthMap, 0, 0, 1);
+        LoadPalette(gGraphics_TitleScreen_KaizenSharedGrayPals, BG_PLTT_ID(KAIZEN_BG_GRAY_PLTT_SLOT), PLTT_SIZE_4BPP);
+        DecompressAndCopyTileDataToVram(3, gGraphics_TitleScreen_KaizenBackgroundTiles, 0, 0, 0);
+        DecompressAndCopyTileDataToVram(3, gGraphics_TitleScreen_KaizenBackgroundMap, 0, 0, 1);
+        LoadPalette(gGraphics_TitleScreen_KaizenSharedGrayPals, BG_PLTT_ID(KAIZEN_TEXT_GRAY_PLTT_SLOT), PLTT_SIZE_4BPP);
+        DecompressAndCopyTileDataToVram(0, gGraphics_TitleScreen_KaizenTextTiles, 0, KAIZEN_TEXT_TILE_OFFSET, 0);
+        DecompressAndCopyTileDataToVram(0, gGraphics_TitleScreen_KaizenTextMap, 0, 0, 1);
+#elif defined(LEAFGREEN)
         LoadPalette(gGraphics_TitleScreen_GameTitleLogoPals, BG_PLTT_ID(0), 13 * PLTT_SIZE_4BPP);
         DecompressAndCopyTileDataToVram(0, gGraphics_TitleScreen_GameTitleLogoTiles, 0, 0, 0);
         DecompressAndCopyTileDataToVram(0, gGraphics_TitleScreen_GameTitleLogoMap, 0, 0, 1);
@@ -374,6 +467,7 @@ void CB2_InitTitleScreen(void)
         LoadPalette(gGraphics_TitleScreen_BackgroundPals, BG_PLTT_ID(14), PLTT_SIZE_4BPP);
         DecompressAndCopyTileDataToVram(3, sBorderBgTiles, 0, 0, 0);
         DecompressAndCopyTileDataToVram(3, sBorderBgMap, 0, 0, 1);
+#endif
         LoadSpriteGfxAndPals();
         break;
     case 2:
@@ -471,8 +565,16 @@ static void SetTitleScreenScene_Init(s16 *data)
 {
     struct ScanlineEffectParams params;
 
+#if defined(FIRERED)
+    // logo (bg1) and text (bg0) stay hidden until the reveal in SetTitleScreenScene_FadeIn --
+    // both sit on top of gagarth's bounding box, so showing them early makes their
+    // silhouettes visible over gagarth during its shine/fade
+    HideBg(0);
+    HideBg(1);
+#elif defined(LEAFGREEN)
     HideBg(0);
     ShowBg(1);
+#endif
     ShowBg(2);
     ShowBg(3);
 
@@ -494,7 +596,11 @@ static void SetTitleScreenScene_FlashSprite(s16 *data)
     switch (tState)
     {
     case 0:
+#if defined(FIRERED)
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG2 | BLDCNT_EFFECT_LIGHTEN);
+#elif defined(LEAFGREEN)
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_LIGHTEN);
+#endif
         SetGpuReg(REG_OFFSET_BLDY, 0);
         data[2] = 128;
         UpdateScanlineEffectRegBuffer(data[2]);
@@ -528,8 +634,8 @@ static void SetTitleScreenScene_FadeIn(s16 *data)
         data[2]++;
         if (data[2] > 10)
         {
-            TintPalette_GrayScale2(&gPlttBufferUnfaded[BG_PLTT_ID(13)], 16);
-            BeginNormalPaletteFade(1 << 13, 9, 16, 0, RGB_BLACK);
+            TintPalette_GrayScale2(&gPlttBufferUnfaded[BG_PLTT_ID(TITLESCREEN_MON_PLTT_SLOT)], TITLESCREEN_MON_PLTT_BANKS * 16);
+            BeginNormalPaletteFade(TITLESCREEN_MON_PLTT_MASK, 9, 16, 0, RGB_BLACK);
             tState++;
         }
         break;
@@ -545,7 +651,7 @@ static void SetTitleScreenScene_FadeIn(s16 *data)
         if (data[2] > 36)
         {
             CreateTask(Task_TitleScreen_SlideWin0, 3);
-            BlendPalettesGradually(1 << 13, -4, 1, 16, RGB(30, 30, 31), 0, 0);
+            BlendPalettesGradually(TITLESCREEN_MON_PLTT_MASK, -4, 1, 16, RGB(30, 30, 31), 0, 0);
             data[2] = 0;
             tState++;
         }
@@ -553,7 +659,7 @@ static void SetTitleScreenScene_FadeIn(s16 *data)
     case 4:
         if (!IsBlendPalettesGraduallyTaskActive(0))
         {
-            BlendPalettesGradually(1 << 13, -4, 15, 0, RGB(30, 30, 31), 0, 0);
+            BlendPalettesGradually(TITLESCREEN_MON_PLTT_MASK, -4, 15, 0, RGB(30, 30, 31), 0, 0);
             tState++;
         }
         break;
@@ -562,14 +668,14 @@ static void SetTitleScreenScene_FadeIn(s16 *data)
         if (data[2] > 20)
         {
             data[2] = 0;
-            BlendPalettesGradually(1 << 13, -4, 1, 16, RGB(30, 30, 31), 0, 0);
+            BlendPalettesGradually(TITLESCREEN_MON_PLTT_MASK, -4, 1, 16, RGB(30, 30, 31), 0, 0);
             tState++;
         }
         break;
     case 6:
         if (!IsBlendPalettesGraduallyTaskActive(0))
         {
-            BlendPalettesGradually(1 << 13, -4, 15, 0, RGB(30, 30, 31), 0, 0);
+            BlendPalettesGradually(TITLESCREEN_MON_PLTT_MASK, -4, 15, 0, RGB(30, 30, 31), 0, 0);
             tState++;
         }
         break;
@@ -578,7 +684,7 @@ static void SetTitleScreenScene_FadeIn(s16 *data)
         if (data[2] > 20)
         {
             data[2] = 0;
-            BlendPalettesGradually(1 << 13, -3, 0, 16, RGB(30, 30, 31), 0, 0);
+            BlendPalettesGradually(TITLESCREEN_MON_PLTT_MASK, -3, 0, 16, RGB(30, 30, 31), 0, 0);
             tState++;
         }
         break;
@@ -587,12 +693,17 @@ static void SetTitleScreenScene_FadeIn(s16 *data)
         {
             u32 palettes;
             tHasCreatedBlankSprite = TRUE;
-            palettes = (PALETTES_BG & ~(1 << 13) & ~(1 << 14) & ~(1 << 15)) | (0x10000 << CreateBlankSprite());
+            palettes = TITLESCREEN_DIM_PLTT_MASK | (0x10000 << CreateBlankSprite());
             BlendPalettes(palettes, 16, RGB(30, 30, 31));
             BeginNormalPaletteFade(palettes, 1, 16, 0, RGB(30, 30, 31));
+#if defined(FIRERED)
+            ShowBg(1); // reveal the logo now, same moment the mon's true colors reveal
+            // text (bg0) was already shown by Task_TitleScreen_SlideWin0's slide-in
+#elif defined(LEAFGREEN)
             ShowBg(0);
-            CpuCopy16(gGraphics_TitleScreen_BoxArtMonPals, &gPlttBufferUnfaded[BG_PLTT_ID(13)], PLTT_SIZE_4BPP);
-            BlendPalettesGradually(1 << 13, 1, 15, 0, RGB(30, 30, 31), 0, 0);
+#endif
+            CpuCopy16(TITLESCREEN_MON_PLTT_SRC, &gPlttBufferUnfaded[BG_PLTT_ID(TITLESCREEN_MON_PLTT_SLOT)], TITLESCREEN_MON_PLTT_BANKS * PLTT_SIZE_4BPP);
+            BlendPalettesGradually(TITLESCREEN_MON_PLTT_MASK, 1, 15, 0, RGB(30, 30, 31), 0, 0);
             tState++;
         }
         break;
@@ -615,7 +726,8 @@ static void SetTitleScreenScene_Run(s16 *data)
     case 0:
         SetHelpContext(HELPCONTEXT_TITLE_SCREEN);
 #if defined(FIRERED)
-        CreateTask(Task_FlameSpawner, 5);
+        CpuCopy16((u16 *)(BG_VRAM + 31 * BG_SCREEN_SIZE), sPushStartRow0Saved, sizeof(sPushStartRow0Saved));
+        CreateTask(Task_TitleScreen_BlinkPushStart, 5);
 #elif defined(LEAFGREEN)
         CreateTask(Task_LeafSpawner, 5);
 #endif
@@ -653,7 +765,11 @@ static void SetGpuRegsForTitleScreenRun(void)
 {
     SetGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_OBJWIN_ON);
     SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG_ALL | WINOUT_WIN01_OBJ | WINOUT_WINOBJ_ALL);
+#if defined(FIRERED)
+    SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG1 | BLDCNT_EFFECT_LIGHTEN);
+#elif defined(LEAFGREEN)
     SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT1_BG0 | BLDCNT_EFFECT_LIGHTEN);
+#endif
     SetGpuReg(REG_OFFSET_BLDY, 13);
 }
 
@@ -754,7 +870,11 @@ static void Task_TitleScreen_SlideWin0(u8 taskId)
         SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
         SetGpuReg(REG_OFFSET_WIN0V, WIN_RANGE(0, DISPLAY_HEIGHT));
         SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(0, 0));
+#if defined(FIRERED)
+        BlendPalettes(1 << KAIZEN_BG_GRAY_PLTT_SLOT, 0, RGB_BLACK);
+#elif defined(LEAFGREEN)
         BlendPalettes(1 << 0xE, 0, RGB_BLACK);
+#endif
         data[0]++;
         break;
     case 1:
@@ -776,10 +896,26 @@ static void Task_TitleScreen_SlideWin0(u8 taskId)
         }
         break;
     case 3:
+#if defined(FIRERED)
+        // text (bg0, copyright/push start) is the layer that slides in here, not gagarth (bg2).
+        // Show it now -- it's simultaneously excluded from WINOUT and scrolled off-screen
+        // below, so it stays invisible until the window+scroll walk it back in during case 4.
+        ShowBg(0);
+        SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_BG3 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
+#elif defined(LEAFGREEN)
         SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG3 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
+#endif
         SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(DISPLAY_WIDTH, DISPLAY_WIDTH));
+#if defined(FIRERED)
+        ChangeBgX(0, -0xF000, 0);
+#elif defined(LEAFGREEN)
         ChangeBgX(2, -0xF000, 0);
+#endif
+#if defined(FIRERED)
+        BlendPalettes(1 << KAIZEN_TEXT_GRAY_PLTT_SLOT, 0, RGB_BLACK);
+#elif defined(LEAFGREEN)
         BlendPalettes(1 << 0xF, 0, RGB_BLACK);
+#endif
         data[1] = 10 * 24 << 4;
         data[0]++;
         break;
@@ -791,7 +927,11 @@ static void Task_TitleScreen_SlideWin0(u8 taskId)
             data[2] = 0;
             data[0]++;
         }
+#if defined(FIRERED)
+        ChangeBgX(0, -data[2] << 8, 0);
+#elif defined(LEAFGREEN)
         ChangeBgX(2, -data[2] << 8, 0);
+#endif
         SetGpuReg(REG_OFFSET_WIN0H, WIN_RANGE(data[2], DISPLAY_WIDTH));
         break;
     case 5:
@@ -849,10 +989,17 @@ static void LoadMainTitleScreenPalsAndResetBgs(void)
 
     DestroyBlendPalettesGraduallyTask();
     ResetPaletteFadeControl();
+#if defined(FIRERED)
+    LoadPalette(gGraphics_TitleScreen_KaizenLogoPals, BG_PLTT_ID(KAIZEN_LOGO_PLTT_SLOT), KAIZEN_LOGO_PLTT_BANKS * PLTT_SIZE_4BPP);
+    LoadPalette(gGraphics_TitleScreen_KaizenGagarthPals, BG_PLTT_ID(KAIZEN_GAGARTH_PLTT_SLOT), KAIZEN_GAGARTH_PLTT_BANKS * PLTT_SIZE_4BPP);
+    LoadPalette(gGraphics_TitleScreen_KaizenSharedGrayPals, BG_PLTT_ID(KAIZEN_BG_GRAY_PLTT_SLOT), PLTT_SIZE_4BPP);
+    LoadPalette(gGraphics_TitleScreen_KaizenSharedGrayPals, BG_PLTT_ID(KAIZEN_TEXT_GRAY_PLTT_SLOT), PLTT_SIZE_4BPP);
+#elif defined(LEAFGREEN)
     LoadPalette(gGraphics_TitleScreen_GameTitleLogoPals, BG_PLTT_ID(0), 13 * PLTT_SIZE_4BPP);
     LoadPalette(gGraphics_TitleScreen_BoxArtMonPals, BG_PLTT_ID(13), PLTT_SIZE_4BPP);
     LoadPalette(gGraphics_TitleScreen_BackgroundPals, BG_PLTT_ID(15), PLTT_SIZE_4BPP);
     LoadPalette(gGraphics_TitleScreen_BackgroundPals, BG_PLTT_ID(14), PLTT_SIZE_4BPP);
+#endif
     ResetBgPositions();
     ClearGpuRegBits(REG_OFFSET_DISPCNT, DISPCNT_WIN0_ON | DISPCNT_WIN1_ON | DISPCNT_OBJWIN_ON);
     ShowBg(1);
@@ -1009,6 +1156,31 @@ static void Task_FlameSpawner(u8 taskId)
 #undef tDelay
 #undef tOff_Seed
 #undef tOffsetX
+
+#define tBlinkTimer data[0]
+#define tBlinkOn    data[1]
+
+// blinks just the "PUSH START BUTTON" row (bg0's tilemap row 0) on and off, leaving the
+// dark banner it sits on and the copyright line further down untouched, similar to the
+// blinking start prompt in vanilla Fire Red
+static void Task_TitleScreen_BlinkPushStart(u8 taskId)
+{
+    s16 *data = gTasks[taskId].data;
+
+    tBlinkTimer++;
+    if (tBlinkTimer >= 30)
+    {
+        tBlinkTimer = 0;
+        tBlinkOn ^= 1;
+        if (tBlinkOn)
+            CpuCopy16(sPushStartRow0Saved, (u16 *)(BG_VRAM + 31 * BG_SCREEN_SIZE), sizeof(sPushStartRow0Saved));
+        else
+            CpuCopy16(gGraphics_TitleScreen_KaizenTextRow0Blank, (u16 *)(BG_VRAM + 31 * BG_SCREEN_SIZE), sizeof(sPushStartRow0Saved));
+    }
+}
+
+#undef tBlinkTimer
+#undef tBlinkOn
 
 #elif defined(LEAFGREEN)
 
@@ -1183,7 +1355,15 @@ static void SetPalOnOrCreateBlankSprite(bool32 hasCreatedBlankSprite)
 
 static u8 CreateSlashSprite(void)
 {
+#if defined(FIRERED)
+    // sprite->y is the sprite's CENTER (see CalcCenterToCornerVec / centerToCornerVecY),
+    // not its top-left corner. The 64x64 sweep needs its center at 120 so its box
+    // (120-32=88 to 120+32=152) lines up with logo's actual bounding box (y88-151,
+    // tile rows 11-18) instead of just clipping the top half of it.
+    u8 spriteId = CreateSprite(&sSlashSpriteTemplate, -32, 120, 1);
+#elif defined(LEAFGREEN)
     u8 spriteId = CreateSprite(&sSlashSpriteTemplate, -32, 27, 1);
+#endif
     if (spriteId != MAX_SPRITES)
     {
         gSprites[spriteId].callback = SpriteCallback_Slash;

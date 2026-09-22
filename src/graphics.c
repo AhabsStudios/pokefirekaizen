@@ -1348,6 +1348,19 @@ const u16 gGraphics_TitleScreen_BackgroundPals[] = INCBIN_U16("graphics/title_sc
 const u8 gGraphics_TitleScreen_CopyrightPressStartTiles[] = INCBIN_U8("graphics/title_screen/copyright_press_start.4bpp.lz");
 const u8 gGraphics_TitleScreen_CopyrightPressStartMap[] = INCBIN_U8("graphics/title_screen/copyright_press_start.bin.lz");
 const u16 gTitleScreen_Slash_Pal[] = INCBIN_U16("graphics/title_screen/firered/slash.gbapal");
+
+const u16 gGraphics_TitleScreen_KaizenLogoPals[] = INCBIN_U16("graphics/title_screen/firered/kaizen_logo.gbapal");
+const u8 gGraphics_TitleScreen_KaizenLogoTiles[] = INCBIN_U8("graphics/title_screen/firered/kaizen_logo.8bpp.lz");
+const u8 gGraphics_TitleScreen_KaizenLogoMap[] = INCBIN_U8("graphics/title_screen/firered/kaizen_logo.bin.lz");
+const u16 gGraphics_TitleScreen_KaizenGagarthPals[] = INCBIN_U16("graphics/title_screen/firered/kaizen_gagarth.gbapal");
+const u8 gGraphics_TitleScreen_KaizenGagarthTiles[] = INCBIN_U8("graphics/title_screen/firered/kaizen_gagarth.8bpp.lz");
+const u8 gGraphics_TitleScreen_KaizenGagarthMap[] = INCBIN_U8("graphics/title_screen/firered/kaizen_gagarth.bin.lz");
+const u16 gGraphics_TitleScreen_KaizenSharedGrayPals[] = INCBIN_U16("graphics/title_screen/firered/kaizen_shared_gray.gbapal");
+const u8 gGraphics_TitleScreen_KaizenBackgroundTiles[] = INCBIN_U8("graphics/title_screen/firered/kaizen_background.4bpp.lz");
+const u8 gGraphics_TitleScreen_KaizenBackgroundMap[] = INCBIN_U8("graphics/title_screen/firered/kaizen_background.bin.lz");
+const u8 gGraphics_TitleScreen_KaizenTextTiles[] = INCBIN_U8("graphics/title_screen/firered/kaizen_text.4bpp.lz");
+const u8 gGraphics_TitleScreen_KaizenTextMap[] = INCBIN_U8("graphics/title_screen/firered/kaizen_text.bin.lz");
+const u16 gGraphics_TitleScreen_KaizenTextRow0Blank[] = INCBIN_U16("graphics/title_screen/firered/kaizen_text_row0_blank.bin");
 #endif
 
 #ifdef LEAFGREEN
