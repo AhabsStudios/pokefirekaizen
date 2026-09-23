@@ -206,8 +206,9 @@
 #define MAPSEC_SPECIAL_AREA                 0xC4
 #define MAPSEC_MT_SILVER                    0xC5
 #define MAPSEC_SILVER_CAVE                  0xC6
-#define MAPSEC_NONE                         0xC7
-#define MAPSEC_COUNT                        0xC8
+#define MAPSEC_ROUTE_28                     0xC7
+#define MAPSEC_NONE                         0xC8
+#define MAPSEC_COUNT                        0xC9
 
 #define METLOC_SPECIAL_EGG                  0xFD
 #define METLOC_IN_GAME_TRADE                0xFE

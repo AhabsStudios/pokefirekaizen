@@ -875,7 +875,7 @@
     {
       "map_section": "MAPSEC_MT_SILVER",
       "name": "MT. SILVER",
-      "x": 1,
+      "x": 0,
       "y": 3,
       "width": 1,
       "height": 1
@@ -885,6 +885,14 @@
       "name": "SILVER CAVE",
       "x": 0,
       "y": 0,
+      "width": 1,
+      "height": 1
+    },
+    {
+      "map_section": "MAPSEC_ROUTE_28",
+      "name": "ROUTE 28",
+      "x": 1,
+      "y": 3,
       "width": 1,
       "height": 1
     }

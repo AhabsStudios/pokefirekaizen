@@ -18,15 +18,15 @@
   ],
   "warp_events": [
     {
-      "x": -5,
-      "y": -4,
+      "x": 18,
+      "y": 45,
       "elevation": 3,
       "dest_map": "MAP_MT_SILVER",
       "dest_warp_id": "1"
     },
     {
-      "x": -3,
-      "y": -4,
+      "x": 27,
+      "y": 8,
       "elevation": 3,
       "dest_map": "MAP_SILVER_CAVE_B2F",
       "dest_warp_id": "0"
