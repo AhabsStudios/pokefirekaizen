@@ -11,7 +11,6 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
-  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -37,7 +36,6 @@
   ],
   "object_events": [
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_POLICEMAN",
       "x": 30,
       "y": 12,
@@ -48,10 +46,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_Policeman",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 33,
       "y": 6,
@@ -62,10 +60,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_Grunt",
-      "flag": "FLAG_HIDE_CERULEAN_ROCKET"
+      "flag": "FLAG_HIDE_CERULEAN_ROCKET",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_LITTLE_BOY",
       "x": 16,
       "y": 21,
@@ -76,10 +74,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_LittleBoy",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BALDING_MAN",
       "x": 9,
       "y": 23,
@@ -90,10 +88,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_BaldingMan",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SLOWBRO",
       "x": 31,
       "y": 29,
@@ -104,10 +102,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_Slowbro",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 32,
       "y": 29,
@@ -118,10 +116,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_Lass",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 34,
       "y": 22,
@@ -132,10 +130,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_Youngster",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BLUE",
       "x": 22,
       "y": 0,
@@ -146,10 +144,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "0x0",
-      "flag": "FLAG_HIDE_CERULEAN_RIVAL"
+      "flag": "FLAG_HIDE_CERULEAN_RIVAL",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_CUT_TREE",
       "x": 26,
       "y": 32,
@@ -160,18 +158,26 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_CutTree",
-      "flag": "FLAG_TEMP_13"
+      "flag": "FLAG_TEMP_13",
+      "type": "object"
     },
     {
-      "type": "clone",
       "graphics_id": "OBJ_EVENT_GFX_CUT_TREE",
       "x": 50,
       "y": 18,
+      "elevation": 0,
+      "movement_type": "",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "",
+      "trainer_sight_or_berry_tree_id": "",
+      "script": "",
+      "flag": "",
       "target_local_id": 10,
-      "target_map": "MAP_ROUTE9"
+      "target_map": "MAP_ROUTE9",
+      "type": "clone"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
       "x": 12,
       "y": 30,
@@ -182,10 +188,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_Woman",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_COOLTRAINER_M",
       "x": 1,
       "y": 13,
@@ -196,7 +202,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "CeruleanCity_EventScript_CeruleanCaveGuard",
-      "flag": "FLAG_HIDE_CERULEAN_CAVE_GUARD"
+      "flag": "FLAG_HIDE_CERULEAN_CAVE_GUARD",
+      "type": "object"
     }
   ],
   "warp_events": [
@@ -406,5 +413,6 @@
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "CeruleanCity_BikeShop_EventScript_Bicycle"
     }
-  ]
+  ],
+  "floor_number": 0
 }

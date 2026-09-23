@@ -305,7 +305,8 @@
     "SevenIsland_TrainerTower",
     "SevenIsland_SevaultCanyon_Entrance",
     "SevenIsland_SevaultCanyon",
-    "SevenIsland_TanobyRuins"
+    "SevenIsland_TanobyRuins",
+    "NewMap1"
   ],
   "gMapGroup_IndoorPallet": [
     "PalletTown_PlayersHouse_1F",

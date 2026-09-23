@@ -11,12 +11,10 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
-  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": 0,
   "object_events": [
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 24,
       "y": 17,
@@ -27,10 +25,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_DoorGuardGrunt",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 28,
       "y": 18,
@@ -41,10 +39,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_RocketGrunt2",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 50,
       "y": 15,
@@ -55,10 +53,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_RocketGrunt3",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 29,
       "y": 24,
@@ -69,10 +67,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_RocketGrunt4",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 27,
       "y": 35,
@@ -83,10 +81,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_RocketGrunt5",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 36,
       "y": 33,
@@ -97,10 +95,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_DoorGuardGrunt",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 32,
       "y": 41,
@@ -111,10 +109,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_RocketGrunt7",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_ROCKET_M",
       "x": 50,
       "y": 26,
@@ -125,10 +123,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_RocketGrunt6",
-      "flag": "FLAG_HIDE_SAFFRON_ROCKETS"
+      "flag": "FLAG_HIDE_SAFFRON_ROCKETS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
       "x": 39,
       "y": 34,
@@ -139,10 +137,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_Youngster",
-      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS"
+      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_WORKER_M",
       "x": 23,
       "y": 25,
@@ -153,10 +151,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_WorkerM",
-      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS"
+      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_MAN",
       "x": 41,
       "y": 18,
@@ -167,10 +165,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_Man",
-      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS"
+      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BOY",
       "x": 46,
       "y": 24,
@@ -181,10 +179,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_Boy",
-      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS"
+      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_PIDGEOT",
       "x": 47,
       "y": 24,
@@ -195,10 +193,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_Pidgeot",
-      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS"
+      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_LASS",
       "x": 34,
       "y": 41,
@@ -209,10 +207,10 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_Lass",
-      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS"
+      "flag": "FLAG_HIDE_SAFFRON_CIVILIANS",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_BATTLE_GIRL",
       "x": 49,
       "y": 26,
@@ -223,7 +221,8 @@
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "SaffronCity_EventScript_BattleGirl",
-      "flag": "FLAG_HIDE_POSTGAME_GOSSIPERS"
+      "flag": "FLAG_HIDE_POSTGAME_GOSSIPERS",
+      "type": "object"
     }
   ],
   "warp_events": [
@@ -410,5 +409,6 @@
       "script": "SaffronCity_EventScript_TrainerFanClubSign"
     }
   ],
-  "connections_no_include": true
+  "connections_no_include": true,
+  "floor_number": 0
 }

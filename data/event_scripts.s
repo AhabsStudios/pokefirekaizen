@@ -1363,3 +1363,5 @@ Text_TestMsg::
 
 	.include "data/maps/DebugRoom_Angry/scripts.inc"
 	.include "data/maps/DebugRoom_Angry/text.inc"
+
+	.include "data/maps/NewMap1/scripts.inc"

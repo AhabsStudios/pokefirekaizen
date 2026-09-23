@@ -11,7 +11,6 @@
   "allow_escaping": false,
   "allow_running": true,
   "show_map_name": true,
-  "floor_number": 0,
   "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
   "connections": [
     {
@@ -27,7 +26,6 @@
   ],
   "object_events": [
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_FISHER",
       "x": 7,
       "y": 27,
@@ -38,10 +36,10 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route21_North_EventScript_Ronald",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_FISHER",
       "x": 16,
       "y": 26,
@@ -52,10 +50,10 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route21_North_EventScript_Wade",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "object",
       "graphics_id": "OBJ_EVENT_GFX_SWIMMER_M_WATER",
       "x": 12,
       "y": 44,
@@ -66,15 +64,24 @@
       "trainer_type": "TRAINER_TYPE_NORMAL",
       "trainer_sight_or_berry_tree_id": "1",
       "script": "Route21_North_EventScript_Spencer",
-      "flag": "0"
+      "flag": "0",
+      "type": "object"
     },
     {
-      "type": "clone",
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
       "x": 13,
       "y": -3,
+      "elevation": 0,
+      "movement_type": "",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "",
+      "trainer_sight_or_berry_tree_id": "",
+      "script": "",
+      "flag": "",
       "target_local_id": 2,
-      "target_map": "MAP_PALLET_TOWN"
+      "target_map": "MAP_PALLET_TOWN",
+      "type": "clone"
     }
   ],
   "warp_events": [
@@ -94,5 +101,6 @@
       "quantity": 1,
       "underfoot": false
     }
-  ]
+  ],
+  "floor_number": 0
 }
