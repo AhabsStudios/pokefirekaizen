@@ -70,3 +70,7 @@ IndigoPlateau_PokemonCenter_1F_EventScript_Nurse::
 	call EventScript_PkmnCenterNurse
 	release
 	end
+
+IndigoPlateau_PokemonCenter_1F_EventScript_CooltrainerM2::
+	msgbox IndigoPlateau_PokemonCenter_1F_Text_CooltrainerM2, MSGBOX_NPC
+	end
