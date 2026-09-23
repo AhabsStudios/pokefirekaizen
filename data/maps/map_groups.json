@@ -174,7 +174,10 @@
     "SixIsland_DottedHole_B4F",
     "SixIsland_DottedHole_SapphireRoom",
     "SixIsland_PatternBush",
-    "SixIsland_AlteringCave"
+    "SixIsland_AlteringCave",
+    "SilverCave_B1F",
+    "SilverCave_B2F",
+    "SilverCave_B3F"
   ],
   "gMapGroup_SpecialArea": [
     "NavelRock_Exterior",
@@ -306,7 +309,7 @@
     "SevenIsland_SevaultCanyon_Entrance",
     "SevenIsland_SevaultCanyon",
     "SevenIsland_TanobyRuins",
-    "NewMap1"
+    "MtSilver"
   ],
   "gMapGroup_IndoorPallet": [
     "PalletTown_PlayersHouse_1F",

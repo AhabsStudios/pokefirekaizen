@@ -1,0 +1,36 @@
+{
+  "id": "MAP_SILVER_CAVE_B2F",
+  "name": "SilverCave_B2F",
+  "layout": "LAYOUT_SILVER_CAVE_B2F",
+  "music": "MUS_VICTORY_ROAD",
+  "region_map_section": "MAPSEC_SILVER_CAVE",
+  "requires_flash": false,
+  "weather": "WEATHER_NONE",
+  "map_type": "MAP_TYPE_UNDERGROUND",
+  "allow_cycling": true,
+  "allow_escaping": true,
+  "allow_running": true,
+  "show_map_name": true,
+  "battle_scene": "MAP_BATTLE_SCENE_NORMAL",
+  "connections": null,
+  "object_events": [],
+  "warp_events": [
+    {
+      "x": 25,
+      "y": 25,
+      "elevation": 3,
+      "dest_map": "MAP_SILVER_CAVE_B1F",
+      "dest_warp_id": "1"
+    },
+    {
+      "x": 26,
+      "y": 25,
+      "elevation": 3,
+      "dest_map": "MAP_SILVER_CAVE_B3F",
+      "dest_warp_id": "0"
+    }
+  ],
+  "coord_events": [],
+  "bg_events": [],
+  "floor_number": 0
+}

@@ -1934,7 +1934,7 @@
     {
       "id": "LAYOUT_INDIGO_PLATEAU_POKEMON_CENTER_1F",
       "name": "IndigoPlateau_PokemonCenter_1F_Layout",
-      "width": 25,
+      "width": 40,
       "height": 18,
       "primary_tileset": "gTileset_Building",
       "secondary_tileset": "gTileset_PokemonCenter",
@@ -3662,14 +3662,44 @@
       "blockdata_filepath": "data/layouts/DebugRoom_Angry/map.bin"
     },
     {
-      "id": "LAYOUT_NEW_MAP1",
-      "name": "NewMap1_Layout",
+      "id": "LAYOUT_MT_SILVER",
+      "name": "MtSilver_Layout",
       "width": 120,
       "height": 50,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_IndigoPlateau",
-      "border_filepath": "data/layouts/NewMap1/border.bin",
-      "blockdata_filepath": "data/layouts/NewMap1/map.bin"
+      "border_filepath": "data/layouts/MtSilver/border.bin",
+      "blockdata_filepath": "data/layouts/MtSilver/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVER_CAVE_B1F",
+      "name": "SilverCave_B1F_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/SilverCave_B1F/border.bin",
+      "blockdata_filepath": "data/layouts/SilverCave_B1F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVER_CAVE_B2F",
+      "name": "SilverCave_B2F_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/SilverCave_B2F/border.bin",
+      "blockdata_filepath": "data/layouts/SilverCave_B2F/map.bin"
+    },
+    {
+      "id": "LAYOUT_SILVER_CAVE_B3F",
+      "name": "SilverCave_B3F_Layout",
+      "width": 50,
+      "height": 50,
+      "primary_tileset": "gTileset_General",
+      "secondary_tileset": "gTileset_Cave",
+      "border_filepath": "data/layouts/SilverCave_B3F/border.bin",
+      "blockdata_filepath": "data/layouts/SilverCave_B3F/map.bin"
     }
   ]
 }

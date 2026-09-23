@@ -1364,4 +1364,10 @@ Text_TestMsg::
 	.include "data/maps/DebugRoom_Angry/scripts.inc"
 	.include "data/maps/DebugRoom_Angry/text.inc"
 
-	.include "data/maps/NewMap1/scripts.inc"
+	.include "data/maps/MtSilver/scripts.inc"
+
+	.include "data/maps/SilverCave_B1F/scripts.inc"
+
+	.include "data/maps/SilverCave_B2F/scripts.inc"
+
+	.include "data/maps/SilverCave_B3F/scripts.inc"
