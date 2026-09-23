@@ -52,8 +52,8 @@
       "dest_warp_id": "3"
     },
     {
-      "x": 2,
-      "y": 25,
+      "x": 34,
+      "y": 1,
       "elevation": 0,
       "dest_map": "MAP_SILVER_CAVE_B1F",
       "dest_warp_id": "0"
