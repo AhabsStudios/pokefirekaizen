@@ -4420,8 +4420,8 @@
     {
       "id": "LAYOUT_SILVER_CAVE_B2F",
       "name": "SilverCave_B2F_Layout",
-      "width": 50,
-      "height": 50,
+      "width": 46,
+      "height": 34,
       "border_width": 2,
       "border_height": 2,
       "primary_tileset": "gTileset_General",
