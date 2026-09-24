@@ -42,3 +42,8 @@ IndigoPlateau_PokemonCenter_1F_Text_LancesCousinGymLeaderFarAway::
     .string "a cousin who's a GYM LEADER\n"
     .string "somewhere far away.$"
 	
+IndigoPlateau_PokemonCenter_1F_Text_CooltrainerM2::
+    .string "Apologies, but the area ahead\n"
+    .string "is too dangerous.\p"
+    .string "I can't let you past\n"
+    .string "at this time.$"

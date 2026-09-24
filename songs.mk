@@ -223,7 +223,7 @@ $(MID_SUBDIR)/mus_game_corner.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G132 -V090
 
 $(MID_SUBDIR)/mus_slow_pallet.s: %.s: %.mid
-	$(MID) $< $@ -E -R$(STD_REVERB) -G159 -V092
+	$(MID) $< $@ -E -R$(STD_REVERB) -G173 -V092
 
 $(MID_SUBDIR)/mus_new_game_instruct.s: %.s: %.mid
 	$(MID) $< $@ -E -R$(STD_REVERB) -G182 -V085
