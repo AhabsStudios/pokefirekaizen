@@ -963,6 +963,7 @@ SECTIONS {
         sound/songs/midi/mus_slow_pallet.o(.rodata);
         sound/songs/midi/mus_teachy_tv_menu.o(.rodata);
         sound/songs/midi/mus_mt_silver.o(.rodata);
+        sound/songs/midi/mus_route28.o(.rodata);
     } > ROM =0
 
     lib_rodata :

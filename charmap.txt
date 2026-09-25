@@ -820,6 +820,7 @@ MUS_TRAINER_TOWER         = 58 01
 MUS_SLOW_PALLET           = 59 01
 MUS_TEACHY_TV_MENU        = 5A 01
 MUS_MT_SILVER             = 5B 01
+MUS_ROUTE28               = 5C 01
 
 A_BUTTON        = F8 00
 B_BUTTON        = F8 01

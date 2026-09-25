@@ -830,3 +830,6 @@ $(MID_SUBDIR)/se_dex_search.s: %.s: %.mid
 
 $(MID_SUBDIR)/mus_mt_silver.s: %.s: %.mid
 	$(MID) $< $@ -E -R50 -G154 -V100
+
+$(MID_SUBDIR)/mus_route28.s: %.s: %.mid
+	$(MID) $< $@ -E -R50 -G154 -V100
